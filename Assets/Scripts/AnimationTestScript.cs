@@ -9,6 +9,7 @@ public class AnimationTestScript : MonoBehaviour
     [SerializeField] private CharacterController controller;
     [SerializeField] private float speed = 2f;
     [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     
 
     private void Start()
@@ -29,8 +30,20 @@ public class AnimationTestScript : MonoBehaviour
     private void Update()
     {
         Vector2 move = moveControl.action.ReadValue<Vector2>();
-        animator.SetFloat("MoveX", move.x);
-        animator.SetFloat("MoveY", move.x);
+        float moveX = move.x;
+        float moveY = move.y;
+        animator.SetFloat("MoveX", moveX);
+        animator.SetFloat("MoveY", moveY);
+        
+        //flipping if sprite only faces to the right
+        if (moveX < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (moveX > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
         controller.Move(move * speed * Time.deltaTime);
     }
 }
