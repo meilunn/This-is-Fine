@@ -7,8 +7,8 @@ public class Pushable : MonoBehaviour, IInteractable
     [SerializeField] private float moveSpeed;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private GameObject interactionMessage;
+    [SerializeField] private GameObject player;
 
-    private bool isPushed;
     private bool isMoving;
     public int ObjID { get; set; }
 
@@ -17,24 +17,21 @@ public class Pushable : MonoBehaviour, IInteractable
     void Start()
     {
         if (ObjID == 0) ObjID = GlobalHelper.GenerateUniqueID(gameObject);
-        SetMoveDirection();
+        //SetMoveDirection();
     }
 
     public void Interact()
     {
-        if (!CanInteract()) return;
+        Vector3 dir = (transform.position - player.transform.position).normalized;
+        dir.z = 0;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, moveDistance, obstacleLayer);
+        if (hit.collider != null) return;
 
-        isPushed = true;
         if (!isMoving)
             StartCoroutine(
                 MoveToPosition(new Vector2(transform.position.x, transform.position.y) + moveDirection * moveDistance)
                 );
 
-    }
-
-    public bool CanInteract()
-    {
-        return !isPushed;
     }
 
     public void SetInteractionMessage(bool b)
