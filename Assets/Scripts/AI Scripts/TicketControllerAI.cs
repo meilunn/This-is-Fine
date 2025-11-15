@@ -8,6 +8,7 @@ public class TicketControllerAI  : MonoBehaviour
     {
         Patrolling,
         CheckingTicket,
+        Shocked, 
         Chasing
     }
 
@@ -17,11 +18,12 @@ public class TicketControllerAI  : MonoBehaviour
     public Transform[] patrolToNPC;                // NPC transforms 
     public float npcStoppingDistance = 0.15f;      // how close to get to an NPC
     public float checkTicketDuration = 1.5f;       // time spent "checking" a ticket
-    public float catchDistance = 0.2f;             // distance to catch the player
+    public float catchDistance = 0.6f;             // distance to catch the player
     public float chaseSpeed = 4.5f;
     public float patrolSpeed = 3.0f;
 
-
+    [Header("Chasing / Detection")]
+    public float shockedTime = 1.0f;
     [Header("References")]
     [SerializeField] private NPCManager npcManager;   // se setea desde AIManager
 
@@ -30,7 +32,7 @@ public class TicketControllerAI  : MonoBehaviour
     private int currentNPCIndex = 0;
     private Transform currentNPCTarget;
     private float checkTimer;
-
+    private float shockedTimer; 
 
 
     void Awake()
@@ -72,6 +74,9 @@ public class TicketControllerAI  : MonoBehaviour
             case ControllerState.CheckingTicket:
                 UpdateCheckingTicket();
                 break;
+            case ControllerState.Shocked:         
+                UpdateShocked();
+            break;
             case ControllerState.Chasing:
                 UpdateChasing();
                 break;
@@ -112,6 +117,25 @@ public class TicketControllerAI  : MonoBehaviour
             StartCheckingTicket();
         }
     }
+    void StartShocked()
+    {
+        Debug.Log($"{name}: >>> StartShocked");
+        currentState = ControllerState.Shocked;
+        shockedTimer = shockedTime;
+
+        agent.isStopped = true;      // freeze in place
+        agent.velocity = Vector3.zero;
+    }
+
+    void UpdateShocked()
+    {
+        shockedTimer -= Time.deltaTime;
+        if (shockedTimer <= 0f)
+        {
+            Debug.Log($"{name}: Shocked done, now start chasing.");
+            StartChasing();
+        }
+    }        
 
 
     void ChooseNextNPCTarget()
@@ -190,11 +214,14 @@ void UpdateCheckingTicket()
         if (player == null) return;
 
         agent.SetDestination(player.position);
-
+        float dist = Vector3.Distance(transform.position, player.position);
+        
         // Catch logic (for now just log; later you’ll call GameManager/AIManager)
-        if (Vector3.Distance(transform.position, player.position) <= catchDistance)
+        if (!agent.pathPending && agent.remainingDistance <= catchDistance)
         {
-            Debug.Log("Player caught by controller: " + name);
+            
+            Debug.Log($"{name}: Player caught – you get a fine! 💸");
+            
             // TODO: GameManager.Instance.OnPlayerCaught();
         }
     }
@@ -208,8 +235,9 @@ void UpdateCheckingTicket()
 
     public void SwitchToChasing()
     {
+        StartShocked();
         Debug.Log($"{name}: SwitchToChasing called");
-        StartChasing();
+        
     }
     public void OnPlayerDetected()
     {
