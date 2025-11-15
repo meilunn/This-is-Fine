@@ -21,6 +21,7 @@ public class NPCManager : MonoBehaviour
     private void Awake()
     {
         npcPassengers = new List<GameObject>();
+        checkedNpcPassengers = new List<GameObject>();
     }
 
     public void IntializeNPCs(Transform[] npcLocations)
@@ -40,7 +41,7 @@ public class NPCManager : MonoBehaviour
         checkedNpcPassengers.Clear();
         for (var i = 0; i < npcPassengers.Count; i++)
         {
-            GameObject.Destroy(checkedNpcPassengers[i]);
+            GameObject.Destroy(npcPassengers[i]);
         }
         npcPassengers.Clear();
     }
@@ -54,7 +55,7 @@ public class NPCManager : MonoBehaviour
             int pIndex;
             do
             {
-                pIndex = Random.Range(0, npcLocations.Length - 1);
+                pIndex = Random.Range(0, npcLocations.Length);
             } while (pI.Contains(pIndex));
             pI.Add(pIndex);
 
