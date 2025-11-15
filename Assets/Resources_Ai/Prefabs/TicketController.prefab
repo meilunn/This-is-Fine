@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1850684283579553587}
   - component: {fileID: 4898730630763457843}
   - component: {fileID: 671926940713455074}
+  - component: {fileID: 3971178901775900113}
   m_Layer: 0
   m_Name: TicketController
   m_TagString: Untagged
@@ -220,6 +221,9 @@ MonoBehaviour:
 --- !u!50 &671926940713455074
 Rigidbody2D:
   serializedVersion: 5
+--- !u!95 &3971178901775900113
+Animator:
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -244,6 +248,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 970b1f60b5eb36843b3be2c9817a7067, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8019837138707248338
 GameObject:
   m_ObjectHideFlags: 0
