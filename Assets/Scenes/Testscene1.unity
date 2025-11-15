@@ -4250,9 +4250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f09ecb2ad6d43098e774aa2681076a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stages: []
-  timer: {fileID: 0}
-  player: {fileID: 964568637}
 --- !u!1 &788125305
 GameObject:
   m_ObjectHideFlags: 0
@@ -4368,6 +4365,67 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 799945082}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &903775654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 903775658}
+  - component: {fileID: 903775656}
+  - component: {fileID: 903775655}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &903775655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903775654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a3d8536a236440195b5d0a1e884201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stages: []
+  timer: {fileID: 903775656}
+  player: {fileID: 964568637}
+  cinemachine: {fileID: 1150561674}
+--- !u!114 &903775656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903775654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0917efebe171a4375b1273a18b646872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &903775658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903775654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 271.25, y: 180.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &913300425
 GameObject:
@@ -8135,3 +8193,4 @@ SceneRoots:
   - {fileID: 2037543534}
   - {fileID: 799945082}
   - {fileID: 702182710}
+  - {fileID: 903775658}

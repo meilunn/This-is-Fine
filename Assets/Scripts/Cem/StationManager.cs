@@ -40,7 +40,7 @@ public class StationManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        currentStage = stages[0];
+        if (stages.Count > 0) currentStage = stages[0];
         timer.OnTimerEnd += CompleteCurrentStage;
     }
 
