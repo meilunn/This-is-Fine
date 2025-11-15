@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 
 [System.Serializable]
 public class StageFeature
@@ -15,13 +16,14 @@ public class WagonController : MonoBehaviour
     public StageFeature features;
     [SerializeField]private Collider2D confinerObj;
     [SerializeField]private SceneName sceneName;
+    [SerializeField]private NavMeshPlus.Components.NavMeshSurface surface;
 
-
-
-    public void InitializeStage()
+    void OnEnable()
     {
-
+        if (surface == null) surface = GetComponentInChildren<NavMeshPlus.Components.NavMeshSurface>();
+        surface.BuildNavMesh();   // runtime generation instead of baked data
     }
+
 
     public Collider2D GetConfinerObj()
     {

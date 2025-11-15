@@ -85,6 +85,7 @@ MonoBehaviour:
     spawnPoints: []
   confinerObj: {fileID: 3326333377616239350}
   sceneName: 3
+  surface: {fileID: 0}
 --- !u!1 &466378852149892926
 GameObject:
   m_ObjectHideFlags: 0

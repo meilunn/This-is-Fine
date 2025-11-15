@@ -97,10 +97,10 @@ public class StationManager : MonoBehaviour
         {
             if(currentStageIndex > 0)
             {
-                SceneController.Instance.RemoveSceneOnAdditive(scenes[currentStageIndex - 1].GetSceneName());
+                //SceneController.Instance.RemoveSceneOnAdditive(scenes[currentStageIndex - 1].GetSceneName());
 
             }
-            SceneController.Instance.LoadeSceneAdditive(scenes[currentStageIndex].GetSceneName());
+            //SceneController.Instance.LoadeSceneAdditive(scenes[currentStageIndex].GetSceneName());
             currentWagon = scenes[currentStageIndex];
 
             //currentWagon = stages[currentStageIndex];
