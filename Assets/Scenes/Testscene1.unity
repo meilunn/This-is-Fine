@@ -471,6 +471,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7481586830041785045, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3225200219705102020, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
     m_RemovedGameObjects: []
@@ -3995,7 +3999,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519400640}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -4621,7 +4625,7 @@ GameObject:
   - component: {fileID: 1633037404}
   - component: {fileID: 1633037403}
   - component: {fileID: 1633037402}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7580,7 +7584,7 @@ GameObject:
   - component: {fileID: 1814890117}
   - component: {fileID: 1814890119}
   - component: {fileID: 1814890118}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Confiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7850,7 +7854,7 @@ Transform:
   m_GameObject: {fileID: 1942136523}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29000092, y: -1.0291022, z: -10}
+  m_LocalPosition: {x: -0.28999805, y: -1.0291022, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
