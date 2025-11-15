@@ -3996,6 +3996,7 @@ GameObject:
   m_Component:
   - component: {fileID: 715513487}
   - component: {fileID: 715513486}
+  - component: {fileID: 715513488}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -4033,6 +4034,21 @@ Transform:
   - {fileID: 12215243}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &715513488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715513485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f09ecb2ad6d43098e774aa2681076a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stages: []
+  timer: {fileID: 0}
+  player: {fileID: 964568637}
 --- !u!1 &788125305
 GameObject:
   m_ObjectHideFlags: 0
@@ -4185,6 +4201,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2765933935930954829, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
   m_PrefabInstance: {fileID: 333283362}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &964568637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3822871205684340261, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+  m_PrefabInstance: {fileID: 333283362}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf127e4850d0f2d4d8a47eed9a4df8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1136891232
 GameObject:
   m_ObjectHideFlags: 0
@@ -4523,7 +4550,7 @@ GameObject:
   - component: {fileID: 1633037404}
   - component: {fileID: 1633037403}
   - component: {fileID: 1633037402}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

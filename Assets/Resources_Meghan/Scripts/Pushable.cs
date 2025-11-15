@@ -22,14 +22,14 @@ public class Pushable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Vector3 dir = (transform.position - player.transform.position).normalized;
+        Vector3 dir = (transform.position - StageManager.Instance.GetPlayer().transform.position).normalized;
         dir.z = 0;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, moveDistance, obstacleLayer);
         if (hit.collider != null) return;
 
         if (!isMoving)
             StartCoroutine(
-                MoveToPosition(new Vector2(transform.position.x, transform.position.y) + moveDirection * moveDistance)
+                MoveToPosition(new Vector2(transform.position.x, transform.position.y) + new Vector2(dir.x,dir.y) * moveDistance)
                 );
 
     }

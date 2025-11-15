@@ -7,6 +7,7 @@ public class StageManager : MonoBehaviour
     public static StageManager Instance;
     [SerializeField] private List<StageController> stages;
     [SerializeField] private Timer timer;
+    [SerializeField] private PlayerMovement player;
 
 
     private StageController currentStage;
@@ -51,6 +52,11 @@ public class StageManager : MonoBehaviour
     public void InitializeNextStage()
     {
 
+    }
+
+    public PlayerMovement GetPlayer()
+    {
+        return player;
     }
 
 
