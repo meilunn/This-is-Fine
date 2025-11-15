@@ -126,7 +126,8 @@ public class NPCManager : MonoBehaviour
     {
         if (npcPassengers.Count <= 0)
         {
-            throw new Exception("There are no npc passengers left!");
+            npcPassengers.AddRange(checkedNpcPassengers);
+            checkedNpcPassengers.Clear();
         }
         int pIndex = 0;
         float maxDistance = int.MaxValue;
