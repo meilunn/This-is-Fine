@@ -7,18 +7,13 @@ public class Pushable : MonoBehaviour, IInteractable
     [SerializeField] private float moveSpeed;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private GameObject interactionMessage;
-    
-    private Animator animator;
-
 
     
     [Tooltip("Extra time after reaching the target where the NPC still stuns controllers")]
     [SerializeField] private float dangerousExtraTime = 0.15f;
 
 
-
     public bool isMoving;
-    private bool isMoving;
 
     private Animator animator;
     private Animator npcAnimator;
@@ -31,8 +26,6 @@ public class Pushable : MonoBehaviour, IInteractable
     {
         if (ObjID == 0) ObjID = GlobalHelper.GenerateUniqueID(gameObject);
         interactionMessage.SetActive(false);
-        GameObject player = GameObject.FindWithTag("Player");
-        animator = player.GetComponent<Animator>();
         //SetMoveDirection();
         GameObject player = GameObject.FindWithTag("Player");
         animator = player.GetComponent<Animator>();
@@ -44,10 +37,6 @@ public class Pushable : MonoBehaviour, IInteractable
     {
         animator.SetBool("isPushing", true);
         if(isNPC) npcAnimator.SetBool("isPushed", true);
-        Vector3 dir = (transform.position - StationManager.Instance.GetPlayer().transform.position).normalized;
-        animator.SetBool("isPushing", true);
-        Debug.Log(("I start Pushing"));
-        Debug.Log(animator.runtimeAnimatorController);
         Vector3 dir = (transform.position - StageManager.Instance.GetPlayer().transform.position).normalized;
         Vector2 dir2 = new Vector2(dir.x, dir.y);
         dir.z = 0;
@@ -66,10 +55,6 @@ public class Pushable : MonoBehaviour, IInteractable
             StartCoroutine(
                 MoveToPosition(moveTarget)
                 );
-        animator.SetBool("isPushing", false);
-        Debug.Log("I stopped pushing");
-
-        
         
         animator.SetBool("isPushing", false);
         if(isNPC) npcAnimator.SetBool("isPushed", false);
