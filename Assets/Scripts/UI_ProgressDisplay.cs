@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UI_main : MonoBehaviour
+public class UI_ProgressDisplay : MonoBehaviour
 {
+
+    //! set trainDeparts to true, in order to start the train again !
     public bool trainDeparts;
     public bool trainTravels;
     [SerializeField] private float threshhold;
@@ -21,18 +24,17 @@ public class UI_main : MonoBehaviour
     [SerializeField] private GameObject train;
     [SerializeField] private GameObject parentDisplayTracks;
     [SerializeField] private Vector3 speed;
-    private List<Transform> spawnedTiles = new List<Transform>();
-    private List<int> stationIndices = new List<int>(); // Track where stations are
+    private List<RectTransform> spawnedTiles = new List<RectTransform>();
+    private List<int> stationIndices = new List<int>(); 
+    private List<float> stationCenterPositions = new List<float>(); 
 
 
     void Start()
     {
-        
         trackDisplayLength = FillWithValues(testValues);
 
-
-        //go through all the elements and track station positions
         int tileIndex = 0;
+        
         for (int i = 0; i < trackDisplayLength.Count; i++)
             {
                 int amount = trackDisplayLength[i].Item1;
@@ -41,8 +43,9 @@ public class UI_main : MonoBehaviour
                 if (isStation)
                 {
                     var obj = Instantiate(trainStation, parentDisplayTracks.transform);
-                    spawnedTiles.Add(obj.transform);
-                    stationIndices.Add(tileIndex); // Remember this is a station
+                    RectTransform rectTransform = obj.GetComponent<RectTransform>();
+                    spawnedTiles.Add(rectTransform);
+                    stationIndices.Add(tileIndex);
                     tileIndex++;
                 }
                 else
@@ -50,7 +53,8 @@ public class UI_main : MonoBehaviour
                     for (int j = 0; j < amount; j++)
                     {
                         var obj = Instantiate(track, parentDisplayTracks.transform);
-                        spawnedTiles.Add(obj.transform);
+                        RectTransform rectTransform = obj.GetComponent<RectTransform>();
+                        spawnedTiles.Add(rectTransform);
                         tileIndex++;
                     }
                 }
@@ -58,9 +62,26 @@ public class UI_main : MonoBehaviour
             }
         Instantiate(train, parentDisplayTracks.transform);
 
+        // Waiting for Layout Group to position everything, then capture positions
+        StartCoroutine(InitializeAfterLayout());
+    }
+
+    private IEnumerator InitializeAfterLayout()
+    {
+        // Waiting for layout to rebuild (at least 2 frames)
+        yield return null;
+        yield return null;
+        
+        // captures the ACTUAL positions after Layout Group has positioned them
+        for (int i = 0; i < stationIndices.Count; i++)
+        {
+            RectTransform station = spawnedTiles[stationIndices[i]];
+            // Gets actual center position (anchoredPosition is the center by default)
+            stationCenterPositions.Add(station.anchoredPosition.x);
+        }
+        
         trainTravels = true;
         StartCoroutine(MoveTrainBackground());
-
     }
 
 
@@ -70,25 +91,28 @@ public class UI_main : MonoBehaviour
         
         while (currentStationIndex < stationIndices.Count)
         {
-            // Move until we reach the next station
+            // Move until next station center reached
             trainTravels = true;
             
             while (trainTravels)
             {
-                foreach (Transform tile in spawnedTiles)
+                foreach (RectTransform tile in spawnedTiles)
                 {
-                    tile.position += speed * Time.deltaTime;
+                    tile.anchoredPosition += (Vector2)speed * Time.deltaTime;
                 }
 
-                // Check if we've reached the station position
-                // Assuming train starts at position 0 and stations move in negative direction
                 if (currentStationIndex < stationIndices.Count)
                 {
-                    Transform station = spawnedTiles[stationIndices[currentStationIndex]];
+                    RectTransform station = spawnedTiles[stationIndices[currentStationIndex]];
                     
-                    // Stop when station reaches a specific position (e.g., center of screen)
-                    // Adjust the threshold value based on your needs
-                    if (station.position.x <= threshhold) // Adjust this value to your train position
+                    // Get the initial center position captured
+                    float initialStationCenter = stationCenterPositions[currentStationIndex];
+                    
+                    // Calculate how far this station should be from its original position to reach threshold
+                    float targetPosition = threshhold;
+                    
+                    // Stop when the station reaches the threshold
+                    if (station.anchoredPosition.x <= targetPosition) 
                     {
                         trainTravels = false;
                     }
@@ -97,12 +121,16 @@ public class UI_main : MonoBehaviour
                 yield return null;
             }
 
-            // Train has stopped at station
+            // Train has reached station position
             currentStationIndex++;
             
-            // Wait until trainDeparts is set to true again
-            yield return new WaitUntil(() => trainDeparts);
-            trainDeparts = false; // Reset for next station
+            // Only wait for trainDeparts if it's NOT the first station
+            if (currentStationIndex > 1) // Skip waiting for first station
+            {
+                // Wait until trainDeparts is set to true again
+                yield return new WaitUntil(() => trainDeparts);
+                trainDeparts = false; // Reset for next station
+            }
         }
         
         // All stations visited
