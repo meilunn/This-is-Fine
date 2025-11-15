@@ -162,6 +162,11 @@ public class TicketControllerAI  : MonoBehaviour
     /// Call this from PlayerDetection when the controller sees the player.
     /// Later AIManager can call this too.
     /// </summary>
+
+    public void SwitchToChasing()
+    {
+        StartChasing();
+    }
     public void OnPlayerDetected()
     {
         if (currentState == ControllerState.Chasing)
@@ -172,7 +177,7 @@ public class TicketControllerAI  : MonoBehaviour
     }
 
 
-    
+
     /// <summary>
     /// Helper if you want to force this controller to be a chaser from the start
     /// (e.g., the one who "knows your face").
