@@ -7,6 +7,8 @@ public class Pushable : MonoBehaviour, IInteractable
     [SerializeField] private float moveSpeed;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private GameObject interactionMessage;
+    
+    private Animator animator;
 
     public bool isMoving;
     public int ObjID { get; set; }
@@ -17,12 +19,18 @@ public class Pushable : MonoBehaviour, IInteractable
     {
         if (ObjID == 0) ObjID = GlobalHelper.GenerateUniqueID(gameObject);
         interactionMessage.SetActive(false);
+        GameObject player = GameObject.FindWithTag("Player");
+        animator = player.GetComponent<Animator>();
         //SetMoveDirection();
     }
 
     public void Interact()
     {
         Vector3 dir = (transform.position - StationManager.Instance.GetPlayer().transform.position).normalized;
+        animator.SetBool("isPushing", true);
+        Debug.Log(("I start Pushing"));
+        Debug.Log(animator.runtimeAnimatorController);
+        Vector3 dir = (transform.position - StageManager.Instance.GetPlayer().transform.position).normalized;
         Vector2 dir2 = new Vector2(dir.x, dir.y);
         dir.z = 0;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir2, moveDistance, obstacleLayer);
@@ -40,6 +48,8 @@ public class Pushable : MonoBehaviour, IInteractable
             StartCoroutine(
                 MoveToPosition(moveTarget)
                 );
+        animator.SetBool("isPushing", false);
+        Debug.Log("I stopped pushing");
 
     }
 

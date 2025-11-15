@@ -125,6 +125,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   interactionMessage: {fileID: 6471014224664740101}
+  animator: {fileID: 2161573361291585649, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
 --- !u!61 &5935936808993347668
 BoxCollider2D:
   m_ObjectHideFlags: 0
