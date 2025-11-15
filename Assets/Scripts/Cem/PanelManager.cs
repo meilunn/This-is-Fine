@@ -32,12 +32,11 @@ public class PanelManager : MonoBehaviour
     public void Show(string panelName)
     {
         foreach (var entry in panels)
-            entry.gameObject.SetActive(false);
+            entry.HidePanel();
 
         var panel = panels.Find(entry => entry.panelName.Equals(panelName));
         if(panel != null)
         {
-
             panel.ShowPanel();
         }
         else

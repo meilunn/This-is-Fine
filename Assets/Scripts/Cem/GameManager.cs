@@ -37,7 +37,16 @@ public class GameManager : MonoBehaviour
 
 
     
-    
+    public void CompleteGame()
+    {
+        PanelManager.Instance.Show("gamecomplete");
+    }
+
+    public void GameOver()
+    {
+        PanelManager.Instance.Show("gameover");
+
+    }
 
     
 }

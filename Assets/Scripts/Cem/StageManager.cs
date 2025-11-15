@@ -10,6 +10,7 @@ public class StageManager : MonoBehaviour
 
 
     private StageController currentStage;
+    private int currentStageIndex = 0;
 
 
     private void Awake()
@@ -31,9 +32,20 @@ public class StageManager : MonoBehaviour
     public void CompleteCurrentStage()
     {
         OnStageCompleted?.Invoke();
+        currentStageIndex++;
+        if(currentStageIndex>= stages.Count)
+        {
+            GameManager.Instance.CompleteGame();
+        }
+        else
+        {
+
+            currentStage = stages[currentStageIndex];
+            InitializeNextStage();
+        }
     }
 
-    public void InitializeStage()
+    public void InitializeNextStage()
     {
 
     }
