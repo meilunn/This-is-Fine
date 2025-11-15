@@ -34,6 +34,15 @@ public class TicketControllerAI  : MonoBehaviour
     private float checkTimer;
     private float shockedTimer;
 
+
+    [Header("FOV / Vision")]
+    public float fovAngle = 60f;
+    public float fovRange = 6.0f;
+    public Vector2 lookDirection = Vector2.right; // default facing right
+
+    public bool IsChasing => currentState == ControllerState.Chasing;
+
+
     [Header("Animation")] 
     private Animator _animator;
     private SpriteRenderer spriteRenderer;
@@ -99,13 +108,21 @@ public class TicketControllerAI  : MonoBehaviour
                 UpdateChasing();
                 break;
         }
-        lookDirection.Set(agent.velocity.y, agent.velocity.x);
+        Vector2 vel = agent.velocity;
+if (vel.sqrMagnitude > 0.001f)
+{
+    lookDirection = vel.normalized;
+}
 
-        if (IsTargetInsideFov(player))
-            {
-                Debug.Log("seen");
-                
-            }
+// PATROLLING sight cone → detect player and start chase
+if (currentState == ControllerState.Patrolling && player != null)
+{
+    if (IsTargetInsideFov(player))
+    {
+        Debug.Log($"{name}: Player seen in FOV, notifying AIManager.");
+        OnPlayerDetected();   // this will promote via AIManager
+    }
+}
     }
 
 // patrolling 
@@ -221,27 +238,24 @@ void UpdateCheckingTicket()
     }
 
 
-    //region : Chasing
-    public float fovAngle = 60;
-    public float fovRange = 6.0f;
-    public Vector2 lookDirection;
 
     public bool IsTargetInsideFov(Transform target)
-    {
-        Vector2 directionToTarget = (target.position - transform.position).normalized;
+{
+    if (target == null) return false;
 
-        float angleToTarget = Vector2.Angle(lookDirection, directionToTarget);
+    Vector2 toTarget = (target.position - transform.position);
+    float distance = toTarget.magnitude;
+    if (distance > fovRange) return false;
 
-        if(angleToTarget < fovAngle / 2)
-        {
-            float distance = Vector2.Distance(target.position, transform.position);
+    // If we’re not moving, keep the last lookDirection
+    if (lookDirection.sqrMagnitude < 0.0001f)
+        return false; // or keep last, depending how you want it
 
-            return distance < fovRange;
-        }
-        return false;
+    Vector2 dirToTargetNorm = toTarget.normalized;
+    float angleToTarget = Vector2.Angle(lookDirection, dirToTargetNorm);
 
-
-    }
+    return angleToTarget <= fovAngle * 0.5f;
+}
         public float lineWidth = 0.05f;
 
     private Rigidbody2D rb;
@@ -263,18 +277,7 @@ void UpdateCheckingTicket()
     void UpdateChasing()
     {
         if (player == null) return;
-
         agent.SetDestination(player.position);
-        float dist = Vector3.Distance(transform.position, player.position);
-        
-        // Catch logic (for now just log; later you’ll call GameManager/AIManager)
-        if (!agent.pathPending && agent.remainingDistance <= catchDistance)
-        {
-            
-            Debug.Log($"{name}: Player caught – you get a fine! 💸");
-            
-            // TODO: GameManager.Instance.OnPlayerCaught();
-        }
     }
 
 
@@ -304,6 +307,11 @@ void UpdateCheckingTicket()
             StartChasing(); 
         }
     }
+    public void OnPlayerCaught()
+{
+    Debug.Log($"{name}: Player caught – you get a fine! 💸");
+    // TODO: GameManager.Instance.OnPlayerCaught();
+}
 
 
 
