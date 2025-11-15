@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class Pushable : MonoBehaviour, IInteractable
     [SerializeField] private float moveSpeed;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private GameObject interactionMessage;
+    [SerializeField] private SpriteRenderer arrowRenderer;
 
 
     [Tooltip("Extra time after reaching the target where the NPC still stuns controllers")]
@@ -26,11 +28,29 @@ public class Pushable : MonoBehaviour, IInteractable
     {
         if (ObjID == 0) ObjID = GlobalHelper.GenerateUniqueID(gameObject);
         interactionMessage.SetActive(false);
+        arrowRenderer.gameObject.SetActive(false);
         //SetMoveDirection();
         GameObject player = GameObject.FindWithTag("Player");
         animator = player.GetComponent<Animator>();
         npcAnimator = GetComponent<Animator>();
         if (npcAnimator) isNPC = true;
+    }
+
+    private void Update()
+    {
+        if (arrowRenderer.gameObject.activeSelf)
+        {
+            Vector3 dir = (transform.position - StationManager.Instance.GetPlayer().transform.position).normalized;
+            Vector2 dir2 = new Vector2(dir.x, dir.y);
+            float angle = Vector2.Angle(Vector2.up, dir2);
+            if (dir.x > 0)
+            {
+                angle = Vector2.Angle(Vector2.down, dir2) + 180f;
+            }
+            Debug.Log("Angle: " + angle + " vec: " + dir2);
+            arrowRenderer.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            arrowRenderer.gameObject.transform.position = transform.position + dir;
+        }
     }
 
     public void Interact()
@@ -64,6 +84,8 @@ public class Pushable : MonoBehaviour, IInteractable
     {
         interactionMessage.transform.rotation = Quaternion.Euler(Vector3.zero);
         interactionMessage.SetActive(b);
+        
+        arrowRenderer.gameObject.SetActive(b);
     }
 
     private IEnumerator MoveToPosition(Vector2 target)
