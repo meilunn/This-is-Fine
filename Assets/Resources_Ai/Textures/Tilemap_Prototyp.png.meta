@@ -107,7 +107,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -129,7 +129,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -151,6 +151,50 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249f642d700a73243b2001f036863efa
+      internalID: -187299999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Prototyp_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5dee7b75c5848c49947674907d56611
+      internalID: 1100909729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Prototyp_4
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 32
         height: 32
@@ -162,8 +206,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a83008a93dcb2e4089ae441627c6a8c
-      internalID: -2093929527
+      spriteID: c59e38fad57ae2e408c341685d5ef24a
+      internalID: 1431390796
       vertices: []
       indices: 
       edges: []
@@ -184,7 +228,9 @@ TextureImporter:
     nameFileIdTable:
       Tilemap_Prototyp_0: -1652166513
       Tilemap_Prototyp_1: 233004351
-      Tilemap_Prototyp_2: -2093929527
+      Tilemap_Prototyp_2: -187299999
+      Tilemap_Prototyp_3: 1100909729
+      Tilemap_Prototyp_4: 1431390796
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
