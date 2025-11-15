@@ -7,14 +7,32 @@ public class NPCManager : MonoBehaviour
 {
 
     public GameObject NPCPrefab;
+    
+    public Sprite[] standingNPCSprites;
+    public Sprite[] sittingNPCSprites;
 
-    [SerializeField]
-    private Transform[] npcLocations;
+    [Serializable]
+    public class SpawnPoint
+    {
+        public Transform spawnPoint;
+        public SpawnType spawnType;
+    }
+    public enum SpawnType
+    {
+        Standing, Sitting
+    }
+    
+    [SerializeField] 
+    private SpawnPoint[] npcSpawnPoints;
+    
     public int minPassengerAmount;
     public int maxPassengerAmount;
     public int passengerAmountDecrease;
 
     [SerializeField]
+    private int currentPassengerAmountDecrease;
+    
+    [SerializeField] 
     private List<GameObject> npcPassengers;
     private List<GameObject> checkedNpcPassengers;
 
@@ -24,12 +42,19 @@ public class NPCManager : MonoBehaviour
         checkedNpcPassengers = new List<GameObject>();
     }
 
-    public void IntializeNPCs(Transform[] npcLocations)
+    public void IntializeNPCs(SpawnPoint[] npcSpawnPoints)
     {
-        this.npcLocations = npcLocations;
+        Debug.Log("Initializing NPCs");
+        this.npcSpawnPoints = npcSpawnPoints;
         checkedNpcPassengers.Clear();
         npcPassengers.Clear();
         ChooseSpawnLocations();
+    }
+    
+    public void IntializeNPCs(SpawnPoint[] npcSpawnPoints, int difficultyLevel)
+    {
+        IntializeNPCs(npcSpawnPoints);
+        currentPassengerAmountDecrease = difficultyLevel * passengerAmountDecrease;
     }
 
     public void CleanUpNpcPassengers()
@@ -49,7 +74,11 @@ public class NPCManager : MonoBehaviour
     private void ChooseSpawnLocations()
     {
         int currentPassengerAmount = Random.Range(minPassengerAmount, maxPassengerAmount);
-        currentPassengerAmount = Mathf.Min(currentPassengerAmount, npcLocations.Length);
+        Debug.Log(currentPassengerAmount);
+        currentPassengerAmount = Math.Max(0, currentPassengerAmount - currentPassengerAmountDecrease);
+        Debug.Log(currentPassengerAmount);
+        currentPassengerAmount = Mathf.Min(currentPassengerAmount, npcSpawnPoints.Length);
+        Debug.Log(currentPassengerAmount);
 
         List<int> pI = new List<int>();
 
@@ -58,15 +87,39 @@ public class NPCManager : MonoBehaviour
             int pIndex;
             do
             {
-                pIndex = Random.Range(0, npcLocations.Length);
+                pIndex = Random.Range(0, npcSpawnPoints.Length);
             } while (pI.Contains(pIndex));
 
             pI.Add(pIndex);
 
             GameObject npc = Instantiate(NPCPrefab);
-            npc.transform.position = npcLocations[pIndex].position;
+            SpawnPoint point = npcSpawnPoints[pIndex];
+            npc.transform.position = point.spawnPoint.position;
+
+            if (point.spawnType == SpawnType.Standing)
+            {
+                float rotation = Random.Range(0f, 360f);
+                Quaternion newRotation = Quaternion.AngleAxis(rotation, Vector3.forward);
+                npc.transform.rotation = newRotation;
+                SpriteRenderer sR = npc.GetComponent<SpriteRenderer>();
+                if (standingNPCSprites.Length > 0)
+                {
+                    sR.sprite = standingNPCSprites[Random.Range(0, standingNPCSprites.Length)];
+                }
+            }
+            else if (point.spawnType == SpawnType.Sitting)
+            {
+                //TODO set sitting sprite
+                SpriteRenderer sR = npc.GetComponent<SpriteRenderer>();
+                if (standingNPCSprites.Length > 0)
+                {
+                    sR.sprite = sittingNPCSprites[Random.Range(0, sittingNPCSprites.Length)];
+                }
+            }
             npcPassengers.Add(npc);
         }
+        
+        Debug.Log("Created " + currentPassengerAmount + " Passengers");
     }
 
     public GameObject GetNextPassenger(Transform controller)

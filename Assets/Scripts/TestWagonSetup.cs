@@ -6,7 +6,7 @@ public class TestWagonSetup : MonoBehaviour
     public NPCManager npcManager;
 
     [Header("Spawn Points")]
-    public Transform[] npcSpawnPoints;
+    public NPCManager.SpawnPoint[] npcSpawnPoints;
     public Transform[] chaserSpawnPoints;
     public Transform[] patrollerSpawnPoints;
 
