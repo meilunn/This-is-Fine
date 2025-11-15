@@ -84,7 +84,7 @@ public class TicketControllerAI  : MonoBehaviour
 
     void StartPatrolling()
     {
-        Debug.Log($"{name}: StartPatrolling");
+       
         currentState = ControllerState.Patrolling;
         agent.isStopped = false;
         agent.speed = patrolSpeed;
@@ -94,11 +94,11 @@ public class TicketControllerAI  : MonoBehaviour
 
     void UpdatePatrolling()
     {
-        Debug.Log($"{name}: UpdatePatrolling");
+        
         //if npc is checked, choose next npc to check
         if(currentNPCTarget == null)
         {
-            Debug.Log("Choosing new NPC Target");
+            
             ChooseNextNPCTarget();
             return; 
         }
@@ -127,7 +127,7 @@ public class TicketControllerAI  : MonoBehaviour
         try
         {
             npcGO = npcManager.GetNextPassenger(transform);
-            Debug.Log("Next Npctarget is" + npcGO.name); 
+            
         }
         catch (System.Exception e)
         {
@@ -165,7 +165,7 @@ void UpdateCheckingTicket()
         checkTimer -= Time.deltaTime;
         if (checkTimer <= 0f)
         {
-            Debug.Log("CurrentNPCTarget is " + currentNPCTarget);
+            
             currentNPCTarget = null;
             
             StartPatrolling();
@@ -178,9 +178,11 @@ void UpdateCheckingTicket()
 
     void StartChasing()
     {
+        Debug.Log($"{name}: >>> StartChasing (state was {currentState})");
         currentState = ControllerState.Chasing;
         agent.isStopped = false;
         agent.speed = chaseSpeed;
+
     }
 
     void UpdateChasing()
@@ -206,6 +208,7 @@ void UpdateCheckingTicket()
 
     public void SwitchToChasing()
     {
+        Debug.Log($"{name}: SwitchToChasing called");
         StartChasing();
     }
     public void OnPlayerDetected()
