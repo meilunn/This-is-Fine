@@ -610,7 +610,7 @@ MonoBehaviour:
   cinemachine: {fileID: 130065561}
   confiner: {fileID: 130065559}
   trainAnimController: {fileID: 721535831}
-  station: {fileID: 0}
+  station: {fileID: 1687308427}
 --- !u!1 &721535826
 GameObject:
   m_ObjectHideFlags: 0
