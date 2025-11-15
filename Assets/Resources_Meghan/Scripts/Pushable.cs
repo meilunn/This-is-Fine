@@ -8,7 +8,7 @@ public class Pushable : MonoBehaviour, IInteractable
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private GameObject interactionMessage;
 
-    
+
     [Tooltip("Extra time after reaching the target where the NPC still stuns controllers")]
     [SerializeField] private float dangerousExtraTime = 0.15f;
 
@@ -37,7 +37,7 @@ public class Pushable : MonoBehaviour, IInteractable
     {
         animator.SetBool("isPushing", true);
         if(isNPC) npcAnimator.SetBool("isPushed", true);
-        Vector3 dir = (transform.position - StageManager.Instance.GetPlayer().transform.position).normalized;
+        Vector3 dir = (transform.position - StationManager.Instance.GetPlayer().transform.position).normalized;
         Vector2 dir2 = new Vector2(dir.x, dir.y);
         dir.z = 0;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir2, moveDistance, obstacleLayer);
@@ -55,7 +55,7 @@ public class Pushable : MonoBehaviour, IInteractable
             StartCoroutine(
                 MoveToPosition(moveTarget)
                 );
-        
+
         animator.SetBool("isPushing", false);
         if(isNPC) npcAnimator.SetBool("isPushed", false);
     }
