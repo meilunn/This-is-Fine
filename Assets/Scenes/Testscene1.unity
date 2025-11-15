@@ -7520,7 +7520,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcManager: {fileID: 1218915318}
   npcSpawnPoints:
-  - {fileID: 799945082}
+  - spawnPoint: {fileID: 1984769717}
+    spawnType: 0
+  - spawnPoint: {fileID: 674690867}
+    spawnType: 0
+  - spawnPoint: {fileID: 1497339748}
+    spawnType: 0
+  - spawnPoint: {fileID: 875000563}
+    spawnType: 0
   chaserSpawnPoints:
   - {fileID: 1558457123}
   patrollerSpawnPoints:
