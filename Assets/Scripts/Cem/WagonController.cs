@@ -12,12 +12,25 @@ public class StageFeature
 
 public class WagonController : MonoBehaviour
 {
-    [SerializeField]private StageFeature features;
+    public StageFeature features;
+    [SerializeField]private Collider2D confinerObj;
+    [SerializeField]private SceneName sceneName;
+
 
 
     public void InitializeStage()
     {
 
+    }
+
+    public Collider2D GetConfinerObj()
+    {
+        return confinerObj;
+    }
+
+    public SceneName GetSceneName()
+    {
+        return sceneName;
     }
 
 }

@@ -5,7 +5,10 @@ public enum SceneName
 {
     StartScene = 0,
     MainMenu = 1,
-    GameScene = 2,
+    StationScene = 2,
+    Wagon1 = 3,
+    Wagon2 = 4,
+    Wagon3 = 5,
 }
 public class SceneController : MonoBehaviour
 {
@@ -35,5 +38,16 @@ public class SceneController : MonoBehaviour
     public void LoadSceneByName(SceneName sceneName)
     {
         SceneManager.LoadScene((int)sceneName);
+    }
+
+    public void LoadeSceneAdditive(SceneName sceneName)
+    {
+        SceneManager.LoadSceneAsync((int)sceneName,LoadSceneMode.Additive);
+    }
+
+    public void RemoveSceneOnAdditive(SceneName sceneName)
+    {
+        SceneManager.UnloadSceneAsync((int)sceneName);
+
     }
 }

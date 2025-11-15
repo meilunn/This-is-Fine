@@ -10,12 +10,16 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     private Vector2 moveInput;
-    
+
+
+    public System.Action EnteredTrain;
+    public System.Action ExitedTrain;
+
     //comment as long as we dont have animation sprites
     //[Header("Animator Variables")]
     //[SerializeField] private Animator animator;
     //[SerializeField] private SpriteRenderer spriteRenderer;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,5 +56,22 @@ public class PlayerMovement : MonoBehaviour
         //{
         //    spriteRenderer.flipX = true;
         //}
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WagonEntrance"))
+        {
+            EnteredTrain?.Invoke();
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WagonExit"))
+        {
+            ExitedTrain?.Invoke();
+        }
     }
 }

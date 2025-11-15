@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1930735183343198656}
   m_Layer: 0
   m_Name: Wagon1
-  m_TagString: Untagged
+  m_TagString: Wagon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,6 @@ MonoBehaviour:
   - {fileID: 5785920671138043314}
   patrollerSpawnPoints:
   - {fileID: 1896360287213555721}
-  playerTransform: {fileID: 0}
 --- !u!114 &1930735183343198656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,10 +79,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   features:
-    DurationSec: 0
+    DurationSec: 50
     NpcCount: 0
     PassangerCount: 0
     spawnPoints: []
+  confinerObj: {fileID: 3326333377616239350}
+  sceneName: 3
 --- !u!1 &466378852149892926
 GameObject:
   m_ObjectHideFlags: 0

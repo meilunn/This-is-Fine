@@ -14,6 +14,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StationScene.unity
     guid: ebcc55628db0143f49bfafa25e0b1cb8
+  - enabled: 1
+    path: Assets/Scenes/Wagon1.unity
+    guid: 6ae2b1e9fab844dfaaf460a70bd827fc
+  - enabled: 1
+    path: Assets/Scenes/Wagon2.unity
+    guid: 9245844cc923544af8cc95a9e3878259
+  - enabled: 1
+    path: Assets/Scenes/Wagon3.unity
+    guid: 9b566d95e3a7e4596a32399fb6d29553
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
