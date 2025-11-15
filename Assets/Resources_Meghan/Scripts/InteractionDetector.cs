@@ -7,7 +7,7 @@ public class InteractionDetector : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(!Pause_CenterOnPlayer.isPaused && context.performed)
         {
             closestInteractable?.Interact();
         }

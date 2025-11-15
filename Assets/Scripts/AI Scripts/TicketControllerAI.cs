@@ -32,7 +32,11 @@ public class TicketControllerAI  : MonoBehaviour
     private int currentNPCIndex = 0;
     private Transform currentNPCTarget;
     private float checkTimer;
-    private float shockedTimer; 
+    private float shockedTimer;
+
+    [Header("Animation")] 
+    private Animator _animator;
+    private SpriteRenderer spriteRenderer;
 
 
     void Awake()
@@ -41,11 +45,15 @@ public class TicketControllerAI  : MonoBehaviour
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentState = initialState;
 
         
@@ -63,9 +71,19 @@ public class TicketControllerAI  : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float angle = Mathf.Atan2(agent.velocity.y, agent.velocity.x) * Mathf.Rad2Deg;
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 100);
+        float MoveX = agent.velocity.x;
+        float MoveY = agent.velocity.y;
+        _animator.SetFloat("MoveX", MoveX);
+        _animator.SetFloat("MoveY", MoveY);
+        
+        if (Mathf.Abs(MoveX) > Mathf.Abs(MoveY) && Mathf.Abs(MoveX) > 0.1f)
+        {
+            spriteRenderer.flipX = MoveX > 0;
+        }
+        
+        //float angle = Mathf.Atan2(agent.velocity.y, agent.velocity.x) * Mathf.Rad2Deg;
+        //Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 100);
         switch (currentState)
         {
              case ControllerState.Patrolling:
@@ -81,7 +99,13 @@ public class TicketControllerAI  : MonoBehaviour
                 UpdateChasing();
                 break;
         }
-    
+        lookDirection.Set(agent.velocity.y, agent.velocity.x);
+
+        if (IsTargetInsideFov(player))
+            {
+                Debug.Log("seen");
+                
+            }
     }
 
 // patrolling 
@@ -198,7 +222,34 @@ void UpdateCheckingTicket()
 
 
     //region : Chasing
+    public float fovAngle = 60;
+    public float fovRange = 6.0f;
+    public Vector2 lookDirection;
 
+    public bool IsTargetInsideFov(Transform target)
+    {
+        Vector2 directionToTarget = (target.position - transform.position).normalized;
+
+        float angleToTarget = Vector2.Angle(lookDirection, directionToTarget);
+
+        if(angleToTarget < fovAngle / 2)
+        {
+            float distance = Vector2.Distance(target.position, transform.position);
+
+            return distance < fovRange;
+        }
+        return false;
+
+
+    }
+        public float lineWidth = 0.05f;
+
+    private Rigidbody2D rb;
+    private LineRenderer line;
+    private Vector2 lastMoveDir = Vector2.right; // fallback if standing still
+
+
+    
 
     void StartChasing()
     {
@@ -271,4 +322,16 @@ void UpdateCheckingTicket()
     {
         npcManager = manager;
     }
+
+
+
+    public void StartShockedExternal()
+{
+    // Only stun if chasing
+    if (currentState != ControllerState.Chasing)
+        return;
+
+    StartShocked();
+
+}
 }

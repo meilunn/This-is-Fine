@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Wagon
-  - WagonEntrance
-  - WagonExit
+  - Pushable
   layers:
   - Default
   - TransparentFX
@@ -16,7 +14,7 @@ TagManager:
   - UI
   - Confiner
   - Player
-  - 
+  - Detection
   - 
   - 
   - 
