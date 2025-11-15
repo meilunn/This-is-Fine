@@ -8,20 +8,29 @@ public class NPCBumpDetection : MonoBehaviour
         controller = GetComponentInParent<TicketControllerAI>(); 
         Debug.Log($"NPCBumpDetection on {name}: controller = {(controller ? controller.name : "NULL")}");
     }
-    private void OnTriggerEnter2D(Collider2D other)
+private void TryShock(Collider2D other)
     {
-        Debug.Log($"NPCBumpDetection on {name}: OnTriggerEnter2D with {other.name}, layer={LayerMask.LayerToName(other.gameObject.layer)}");
         // Check if it's a pushable NPC
         if (other.TryGetComponent<Pushable>(out Pushable npc))
         {
-            // Only trigger shock if the NPC is currently being pushed / sliding
             if (npc.isMoving)
             {
                 Debug.Log($"{controller.name} hit by moving NPC → shocked!");
-
-                controller.StartShockedExternal();  // custom public method
+                controller.StartShockedExternal();
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log($"NPCBumpDetection on {name}: Enter with {other.name}");
+        TryShock(other);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        // extra robustness: if they overlap during several frames
+        TryShock(other);
     }
 
 
