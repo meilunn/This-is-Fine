@@ -76,6 +76,7 @@ public class TicketControllerAI  : MonoBehaviour
                 UpdateChasing();
                 break;
         }
+    
     }
 
 // patrolling 
@@ -83,6 +84,7 @@ public class TicketControllerAI  : MonoBehaviour
 
     void StartPatrolling()
     {
+        Debug.Log($"{name}: StartPatrolling");
         currentState = ControllerState.Patrolling;
         agent.isStopped = false;
         agent.speed = patrolSpeed;
@@ -92,9 +94,11 @@ public class TicketControllerAI  : MonoBehaviour
 
     void UpdatePatrolling()
     {
+        Debug.Log($"{name}: UpdatePatrolling");
         //if npc is checked, choose next npc to check
         if(currentNPCTarget == null)
         {
+            Debug.Log("Choosing new NPC Target");
             ChooseNextNPCTarget();
             return; 
         }
@@ -123,6 +127,7 @@ public class TicketControllerAI  : MonoBehaviour
         try
         {
             npcGO = npcManager.GetNextPassenger(transform);
+            Debug.Log("Next Npctarget is" + npcGO.name); 
         }
         catch (System.Exception e)
         {
@@ -160,13 +165,9 @@ void UpdateCheckingTicket()
         checkTimer -= Time.deltaTime;
         if (checkTimer <= 0f)
         {
-            // Devolvemos el pasajero al pool del NPCManager
-            if (npcManager != null && currentNPCTarget != null)
-            {
-                npcManager.ReturnPassenger(currentNPCTarget.gameObject);
-            }
-
+            Debug.Log("CurrentNPCTarget is " + currentNPCTarget);
             currentNPCTarget = null;
+            
             StartPatrolling();
         }
     }
