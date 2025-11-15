@@ -45,6 +45,8 @@ public class TicketControllerAI  : MonoBehaviour
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -97,7 +99,13 @@ public class TicketControllerAI  : MonoBehaviour
                 UpdateChasing();
                 break;
         }
-    
+        lookDirection.Set(agent.velocity.y, agent.velocity.x);
+
+        if (IsTargetInsideFov(player))
+            {
+                Debug.Log("seen");
+                
+            }
     }
 
 // patrolling 
@@ -214,7 +222,34 @@ void UpdateCheckingTicket()
 
 
     //region : Chasing
+    public float fovAngle = 60;
+    public float fovRange = 6.0f;
+    public Vector2 lookDirection;
 
+    public bool IsTargetInsideFov(Transform target)
+    {
+        Vector2 directionToTarget = (target.position - transform.position).normalized;
+
+        float angleToTarget = Vector2.Angle(lookDirection, directionToTarget);
+
+        if(angleToTarget < fovAngle / 2)
+        {
+            float distance = Vector2.Distance(target.position, transform.position);
+
+            return distance < fovRange;
+        }
+        return false;
+
+
+    }
+        public float lineWidth = 0.05f;
+
+    private Rigidbody2D rb;
+    private LineRenderer line;
+    private Vector2 lastMoveDir = Vector2.right; // fallback if standing still
+
+
+    
 
     void StartChasing()
     {
