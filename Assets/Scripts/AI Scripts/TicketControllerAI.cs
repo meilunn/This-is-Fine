@@ -70,22 +70,18 @@ public class TicketControllerAI  : MonoBehaviour
     void Update()
     {
         float MoveX = agent.velocity.x;
-        float MoveY = agent.velocity.z;
+        float MoveY = agent.velocity.y;
         _animator.SetFloat("MoveX", MoveX);
         _animator.SetFloat("MoveY", MoveY);
         
-        if (MoveX < 0)
+        if (Mathf.Abs(MoveX) > Mathf.Abs(MoveY) && Mathf.Abs(MoveX) > 0.1f)
         {
-            spriteRenderer.flipX = true;
-        }
-        else if (MoveX > 0)
-        {
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = MoveX > 0;
         }
         
-        float angle = Mathf.Atan2(agent.velocity.y, agent.velocity.x) * Mathf.Rad2Deg;
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 100);
+        //float angle = Mathf.Atan2(agent.velocity.y, agent.velocity.x) * Mathf.Rad2Deg;
+        //Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 100);
         switch (currentState)
         {
              case ControllerState.Patrolling:
