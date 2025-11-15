@@ -10,6 +10,13 @@ public class Pushable : MonoBehaviour, IInteractable
     
     private Animator animator;
 
+
+    
+    [Tooltip("Extra time after reaching the target where the NPC still stuns controllers")]
+    [SerializeField] private float dangerousExtraTime = 0.15f;
+
+
+
     public bool isMoving;
     public int ObjID { get; set; }
 
@@ -75,6 +82,14 @@ public class Pushable : MonoBehaviour, IInteractable
         }
 
         transform.position = new Vector3(target.x, target.y, 0f); // Ensure it ends exactly at target
+
+        float extra = dangerousExtraTime;
+        while (extra > 0f)
+        {
+            extra -= Time.deltaTime;
+            yield return null;
+        }
+
         isMoving = false;
         Debug.Log($"Object {ObjID} moved from {startPosition} to {transform.position}");
     }
