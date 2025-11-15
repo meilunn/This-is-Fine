@@ -391,6 +391,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1453014344398887892, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453014344398887892, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: 6544b0fc-a8f8-45c9-94c0-c78d222c9586
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453014344398887892, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: Player/Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453014344398887892, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453014344398887892, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453014344398887892, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453014344398887892, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2765933935930954829, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.29
