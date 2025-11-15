@@ -61,6 +61,9 @@ public class TicketControllerAI  : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float angle = Mathf.Atan2(agent.velocity.y, agent.velocity.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 100);
         switch (currentState)
         {
              case ControllerState.Patrolling:
