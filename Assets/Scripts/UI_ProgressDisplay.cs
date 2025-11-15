@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class UI_ProgressDisplay : MonoBehaviour
 {
 
     //! set trainDeparts to true, in order to start the train again !
+    //to add: train may stop, display stops, too
     public bool trainDeparts;
     public bool trainTravels;
     [SerializeField] private float threshhold;
@@ -27,10 +29,14 @@ public class UI_ProgressDisplay : MonoBehaviour
     private List<RectTransform> spawnedTiles = new List<RectTransform>();
     private List<int> stationIndices = new List<int>(); 
     private List<float> stationCenterPositions = new List<float>(); 
-
+    [SerializeField] private GameObject myControlleurDisplayObject;
+    private UI_ControlleurDisplay myControlleurDisplay;
 
     void Start()
     {
+        myControlleurDisplay = myControlleurDisplayObject.GetComponent<UI_ControlleurDisplay>();
+
+
         trackDisplayLength = FillWithValues(testValues);
 
         int tileIndex = 0;
@@ -82,6 +88,21 @@ public class UI_ProgressDisplay : MonoBehaviour
         
         trainTravels = true;
         StartCoroutine(MoveTrainBackground());
+
+
+                //
+                //Test for spawning controlleurs
+                /*
+                int test1 = Random.Range(1,6);
+                int test2 = Random.Range(1,6);
+                int test3 = Random.Range(1,6);
+                myControlleurDisplay.UpdateControlleurs(0, test1);
+                Debug.Log(test1+ " Controlleurs in first waggon display");
+                myControlleurDisplay.UpdateControlleurs(1, test2);
+                Debug.Log(test2+ " Controlleurs in second waggon display");
+                myControlleurDisplay.UpdateControlleurs(2, test3);
+                Debug.Log(test3+ " Controlleurs in third waggon display");
+                */
     }
 
 
@@ -130,6 +151,23 @@ public class UI_ProgressDisplay : MonoBehaviour
                 // Wait until trainDeparts is set to true again
                 yield return new WaitUntil(() => trainDeparts);
                 trainDeparts = false; // Reset for next station
+
+
+
+
+                //
+                //Test for spawning controlleurs
+                /*
+                int test1 = Random.Range(1,6);
+                int test2 = Random.Range(1,6);
+                int test3 = Random.Range(1,6);
+                myControlleurDisplay.UpdateControlleurs(0, test1);
+                Debug.Log(test1+ " Controlleurs in first waggon display");
+                myControlleurDisplay.UpdateControlleurs(1, test2);
+                Debug.Log(test2+ " Controlleurs in second waggon display");
+                myControlleurDisplay.UpdateControlleurs(2, test3);
+                Debug.Log(test3+ " Controlleurs in third waggon display");
+                */
             }
         }
         
