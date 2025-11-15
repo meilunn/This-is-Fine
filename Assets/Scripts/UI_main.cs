@@ -7,6 +7,7 @@ public class UI_main : MonoBehaviour
 {
     public bool trainDeparts;
     public bool trainTravels;
+    [SerializeField] private float threshhold;
 
     private List<Tuple<int, bool>> trackDisplayLength;
 
@@ -21,6 +22,7 @@ public class UI_main : MonoBehaviour
     [SerializeField] private GameObject parentDisplayTracks;
     [SerializeField] private Vector3 speed;
     private List<Transform> spawnedTiles = new List<Transform>();
+    private List<int> stationIndices = new List<int>(); // Track where stations are
 
 
     void Start()
@@ -29,7 +31,8 @@ public class UI_main : MonoBehaviour
         trackDisplayLength = FillWithValues(testValues);
 
 
-        //go through all the elements
+        //go through all the elements and track station positions
+        int tileIndex = 0;
         for (int i = 0; i < trackDisplayLength.Count; i++)
             {
                 int amount = trackDisplayLength[i].Item1;
@@ -39,7 +42,8 @@ public class UI_main : MonoBehaviour
                 {
                     var obj = Instantiate(trainStation, parentDisplayTracks.transform);
                     spawnedTiles.Add(obj.transform);
-
+                    stationIndices.Add(tileIndex); // Remember this is a station
+                    tileIndex++;
                 }
                 else
                 {
@@ -47,13 +51,14 @@ public class UI_main : MonoBehaviour
                     {
                         var obj = Instantiate(track, parentDisplayTracks.transform);
                         spawnedTiles.Add(obj.transform);
-
+                        tileIndex++;
                     }
                 }
            
             }
         Instantiate(train, parentDisplayTracks.transform);
 
+        trainTravels = true;
         StartCoroutine(MoveTrainBackground());
 
     }
@@ -61,18 +66,47 @@ public class UI_main : MonoBehaviour
 
     private IEnumerator MoveTrainBackground()
     {
-        while (trainTravels)
+        int currentStationIndex = 0;
+        
+        while (currentStationIndex < stationIndices.Count)
         {
-            foreach (Transform tile in spawnedTiles)
+            // Move until we reach the next station
+            trainTravels = true;
+            
+            while (trainTravels)
             {
-                tile.position += speed * Time.deltaTime;
+                foreach (Transform tile in spawnedTiles)
+                {
+                    tile.position += speed * Time.deltaTime;
+                }
+
+                // Check if we've reached the station position
+                // Assuming train starts at position 0 and stations move in negative direction
+                if (currentStationIndex < stationIndices.Count)
+                {
+                    Transform station = spawnedTiles[stationIndices[currentStationIndex]];
+                    
+                    // Stop when station reaches a specific position (e.g., center of screen)
+                    // Adjust the threshold value based on your needs
+                    if (station.position.x <= threshhold) // Adjust this value to your train position
+                    {
+                        trainTravels = false;
+                    }
+                }
+
+                yield return null;
             }
 
-            yield return null; //!!!
+            // Train has stopped at station
+            currentStationIndex++;
+            
+            // Wait until trainDeparts is set to true again
+            yield return new WaitUntil(() => trainDeparts);
+            trainDeparts = false; // Reset for next station
         }
-
-        // stop points, also stop when last train station reached 
-        yield return new WaitUntil(() => trainDeparts);
+        
+        // All stations visited
+        Debug.Log("Train has reached all stations!");
     }
 
 
@@ -89,7 +123,7 @@ public class UI_main : MonoBehaviour
         }
 
     return returnList;
-}
+    }
 
 
     // Update is called once per frame

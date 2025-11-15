@@ -531,6 +531,7 @@ GameObject:
   - component: {fileID: 225438188}
   - component: {fileID: 225438190}
   - component: {fileID: 225438189}
+  - component: {fileID: 225438191}
   m_Layer: 5
   m_Name: ContainerDisplayTrain-Track
   m_TagString: Untagged
@@ -559,8 +560,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07, y: 0.85}
   m_AnchorMax: {x: 0.22, y: 0.95}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 106, y: 0}
+  m_SizeDelta: {x: 212, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &225438189
 MonoBehaviour:
@@ -574,14 +575,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd4bfbe276fea0469d8d847673d32d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackDisplayLength: 0100000003000000010000000200000001000000
-  wholeDisplayTracks:
-  - {fileID: 9112291196976919195, guid: 8ea115c216d267a4b9e2c77beb347498, type: 3}
-  - {fileID: 2421025740878445848, guid: 3f5bf632bf0c6804ba477eaaae58b500, type: 3}
-  - {fileID: 9112291196976919195, guid: 8ea115c216d267a4b9e2c77beb347498, type: 3}
-  - {fileID: 2421025740878445848, guid: 3f5bf632bf0c6804ba477eaaae58b500, type: 3}
-  - {fileID: 9112291196976919195, guid: 8ea115c216d267a4b9e2c77beb347498, type: 3}
+  trainDeparts: 0
+  trainTravels: 1
+  threshhold: -15.55
+  testValues: 0000000002000000000000000300000000000000020000000000000004000000000000000200000000000000
+  trainStation: {fileID: 9112291196976919195, guid: 8ea115c216d267a4b9e2c77beb347498, type: 3}
+  track: {fileID: 2421025740878445848, guid: 3f5bf632bf0c6804ba477eaaae58b500, type: 3}
+  train: {fileID: 270707799504277084, guid: 27882dd73476ad540b7c1df1fede1c76, type: 3}
   parentDisplayTracks: {fileID: 225438187}
+  speed: {x: -30, y: 0, z: 0}
 --- !u!114 &225438190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,13 +603,27 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &225438191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225438187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1001 &286008668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2163,8 +2179,8 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
