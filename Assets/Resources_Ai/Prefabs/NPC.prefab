@@ -285,6 +285,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   interactionMessage: {fileID: 3115889814950670085}
+  isMoving: 0
 --- !u!61 &8513082647590100260
 BoxCollider2D:
   m_ObjectHideFlags: 0

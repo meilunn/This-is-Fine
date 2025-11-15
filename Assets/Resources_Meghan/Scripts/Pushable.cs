@@ -8,7 +8,7 @@ public class Pushable : MonoBehaviour, IInteractable
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private GameObject interactionMessage;
 
-    private bool isMoving;
+    public bool isMoving;
     public int ObjID { get; set; }
 
     private Vector2 moveDirection;

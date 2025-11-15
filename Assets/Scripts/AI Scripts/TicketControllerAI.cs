@@ -271,4 +271,16 @@ void UpdateCheckingTicket()
     {
         npcManager = manager;
     }
+
+
+
+    public void StartShockedExternal()
+{
+    // Only stun if chasing
+    if (currentState != ControllerState.Chasing)
+        return;
+
+    StartShocked();
+
+}
 }
