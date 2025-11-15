@@ -16,6 +16,9 @@ public class NPCManager : MonoBehaviour
     {
         public Transform spawnPoint;
         public SpawnType spawnType;
+        public bool useCustomRotation;
+        [Range(0f, 360f)]
+        public float rotationAngle;
     }
     public enum SpawnType
     {
@@ -99,6 +102,10 @@ public class NPCManager : MonoBehaviour
             if (point.spawnType == SpawnType.Standing)
             {
                 float rotation = Random.Range(0f, 360f);
+                if (point.useCustomRotation)
+                {
+                    rotation = point.rotationAngle;
+                }
                 Quaternion newRotation = Quaternion.AngleAxis(rotation, Vector3.forward);
                 npc.transform.rotation = newRotation;
                 SpriteRenderer sR = npc.GetComponent<SpriteRenderer>();
@@ -109,7 +116,8 @@ public class NPCManager : MonoBehaviour
             }
             else if (point.spawnType == SpawnType.Sitting)
             {
-                //TODO set sitting sprite
+                Quaternion newRotation = Quaternion.AngleAxis(point.rotationAngle, Vector3.forward);
+                npc.transform.rotation = newRotation;
                 SpriteRenderer sR = npc.GetComponent<SpriteRenderer>();
                 if (standingNPCSprites.Length > 0)
                 {
