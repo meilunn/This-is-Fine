@@ -7,17 +7,17 @@ public class NPCManager : MonoBehaviour
 {
 
     public GameObject NPCPrefab;
-    
-    [SerializeField] 
+
+    [SerializeField]
     private Transform[] npcLocations;
     public int minPassengerAmount;
     public int maxPassengerAmount;
     public int passengerAmountDecrease;
-    
-    [SerializeField] 
+
+    [SerializeField]
     private List<GameObject> npcPassengers;
     private List<GameObject> checkedNpcPassengers;
-    
+
     private void Awake()
     {
         npcPassengers = new List<GameObject>();
@@ -49,7 +49,10 @@ public class NPCManager : MonoBehaviour
     private void ChooseSpawnLocations()
     {
         int currentPassengerAmount = Random.Range(minPassengerAmount, maxPassengerAmount);
+        currentPassengerAmount = Mathf.Min(currentPassengerAmount, npcLocations.Length);
+
         List<int> pI = new List<int>();
+
         for (int i = 0; i < currentPassengerAmount; i++)
         {
             int pIndex;
@@ -57,6 +60,7 @@ public class NPCManager : MonoBehaviour
             {
                 pIndex = Random.Range(0, npcLocations.Length);
             } while (pI.Contains(pIndex));
+
             pI.Add(pIndex);
 
             GameObject npc = Instantiate(NPCPrefab);
