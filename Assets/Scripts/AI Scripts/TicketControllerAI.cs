@@ -32,7 +32,11 @@ public class TicketControllerAI  : MonoBehaviour
     private int currentNPCIndex = 0;
     private Transform currentNPCTarget;
     private float checkTimer;
-    private float shockedTimer; 
+    private float shockedTimer;
+
+    [Header("Animation")] 
+    private Animator _animator;
+    private SpriteRenderer spriteRenderer;
 
 
     void Awake()
@@ -46,6 +50,8 @@ public class TicketControllerAI  : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentState = initialState;
 
         
@@ -63,6 +69,20 @@ public class TicketControllerAI  : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float MoveX = agent.velocity.x;
+        float MoveY = agent.velocity.z;
+        _animator.SetFloat("MoveX", MoveX);
+        _animator.SetFloat("MoveY", MoveY);
+        
+        if (MoveX < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (MoveX > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        
         float angle = Mathf.Atan2(agent.velocity.y, agent.velocity.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 100);

@@ -9,6 +9,10 @@ public class Pushable : MonoBehaviour, IInteractable
     [SerializeField] private GameObject interactionMessage;
 
     private bool isMoving;
+
+    private Animator animator;
+    private Animator npcAnimator;
+    private bool isNPC;
     public int ObjID { get; set; }
 
     private Vector2 moveDirection;
@@ -18,10 +22,16 @@ public class Pushable : MonoBehaviour, IInteractable
         if (ObjID == 0) ObjID = GlobalHelper.GenerateUniqueID(gameObject);
         interactionMessage.SetActive(false);
         //SetMoveDirection();
+        GameObject player = GameObject.FindWithTag("Player");
+        animator = player.GetComponent<Animator>();
+        npcAnimator = GetComponent<Animator>();
+        if (npcAnimator) isNPC = true;
     }
 
     public void Interact()
     {
+        animator.SetBool("isPushing", true);
+        if(isNPC) npcAnimator.SetBool("isPushed", true);
         Vector3 dir = (transform.position - StationManager.Instance.GetPlayer().transform.position).normalized;
         Vector2 dir2 = new Vector2(dir.x, dir.y);
         dir.z = 0;
@@ -40,7 +50,10 @@ public class Pushable : MonoBehaviour, IInteractable
             StartCoroutine(
                 MoveToPosition(moveTarget)
                 );
-
+        
+        
+        animator.SetBool("isPushing", false);
+        if(isNPC) npcAnimator.SetBool("isPushed", false);
     }
 
     public void SetInteractionMessage(bool b)
