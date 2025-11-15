@@ -34,6 +34,13 @@ public class AIManager : MonoBehaviour
     [SerializeField] private int totalChaserCount;    // chasers accumulated so far
 
 
+
+
+    [Header("Current Wagon / NPCs")]
+    [SerializeField] private NPCManager currentNPCManager;
+
+
+
     private readonly List<TicketControllerAI> activePatrollers = new();
     private readonly List<TicketControllerAI> activeChasers = new();
 
@@ -43,7 +50,7 @@ public class AIManager : MonoBehaviour
     /// <summary>Total number of chasers that must exist in any new scene.</summary>
     public int TotalChaserCount => Mathf.Max(totalChaserCount, startingChasers);
 
-
+    public NPCManager CurrentNPCManager => currentNPCManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 private void Awake()
@@ -179,19 +186,28 @@ private void Awake()
         ClearCurrentControllers();
         SpawnChasersAtPoints(chaserSpawnPoints);
         // No patrollers on the station (according to your design).
+
+        // En la estación, de momento no hay NPCs (o habrá otro manager específico)
+        currentNPCManager = null;
     }
 
     /// <summary>
     /// Call this when a wagon scene is entered.
     /// It clears old controllers and spawns both chasers and fresh patrollers.
     /// </summary>
-    public void OnEnterWagon(Transform[] chaserSpawnPoints, Transform[] patrollerSpawnPoints)
-    {
-        ClearCurrentControllers();
-        SpawnChasersAtPoints(chaserSpawnPoints);
-        SpawnPatrollersAtPoints(patrollerSpawnPoints);
-    }
+public void OnEnterWagon(Transform[] chaserSpawnPoints,
+                         Transform[] patrollerSpawnPoints,
+                         NPCManager npcManager)
+{
+    ClearCurrentControllers();
 
+    // IMPORTANT: set the current NPC manager for this wagon
+    currentNPCManager = npcManager;
+
+    // Spawn chasers and patrollers, and give them the NPC manager
+    SpawnChasersAtPoints(chaserSpawnPoints);
+    SpawnPatrollersAtPoints(patrollerSpawnPoints);
+}
     private void SpawnChasersAtPoints(Transform[] spawnPoints)
     {
         if (controllerPrefab == null || spawnPoints == null || spawnPoints.Length == 0)
@@ -210,6 +226,10 @@ private void Awake()
                 Instantiate(controllerPrefab, spawn.position, Quaternion.identity);
 
             ctrl.initialState = TicketControllerAI.ControllerState.Chasing;
+
+            ctrl.SetNPCManager(currentNPCManager);  // puede ser null en la estación
+
+
             // Start() in TicketControllerAI will see initialState and start chasing.
             RegisterChaser(ctrl, false); // already counted in totalChaserCount
         }
@@ -231,6 +251,10 @@ private void Awake()
 
             ctrl.initialState = TicketControllerAI.ControllerState.Patrolling;
             // Start() in TicketControllerAI will start patrolling by default.
+
+            ctrl.SetNPCManager(currentNPCManager);
+
+
             RegisterPatroller(ctrl);
         }
     }

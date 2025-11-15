@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCPrefab: {fileID: 3168882978922814640, guid: 9590ad985b9c284419dd9a08f327378d, type: 3}
-  npcLocations: []
+  npcSpawnPoints: []
   minPassengerAmount: 5
   maxPassengerAmount: 10
   passengerAmountDecrease: 0
