@@ -503,15 +503,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 178160157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29af7b1886392194f98eb734b02bf846, type: 3}
+  m_Script: {fileID: 11500000, guid: 38a0b89b76517f145957e0fa086d6a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolToNPC:
-  - {fileID: 347912972}
-  - {fileID: 1743072038}
-  - {fileID: 1721763393}
-  - {fileID: 1759927015}
-  - {fileID: 1246540284}
+  initialState: 0
+  player: {fileID: 0}
+  patrolToNPC: []
+  npcStoppingDistance: 0.15
+  checkTicketDuration: 1.5
+  catchDistance: 0.2
+  chaseSpeed: 4.5
+  patrolSpeed: 3
 --- !u!1 &347912970
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 347912972}
   - component: {fileID: 347912971}
+  - component: {fileID: 347912973}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -599,6 +602,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &347912973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347912970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b272a6cc071566645b36aa4ff7c7d567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needsTicketCheck: 0
 --- !u!1 &575690489
 GameObject:
   m_ObjectHideFlags: 0
