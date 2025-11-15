@@ -21,6 +21,10 @@ public class TicketControllerAI  : MonoBehaviour
     public float chaseSpeed = 4.5f;
     public float patrolSpeed = 3.0f;
 
+
+    [Header("References")]
+    [SerializeField] private NPCManager npcManager;   // se setea desde AIManager
+
     private NavMeshAgent agent;
     private ControllerState currentState;
     private int currentNPCIndex = 0;
@@ -105,6 +109,33 @@ public class TicketControllerAI  : MonoBehaviour
 
     void ChooseNextNPCTarget()
     {
+        // Si no hay NPCManager todavía, simplemente nos quedamos sin target
+        if (npcManager == null)
+        {
+            currentNPCTarget = null;
+            return;
+        }
+
+        GameObject npcGO = null;
+        try
+        {
+            npcGO = npcManager.GetNextPassenger(transform);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogWarning($"TicketControllerAI {name}: {e.Message}");
+        }
+    
+        if (npcGO != null)
+        {
+            currentNPCTarget = npcGO.transform;
+            agent.SetDestination(currentNPCTarget.position);
+        }
+        else
+        {
+            currentNPCTarget = null;
+        }
+
 
     }
 
@@ -121,12 +152,18 @@ public class TicketControllerAI  : MonoBehaviour
         //
     }
 
-    void UpdateCheckingTicket()
+void UpdateCheckingTicket()
     {
         checkTimer -= Time.deltaTime;
         if (checkTimer <= 0f)
         {
-            // Done checking → go back to patrolling
+            // Devolvemos el pasajero al pool del NPCManager
+            if (npcManager != null && currentNPCTarget != null)
+            {
+                npcManager.ReturnPassenger(currentNPCTarget.gameObject);
+            }
+
+            currentNPCTarget = null;
             StartPatrolling();
         }
     }
@@ -172,8 +209,14 @@ public class TicketControllerAI  : MonoBehaviour
         if (currentState == ControllerState.Chasing)
             return;
 
-        // Here, later, you’ll notify AIManager that this patroller became a chaser.
-        StartChasing();
+        if(AIManager.Instance != null)
+        {
+            AIManager.Instance.PromotePatrollerToChaser(this); 
+        }
+        else
+        {
+            StartChasing(); 
+        }
     }
 
 
@@ -187,5 +230,10 @@ public class TicketControllerAI  : MonoBehaviour
         initialState = ControllerState.Chasing;
         if (agent != null)
             StartChasing();
+    }
+
+    public void SetNPCManager(NPCManager manager)
+    {
+        npcManager = manager;
     }
 }
