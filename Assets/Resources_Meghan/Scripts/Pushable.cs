@@ -17,6 +17,7 @@ public class Pushable : MonoBehaviour, IInteractable
     void Start()
     {
         if (ObjID == 0) ObjID = GlobalHelper.GenerateUniqueID(gameObject);
+        interactionMessage.SetActive(false);
         //SetMoveDirection();
     }
 
@@ -36,37 +37,11 @@ public class Pushable : MonoBehaviour, IInteractable
 
     public void SetInteractionMessage(bool b)
     {
+        interactionMessage.transform.rotation = Quaternion.Euler(Vector3.zero);
         interactionMessage.SetActive(b);
     }
 
-    // check surroundings, sets move direction to free adjacent tile
-    private void SetMoveDirection()
-    {
-        Vector2[] directions =
-        {
-            Vector2.up,
-            Vector2.down,
-            Vector2.left,
-            Vector2.right
-        };
-
-        foreach (Vector2 dir in directions)
-        {
-            // Raycast to check if path is clear
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, moveDistance, obstacleLayer);
-
-            if (hit.collider == null) // No obstacle found
-            {
-                moveDirection = dir;
-                Debug.Log($"Move Direction for Object {ObjID}: {moveDirection}");
-                return;
-            }
-        }
-
-        moveDirection = Vector2.zero; // No free direction
-    }
-
-    private IEnumerator MoveToPosition(Vector2 target)
+    public IEnumerator MoveToPosition(Vector2 target)
     {
         isMoving = true;
         Vector2 startPosition = new Vector2(transform.position.x, transform.position.y);
