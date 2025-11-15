@@ -1,4 +1,6 @@
-﻿public class MainMenuPanel : PanelBase
+﻿using UnityEngine;
+
+public class MainMenuPanel : PanelBase
 {
 
 }

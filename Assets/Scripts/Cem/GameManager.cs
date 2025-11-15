@@ -39,12 +39,14 @@ public class GameManager : MonoBehaviour
     
     public void CompleteGame()
     {
-        PanelManager.Instance.Show("gamecomplete");
+        PanelManager.Instance.Show("gamecompleted");
+        CurrentGameStage = GameState.EndGame;
     }
 
     public void GameOver()
     {
         PanelManager.Instance.Show("gameover");
+        CurrentGameStage = GameState.EndGame;
 
     }
 

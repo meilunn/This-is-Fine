@@ -13,6 +13,9 @@ public class StageManager : MonoBehaviour
     private int currentStageIndex = 0;
 
 
+
+    public System.Action OnStageCompleted;
+
     private void Awake()
     {
         if (Instance == null)
@@ -24,10 +27,10 @@ public class StageManager : MonoBehaviour
             Destroy(gameObject);
         }
         currentStage = stages[0];
+        timer.OnTimerEnd += CompleteCurrentStage;
     }
 
 
-    public System.Action OnStageCompleted;
 
     public void CompleteCurrentStage()
     {
