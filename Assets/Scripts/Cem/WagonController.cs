@@ -10,7 +10,7 @@ public class StageFeature
     public List<Transform> spawnPoints;
 }
 
-public class StageController : MonoBehaviour
+public class WagonController : MonoBehaviour
 {
     [SerializeField]private StageFeature features;
 

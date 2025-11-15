@@ -10,21 +10,9 @@ public class TestWagonSetup : MonoBehaviour
     public Transform[] chaserSpawnPoints;
     public Transform[] patrollerSpawnPoints;
 
-    [Header("Player")]
-    public Transform playerTransform;   // you can assign in inspector
 
 
-
-    private void Awake()
-    {
-        // Autodetect player if not set
-        if (playerTransform == null)
-        {
-            var playerObj = GameObject.FindGameObjectWithTag("Player");
-            if (playerObj != null)
-                playerTransform = playerObj.transform;
-        }
-    }
+    
     private void Start()
     {
         // 1) Initialize NPCs
@@ -57,12 +45,11 @@ public class TestWagonSetup : MonoBehaviour
 
     private void AssignPlayerToControllers()
     {
-        if (playerTransform == null) return;
 
         var controllers = FindObjectsOfType<TicketControllerAI>();
         foreach (var ctrl in controllers)
         {
-            ctrl.player = playerTransform;
+            ctrl.player = StationManager.Instance.GetPlayer().transform;
         }
     }
     

@@ -1,16 +1,29 @@
 ﻿using UnityEngine;
+using Unity.Cinemachine;
 using System.Collections.Generic;
 
-public class StageManager : MonoBehaviour
+public enum StationStage
+{
+    WaitingForTrain,
+    TrainComing,
+    OnTrainCome,
+    InsideTrain,
+    TrainStopping,
+    TrainStopped
+}
+
+
+public class StationManager : MonoBehaviour
 {
 
-    public static StageManager Instance;
-    [SerializeField] private List<StageController> stages;
+    public static StationManager Instance;
+    [SerializeField] private List<WagonController> stages;
     [SerializeField] private Timer timer;
     [SerializeField] private PlayerMovement player;
+    [SerializeField] private CinemachineCamera cinemachine;
 
 
-    private StageController currentStage;
+    private WagonController currentStage;
     private int currentStageIndex = 0;
 
 
