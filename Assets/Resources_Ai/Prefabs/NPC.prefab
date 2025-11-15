@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2779725308756208661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -129,8 +129,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4
-  m_fontSizeBase: 4
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -285,7 +285,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   interactionMessage: {fileID: 3115889814950670085}
-  player: {fileID: 7446810593327988619, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
 --- !u!61 &8513082647590100260
 BoxCollider2D:
   m_ObjectHideFlags: 0

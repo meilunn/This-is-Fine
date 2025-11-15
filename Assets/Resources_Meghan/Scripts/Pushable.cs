@@ -7,7 +7,6 @@ public class Pushable : MonoBehaviour, IInteractable
     [SerializeField] private float moveSpeed;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private GameObject interactionMessage;
-    [SerializeField] private GameObject player;
 
     private bool isMoving;
     public int ObjID { get; set; }
@@ -24,13 +23,22 @@ public class Pushable : MonoBehaviour, IInteractable
     public void Interact()
     {
         Vector3 dir = (transform.position - StageManager.Instance.GetPlayer().transform.position).normalized;
+        Vector2 dir2 = new Vector2(dir.x, dir.y);
         dir.z = 0;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, moveDistance, obstacleLayer);
-        if (hit.collider != null) return;
-
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir2, moveDistance, obstacleLayer);
+        var moveTarget = new Vector2(0, 0);
+        if (hit.collider != null)
+        {
+            moveTarget = hit.point;
+            moveTarget -= dir2 *.5f;
+        }
+        else
+        {
+            moveTarget = new Vector2(transform.position.x, transform.position.y) + dir2 * moveDistance;
+        }
         if (!isMoving)
             StartCoroutine(
-                MoveToPosition(new Vector2(transform.position.x, transform.position.y) + new Vector2(dir.x,dir.y) * moveDistance)
+                MoveToPosition(moveTarget)
                 );
 
     }
@@ -41,7 +49,7 @@ public class Pushable : MonoBehaviour, IInteractable
         interactionMessage.SetActive(b);
     }
 
-    public IEnumerator MoveToPosition(Vector2 target)
+    private IEnumerator MoveToPosition(Vector2 target)
     {
         isMoving = true;
         Vector2 startPosition = new Vector2(transform.position.x, transform.position.y);
@@ -58,6 +66,6 @@ public class Pushable : MonoBehaviour, IInteractable
 
         transform.position = new Vector3(target.x, target.y, 0f); // Ensure it ends exactly at target
         isMoving = false;
-        Debug.Log($"Object {ObjID} moved from {startPosition} to {target}");
+        Debug.Log($"Object {ObjID} moved from {startPosition} to {transform.position}");
     }
 }

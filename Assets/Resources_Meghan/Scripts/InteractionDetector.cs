@@ -1,15 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InteractionDetector : MonoBehaviour
 {
     private IInteractable closestInteractable;
-
-    void Start()
-    {
-
-    }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
