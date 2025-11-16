@@ -11,10 +11,11 @@ public class OptionPanel : PanelBase
 
     private void Start()
     {
+
         // Load saved values
-        float master = PlayerPrefs.GetFloat("Master", 0);
-        float music = PlayerPrefs.GetFloat("Background", 0);
-        float sfx = PlayerPrefs.GetFloat("SFXVolume", 0);
+        float master = PlayerPrefs.GetFloat("Master", 1f);
+        float music = PlayerPrefs.GetFloat("Background", 1f);
+        float sfx = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
         masterSlider.value = master;
         musicSlider.value = music;
@@ -29,6 +30,7 @@ public class OptionPanel : PanelBase
     {
         mixer.SetFloat("MasterVolume", value);
         PlayerPrefs.SetFloat("MasterVolume", value);
+        SoundManager.instance.GetComponent<AudioSource>().volume = value;
     }
 
     public void SetMusic(float value)
@@ -53,6 +55,7 @@ public class OptionPanel : PanelBase
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             HidePanel();
+            base.ShowPanel();
         }
     }
 }
