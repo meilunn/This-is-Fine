@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using Unity.Cinemachine;
 using System.Collections.Generic;
 
@@ -29,6 +30,7 @@ public class StationManager : MonoBehaviour
     [SerializeField] private TrainAnimController trainAnimController;
     [SerializeField] private GameObject station;
     [SerializeField] private Collider2D stationConfiner;
+    [SerializeField] private GameObject tenSecondWarning;
 
     private StationStage stationCurrentStage;
     private WagonController currentWagon;
@@ -57,7 +59,10 @@ public class StationManager : MonoBehaviour
         cinemachine.Follow = player.transform;
 
         confiner.BoundingShape2D = stationConfiner;
-        
+
+
+        tenSecondWarning.SetActive(false);
+
         PrepareNextWagon();
     }
 
@@ -94,16 +99,18 @@ public class StationManager : MonoBehaviour
 
         timer.SetTimer(currentWagon.features.DurationSec);
         timer.StartTimer();
+
         currentWagon.gameObject.SetActive(true);
-        currentWagon.RebuildNavMesh(); 
+        currentWagon.RebuildNavMesh();
         station.SetActive(false);
+
 
          // Switch camera confiner to wagon bounds
         Collider2D wagonConfiner = currentWagon.GetConfinerObj();
         if (wagonConfiner != null)
         {
             confiner.BoundingShape2D = wagonConfiner;
-            
+
         }
         else
         {
@@ -174,6 +181,7 @@ public class StationManager : MonoBehaviour
                 break;
             case StationStage.StartLast10SecWarning:
                 //todo start last10SecWarning
+                StartCoroutine(ShowMessageTemporarily(tenSecondWarning));
                 stationCurrentStage = StationStage.TrainStopping;
                 break;
             case StationStage.TrainStopping:
@@ -212,6 +220,11 @@ public class StationManager : MonoBehaviour
         return player;
     }
 
-
+    private IEnumerator ShowMessageTemporarily(GameObject obj)
+    {
+        obj.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        obj.SetActive(false);
+    }
 
 }

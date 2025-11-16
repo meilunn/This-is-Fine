@@ -160,7 +160,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: d2229ef5-2262-4e96-a774-95ae365c0363
-    m_ActionName: 'Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 907939050224143181}
@@ -176,11 +176,23 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 26eed2b0-5f38-4583-ac1b-ea6d700becbd
-    m_ActionName: 'Player/Interact[/Mouse/leftButton]'
+    m_ActionName: Player/Interact[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Pause_CenterOnPlayer, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6544b0fc-a8f8-45c9-94c0-c78d222c9586
-    m_ActionName: 'Player/Pause[/Keyboard/escape]'
+    m_ActionName: Player/Pause
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -271,8 +283,9 @@ GameObject:
   m_Component:
   - component: {fileID: 784450701866943683}
   - component: {fileID: 907939050224143181}
+  - component: {fileID: 40545447818670373}
   - component: {fileID: 1131166308392483741}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InteractionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,6 +319,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1307527f3a8be4c98ba158d2fb9c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &40545447818670373
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7481586830041785045}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.75, y: 0}
+  m_Size: {x: 1.5, y: 2.75}
+  m_Direction: 0
 --- !u!70 &1131166308392483741
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
