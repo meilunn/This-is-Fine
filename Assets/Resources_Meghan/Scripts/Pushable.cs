@@ -60,12 +60,12 @@ public class Pushable : MonoBehaviour, IInteractable
         dir.z = 0;
         animator.SetBool("isPushing", true);
         
-        if (isNPC)
-        {
-            npcAnimator.SetBool("isPushed", true);
-            npcAnimator.SetFloat("MoveX", dir2.x);
-            npcAnimator.SetFloat("MoveY", dir2.y);
-        }
+        //if (isNPC)
+        //{
+        //    npcAnimator.SetBool("isPushed", true);
+        //    npcAnimator.SetFloat("MoveX", dir2.x);
+        //    npcAnimator.SetFloat("MoveY", dir2.y);
+        //}
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir2, moveDistance, obstacleLayer);
         var moveTarget = new Vector2(0, 0);
         if (hit.collider != null)
@@ -120,12 +120,12 @@ public class Pushable : MonoBehaviour, IInteractable
         
         animator.SetBool("isPushing", false);
         
-        if (isNPC)
-        {
-            npcAnimator.SetBool("isPushed", false);
-            npcAnimator.SetFloat("MoveX", 0f);
-            npcAnimator.SetFloat("MoveY", 0f);
-        }
+        //if (isNPC)
+        //{
+        //    npcAnimator.SetBool("isPushed", false);
+        //    npcAnimator.SetFloat("MoveX", 0f);
+        //    npcAnimator.SetFloat("MoveY", 0f);
+        //}
         Debug.Log($"Object {ObjID} moved from {startPosition} to {transform.position}");
     }
 }
