@@ -377,7 +377,6 @@ MonoBehaviour:
   arrowRenderer: {fileID: 7357642401259171576}
   dangerousExtraTime: 0.15
   isMoving: 0
-  animator: {fileID: 2161573361291585649, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
 --- !u!61 &8513082647590100260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -437,7 +436,7 @@ NavMeshObstacle:
   m_Extents: {x: 0.3, y: 0.2, z: 0.3}
   m_MoveThreshold: 0.1
   m_Carve: 1
-  m_CarveOnlyStationary: 1
+  m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
 --- !u!95 &6224717486558073846

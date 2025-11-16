@@ -5751,6 +5751,7 @@ GameObject:
   - component: {fileID: 4446867641180355275}
   - component: {fileID: 5963400972181200641}
   - component: {fileID: 3906978806638426408}
+  - component: {fileID: 3379884643268359702}
   m_Layer: 0
   m_Name: Obstacles
   m_TagString: Untagged
@@ -8963,6 +8964,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AffectedAgents: ffffffff
   m_TileModifiers: []
+--- !u!114 &3379884643268359702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4736341666386238728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &8867372472960871772
 GameObject:
   m_ObjectHideFlags: 0
