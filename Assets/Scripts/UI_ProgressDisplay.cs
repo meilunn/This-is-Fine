@@ -23,7 +23,10 @@ public class UI_ProgressDisplay : MonoBehaviour
     [SerializeField] private List<int> testValues;
     [SerializeField] private GameObject trainStation;
     [SerializeField] private GameObject track;
-    [SerializeField] private GameObject train;
+    
+    // [SerializeField] private GameObject train; // <-- 1. OLD LINE
+    [SerializeField] private GameObject trainPrefab; // <-- 1. RENAMED FOR CLARITY
+    
     [SerializeField] private GameObject parentDisplayTracks;
     [SerializeField] private Vector3 speed;
     private List<RectTransform> spawnedTiles = new List<RectTransform>();
@@ -31,11 +34,13 @@ public class UI_ProgressDisplay : MonoBehaviour
     private List<float> stationCenterPositions = new List<float>(); 
     [SerializeField] private GameObject myControlleurDisplayObject;
     private UI_ControlleurDisplay myControlleurDisplay;
+    
+    private Animator anim; // <-- This will hold the train's animator
 
     void Start()
     {
         myControlleurDisplay = myControlleurDisplayObject.GetComponent<UI_ControlleurDisplay>();
-
+        // anim = GetComponent<Animator>(); // <-- 2. REMOVED THIS LINE (This was the bug)
 
         trackDisplayLength = FillWithValues(testValues);
 
@@ -66,7 +71,15 @@ public class UI_ProgressDisplay : MonoBehaviour
                 }
            
             }
-        Instantiate(train, parentDisplayTracks.transform);
+        
+        // --- 3. THIS IS THE FIX ---
+        // Instantiate(train, parentDisplayTracks.transform); // <-- OLD LINE
+        
+        // Create the train and save its instance
+        GameObject trainInstance = Instantiate(trainPrefab, parentDisplayTracks.transform);
+        // Get the Animator from that new instance and store it in our 'anim' variable
+        anim = trainInstance.GetComponent<Animator>(); 
+        // -------------------------
 
         // Waiting for Layout Group to position everything, then capture positions
         StartCoroutine(InitializeAfterLayout());
@@ -88,21 +101,6 @@ public class UI_ProgressDisplay : MonoBehaviour
         
         trainTravels = true;
         StartCoroutine(MoveTrainBackground());
-
-
-                //
-                //Test for spawning controlleurs
-                /*
-                int test1 = Random.Range(1,6);
-                int test2 = Random.Range(1,6);
-                int test3 = Random.Range(1,6);
-                myControlleurDisplay.UpdateControlleurs(0, test1);
-                Debug.Log(test1+ " Controlleurs in first waggon display");
-                myControlleurDisplay.UpdateControlleurs(1, test2);
-                Debug.Log(test2+ " Controlleurs in second waggon display");
-                myControlleurDisplay.UpdateControlleurs(2, test3);
-                Debug.Log(test3+ " Controlleurs in third waggon display");
-                */
     }
 
 
@@ -112,11 +110,18 @@ public class UI_ProgressDisplay : MonoBehaviour
         
         while (currentStationIndex < stationIndices.Count)
         {
-            // Move until next station center reached
+            // START MOVING - Set animation ONCE before the loop
             trainTravels = true;
             
+            // This 'anim' variable now correctly refers to the train's animator
+            if (anim != null) anim.SetBool("trainIsTravelling", true);
+            
+            Debug.Log("Train started moving to station " + currentStationIndex);
+            
+            // Move until next station center reached
             while (trainTravels)
             {
+                // ONLY move tiles here - NO animator calls!
                 foreach (RectTransform tile in spawnedTiles)
                 {
                     tile.anchoredPosition += (Vector2)speed * Time.deltaTime;
@@ -142,6 +147,10 @@ public class UI_ProgressDisplay : MonoBehaviour
                 yield return null;
             }
 
+            // STOPPED AT STATION - Set animation ONCE after the loop
+            if (anim != null) anim.SetBool("trainIsTravelling", false);
+            Debug.Log("Train stopped at station " + currentStationIndex);
+
             // Train has reached station position
             currentStationIndex++;
             
@@ -151,27 +160,12 @@ public class UI_ProgressDisplay : MonoBehaviour
                 // Wait until trainDeparts is set to true again
                 yield return new WaitUntil(() => trainDeparts);
                 trainDeparts = false; // Reset for next station
-
-
-
-
-                //
-                //Test for spawning controlleurs
-                /*
-                int test1 = Random.Range(1,6);
-                int test2 = Random.Range(1,6);
-                int test3 = Random.Range(1,6);
-                myControlleurDisplay.UpdateControlleurs(0, test1);
-                Debug.Log(test1+ " Controlleurs in first waggon display");
-                myControlleurDisplay.UpdateControlleurs(1, test2);
-                Debug.Log(test2+ " Controlleurs in second waggon display");
-                myControlleurDisplay.UpdateControlleurs(2, test3);
-                Debug.Log(test3+ " Controlleurs in third waggon display");
-                */
+                Debug.Log("Train departing from station...");
             }
         }
         
         // All stations visited
+        if (anim != null) anim.SetBool("trainIsTravelling", false);
         Debug.Log("Train has reached all stations!");
     }
 
@@ -195,8 +189,7 @@ public class UI_ProgressDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // We moved the logic to the coroutine, so this can be empty.
     }
     
-
 }
