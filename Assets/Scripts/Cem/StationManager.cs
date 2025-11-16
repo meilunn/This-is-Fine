@@ -31,7 +31,7 @@ public class StationManager : MonoBehaviour
     [SerializeField] private TrainAnimController trainAnimController;
     [SerializeField] private GameObject station;
     [SerializeField] private Collider2D stationConfiner;
-    [SerializeField] private List<GameObject> colliderList;
+    [SerializeField] private GameObject platformCollider;
 
     [SerializeField] private GameObject tenSecondWarning;
 
@@ -73,7 +73,6 @@ public class StationManager : MonoBehaviour
 
     private void Start()
     {
-        colliderList = new List<GameObject>();
         confiner.BoundingShape2D = stationConfiner;
     }
 
@@ -132,10 +131,7 @@ public void OnTimerEnds()
         }
 
 
-        foreach (GameObject g in colliderList)
-        {
-            g.SetActive(false);
-        }
+        platformCollider.SetActive(false);
         timer.SetTimer(currentWagon.features.DurationSec);
         timer.StartTimer();
 
@@ -184,10 +180,7 @@ public void OnTimerEnds()
     // 2) hide current wagon, show station
     currentWagon.gameObject.SetActive(false);
     station.SetActive(true);
-    foreach (GameObject g in colliderList)
-    {
-        g.SetActive(true);
-    }
+    platformCollider.SetActive(true);
 
     // 3) confine camera to station again
     confiner.BoundingShape2D = stationConfiner;
@@ -275,7 +268,7 @@ if (currentStageIndex >= scenes.Count)
                 //todo train stopping
                 if (timer.IsTimerEnd())
                 {
-                                        
+
 
                     //stationCurrentStage = StationStage.GameOver;
                 }
