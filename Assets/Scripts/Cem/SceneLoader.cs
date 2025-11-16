@@ -6,6 +6,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene()
     {
+        FadeInOutScript.Instance.startFadeOut();
         SceneController.Instance.LoadSceneByName(targetScene);
     }
 

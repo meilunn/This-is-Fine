@@ -156,6 +156,8 @@ public void OnTimerEnds()
         // Make sure the exit is closed at the start
         var exit = currentWagon.GetExitTrigger();
         if (exit != null) exit.Deactivate();
+        
+        FadeInOutScript.Instance.startFadeOut();
     }
 
     public void OnPlayerExitWagon()
@@ -187,6 +189,8 @@ public void OnTimerEnds()
 
     // 6) back to “waiting for train”
     stationCurrentStage = StationStage.WaitingForTrain;
+    
+    FadeInOutScript.Instance.startFadeOut();
 }
 
     private void PrepareNextWagon()
