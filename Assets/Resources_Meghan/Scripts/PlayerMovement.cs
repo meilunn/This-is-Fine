@@ -27,16 +27,41 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private WagonEntranceTrigger wagonEntranceTrigger;
+    [SerializeField] private GameObject pressEHint;
+
+
+    // NEW: can we currently enter a wagon?
+    private bool canEnterWagon = false;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        if (pressEHint != null)
+            pressEHint.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         rb.linearVelocity = moveInput * moveSpeed;
+
+        // Are we standing in the entrance trigger?
+        bool nearEntrance = wagonEntranceTrigger != null && wagonEntranceTrigger.PlayerIsHere;
+
+        // Show / hide the "Press E" hint
+        if (pressEHint != null)
+            pressEHint.SetActive(nearEntrance);
+
+        // Press E to enter if near entrance
+        if (nearEntrance &&
+            Keyboard.current != null &&
+            Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            EnteredTrain?.Invoke();
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -63,9 +88,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("WagonEntrance"))
+        // Only used for EXIT now
+        if (collision.CompareTag("WagonExit"))
         {
-            EnteredTrain?.Invoke();
+            ExitedTrain?.Invoke();
         }
     }
 
