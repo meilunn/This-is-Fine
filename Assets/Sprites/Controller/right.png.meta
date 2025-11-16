@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: aa743fb48615c1a4abd2c5f9ae2cda62
+guid: 6cad57234b4c2ec43a44f923f8da996f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4296654464054028125
-    second: Polizist_2_0
+      213: -4345969612696422427
+    second: right_0
   - first:
-      213: 3756405172031775411
-    second: Polizist_2_1
+      213: 6507350358835803604
+    second: right_1
   - first:
-      213: -9117096365128335736
-    second: Polizist_2_2
+      213: -5790000775740618815
+    second: right_2
   - first:
-      213: 5755551254154853956
-    second: Polizist_2_3
+      213: 880102728729369494
+    second: right_3
   - first:
-      213: 5720184561547646794
-    second: Polizist_2_4
+      213: -7940451118452339717
+    second: right_4
   - first:
-      213: -767104806666607488
-    second: Polizist_2_5
+      213: 1623615948293823164
+    second: right_5
   - first:
-      213: -4956922276034550015
-    second: Polizist_2_6
+      213: -8986047737381465378
+    second: right_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Polizist_2_0
+      name: right_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
-        width: 32
-        height: 32
+        x: 6
+        y: 4
+        width: 19
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d57698c6878c0ab30800000000000000
-      internalID: 4296654464054028125
+      spriteID: 5e77696c9a300b3c0800000000000000
+      internalID: -4345969612696422427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Polizist_2_1
+      name: right_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
-        width: 32
-        height: 32
+        x: 38
+        y: 4
+        width: 19
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b2e4670a9e612430800000000000000
-      internalID: 3756405172031775411
+      spriteID: 4d53b678ca0ce4a50800000000000000
+      internalID: 6507350358835803604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Polizist_2_2
+      name: right_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 32
-        height: 32
+        x: 70
+        y: 4
+        width: 19
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +177,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88e358d0921997180800000000000000
-      internalID: -9117096365128335736
+      spriteID: 1c78eb0a8f8c5afa0800000000000000
+      internalID: -5790000775740618815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Polizist_2_3
+      name: right_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
-        width: 32
-        height: 32
+        x: 102
+        y: 4
+        width: 18
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 44e34761f53dfdf40800000000000000
-      internalID: 5755551254154853956
+      spriteID: 69b14cfc4c0c63c00800000000000000
+      internalID: 880102728729369494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Polizist_2_4
+      name: right_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
+        x: 134
+        y: 4
+        width: 18
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a4798b84d8d226f40800000000000000
-      internalID: 5720184561547646794
+      spriteID: bfb8b4037c9ddc190800000000000000
+      internalID: -7940451118452339717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Polizist_2_5
+      name: right_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
+        x: 166
+        y: 4
+        width: 18
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,20 +243,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 084642d1e32ba55f0800000000000000
-      internalID: -767104806666607488
+      spriteID: cba56b94a1e388610800000000000000
+      internalID: 1623615948293823164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Polizist_2_6
+      name: right_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 198
+        y: 4
+        width: 19
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,8 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1076dbde379753bb0800000000000000
-      internalID: -4956922276034550015
+      spriteID: ed2dca661352b4380800000000000000
+      internalID: -8986047737381465378
       vertices: []
       indices: 
       edges: []
@@ -275,7 +275,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 339d25f06a84bb944a8305bc7942d985
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -285,13 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Polizist_2_0: 4296654464054028125
-      Polizist_2_1: 3756405172031775411
-      Polizist_2_2: -9117096365128335736
-      Polizist_2_3: 5755551254154853956
-      Polizist_2_4: 5720184561547646794
-      Polizist_2_5: -767104806666607488
-      Polizist_2_6: -4956922276034550015
+      right_0: -4345969612696422427
+      right_1: 6507350358835803604
+      right_2: -5790000775740618815
+      right_3: 880102728729369494
+      right_4: -7940451118452339717
+      right_5: 1623615948293823164
+      right_6: -8986047737381465378
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

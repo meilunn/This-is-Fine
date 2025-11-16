@@ -86,10 +86,10 @@ public class TicketControllerAI  : MonoBehaviour
         _animator.SetFloat("MoveX", MoveX);
         _animator.SetFloat("MoveY", MoveY);
         
-        if (Mathf.Abs(MoveX) > Mathf.Abs(MoveY) && Mathf.Abs(MoveX) > 0.1f)
-        {
-            spriteRenderer.flipX = MoveX > 0;
-        }
+        //if (Mathf.Abs(MoveX) > Mathf.Abs(MoveY) && Mathf.Abs(MoveX) > 0.1f)
+        //{
+        //    spriteRenderer.flipX = MoveX > 0;
+        //}
         
         //float angle = Mathf.Atan2(agent.velocity.y, agent.velocity.x) * Mathf.Rad2Deg;
         //Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -177,6 +177,7 @@ public class TicketControllerAI  : MonoBehaviour
     void StartShocked()
     {
         Debug.Log($"{name}: >>> StartShocked");
+        _animator.SetBool("isStunned", true);
         currentState = ControllerState.Shocked;
         shockedTimer = shockedTime;
 
@@ -233,6 +234,7 @@ public class TicketControllerAI  : MonoBehaviour
 
     void StartCheckingTicket()
     {
+        _animator.SetBool("isSus", true);
         currentState = ControllerState.CheckingTicket;
         checkTimer = checkTicketDuration;
 
@@ -246,7 +248,7 @@ void UpdateCheckingTicket()
         checkTimer -= Time.deltaTime;
         if (checkTimer <= 0f)
         {
-            
+            _animator.SetBool("isSus", false);
             currentNPCTarget = null;
             
             StartPatrolling();
@@ -284,6 +286,7 @@ void UpdateCheckingTicket()
     void StartChasing()
     {
         Debug.Log($"{name}: >>> StartChasing (state was {currentState})");
+        _animator.SetBool("isChaser", true);
         currentState = ControllerState.Chasing;
         agent.isStopped = false;
         agent.speed = chaseSpeed;

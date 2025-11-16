@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 9f8f97894edf57141ab341e6821d125a
+guid: a61453c6ee282ae4ab30afdf881281c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7238607039471267272
-    second: stun_0
+      213: 4663921927542836296
+    second: stundown_0
   - first:
-      213: 5078008455104014650
-    second: stun_1
+      213: 1065871964641530077
+    second: stundown_1
   - first:
-      213: -3160870047172565213
-    second: stun_2
+      213: -3470415942791309466
+    second: stundown_2
   - first:
-      213: 4307719829106642566
-    second: stun_3
+      213: 5004380771041398644
+    second: stundown_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stun_0
+      name: stundown_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 104
-        width: 24
-        height: 21
+        x: 3
+        y: 4
+        width: 21
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8325ca7df3d4b8b90800000000000000
-      internalID: -7238607039471267272
+      spriteID: 84c8857584499b040800000000000000
+      internalID: 4663921927542836296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stun_1
+      name: stundown_1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 72
-        width: 24
-        height: 21
+        x: 35
+        y: 4
+        width: 21
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a39a7e419c5b87640800000000000000
-      internalID: 5078008455104014650
+      spriteID: dd0918497ecbace00800000000000000
+      internalID: 1065871964641530077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stun_2
+      name: stundown_2
       rect:
         serializedVersion: 2
-        x: 4
-        y: 39
-        width: 25
-        height: 22
+        x: 67
+        y: 4
+        width: 22
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3276b1960755224d0800000000000000
-      internalID: -3160870047172565213
+      spriteID: 667521b461b96dfc0800000000000000
+      internalID: -3470415942791309466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stun_3
+      name: stundown_3
       rect:
         serializedVersion: 2
-        x: 4
-        y: 7
-        width: 25
-        height: 22
+        x: 99
+        y: 4
+        width: 22
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 68ececd7c5818cb30800000000000000
-      internalID: 4307719829106642566
+      spriteID: 47fc7b20cc1237540800000000000000
+      internalID: 5004380771041398644
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      stun_0: -7238607039471267272
-      stun_1: 5078008455104014650
-      stun_2: -3160870047172565213
-      stun_3: 4307719829106642566
+      stundown_0: 4663921927542836296
+      stundown_1: 1065871964641530077
+      stundown_2: -3470415942791309466
+      stundown_3: 5004380771041398644
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
