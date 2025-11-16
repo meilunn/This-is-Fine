@@ -22,6 +22,7 @@ public class WagonController : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private Transform playerSpawnPoint;
+    [SerializeField] private WagonExitTrigger exitTrigger;
     void OnEnable()
     {
         RebuildNavMesh();
@@ -48,6 +49,10 @@ public class WagonController : MonoBehaviour
         public Transform GetPlayerSpawnPoint()
     {
         return playerSpawnPoint;
+    }
+    public WagonExitTrigger GetExitTrigger()
+    {
+        return exitTrigger; 
     }
 
 }

@@ -30,7 +30,11 @@ public class StationManager : MonoBehaviour
     [SerializeField] private TrainAnimController trainAnimController;
     [SerializeField] private GameObject station;
     [SerializeField] private Collider2D stationConfiner;
+<<<<<<< Updated upstream
     [SerializeField] private GameObject tenSecondWarning;
+=======
+    [SerializeField] private Transform stationPlayerSpawnPoint;
+>>>>>>> Stashed changes
 
     private StationStage stationCurrentStage;
     private WagonController currentWagon;
@@ -77,6 +81,16 @@ public class StationManager : MonoBehaviour
     public void OnTimerEnds()
     {
         stationCurrentStage = StationStage.TrainStopped;
+
+        // Open the wagon "door" (allow exit trigger to work)
+    if (currentWagon != null)
+    {
+        var exit = currentWagon.GetExitTrigger();
+        if (exit != null)
+        {
+            exit.Activate();
+        }
+    }
     }
 
     public void OnPlayerEntersWagon()
@@ -119,12 +133,34 @@ public class StationManager : MonoBehaviour
         trainAnimController.SetInitialEverything();
         confiner.enabled = true;
         stationCurrentStage = StationStage.InsideTrain;
+
+
+        // Make sure the exit is closed at the start
+        var exit = currentWagon.GetExitTrigger();
+        if (exit != null) exit.Deactivate();
     }
 
     public void OnPlayerExitWagon()
     {
+        // Move player to platform spawn
+        if (stationPlayerSpawnPoint != null)
+        {
+            player.transform.position = stationPlayerSpawnPoint.position;
+
+            var rb = player.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity = Vector2.zero;
+        }
+
         currentWagon.gameObject.SetActive(false);
         station.SetActive(true);
+
+        // Switch confiner back to station bounds
+        confiner.BoundingShape2D = stationConfiner;
+
+        // Close wagon exit again (in case wagon gets reused later)
+        var exit = currentWagon.GetExitTrigger();
+        if (exit != null) exit.Deactivate();
+
         stationCurrentStage = StationStage.TrainStopped;
     }
 
@@ -204,6 +240,7 @@ public class StationManager : MonoBehaviour
                 PrepareNextWagon();
                 InitializeNextStage();
 
+                stationCurrentStage = StationStage.WaitingForTrain;
                 break;
             case StationStage.GameOver:
                 break;
