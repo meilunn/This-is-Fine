@@ -334,7 +334,7 @@ void UpdateCheckingTicket()
 Debug.Log($"{name}: Player caught – you get a fine! 💸");
 
     // Optional: stop this controller
-
+float dist = Vector2.Distance(transform.position, player.position);
 if (dist <= catchDistance)
 {
         agent.isStopped = true;
