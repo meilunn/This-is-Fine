@@ -310,9 +310,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4764678394894736954, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}
+      propertyPath: confinerObj
+      value: 
+      objectReference: {fileID: 262006119}
+    - target: {fileID: 4764678394894736954, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}
+      propertyPath: exitTrigger
+      value: 
+      objectReference: {fileID: 46442118}
+    - target: {fileID: 4764678394894736954, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}
       propertyPath: playerSpawnPoint
       value: 
       objectReference: {fileID: 552958037}
+    - target: {fileID: 4764678394894736954, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}
+      propertyPath: features.DurationSec
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8705783217905703931, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -355,8 +367,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: [{targetCorrespondingSourceObject: {fileID: 8705783217905703931, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}, insertIndex: -1, addedObject: {fileID: 552958037}}]
-    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 7820097598433907578, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}, insertIndex: -1, addedObject: {fileID: 356034801}}]
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8705783217905703931, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 552958037}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7820097598433907578, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 356034801}
   m_SourcePrefab: {fileID: 100100000, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}
 --- !u!4 &3109455 stripped
 Transform:
@@ -447,7 +465,7 @@ Transform:
   m_GameObject: {fileID: 46442115}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.21, z: -0.73}
+  m_LocalPosition: {x: 0.2, y: 1.21, z: -0.73}
   m_LocalScale: {x: 8.653125, y: 2.7595313, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -690,6 +708,11 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 0, z: -10}
+--- !u!61 &262006119 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2424619871759597212, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}
+  m_PrefabInstance: {fileID: 3109454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &356034792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7820097598433907578, guid: bd1cd32ce208c4a06a10e67832d984a3, type: 3}
@@ -782,8 +805,8 @@ MonoBehaviour:
   confiner: {fileID: 130065559}
   trainAnimController: {fileID: 721535831}
   station: {fileID: 1687308427}
-  tenSecondWarning: {fileID: 2013078915}
   stationConfiner: {fileID: 0}
+  tenSecondWarning: {fileID: 2013078915}
   stationPlayerSpawnPoint: {fileID: 1472507473}
 --- !u!1 &552958036
 GameObject:
@@ -949,6 +972,11 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: cff4d6d282461478c8147cb938b30f2a, type: 2}
   m_BuildHeightMesh: 0
+--- !u!61 &834743304 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8069057164421969909, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
+  m_PrefabInstance: {fileID: 1632913712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &841302073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,8 +1284,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1930735183343198656, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
+      propertyPath: exitTrigger
+      value: 
+      objectReference: {fileID: 46442118}
+    - target: {fileID: 1930735183343198656, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: features.DurationSec
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4309153161000452523, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2839,9 +2871,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6728508741177024975, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
+      propertyPath: confinerObj
+      value: 
+      objectReference: {fileID: 834743304}
+    - target: {fileID: 6728508741177024975, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
+      propertyPath: exitTrigger
+      value: 
+      objectReference: {fileID: 46442118}
+    - target: {fileID: 6728508741177024975, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
       propertyPath: playerSpawnPoint
       value: 
       objectReference: {fileID: 110500396}
+    - target: {fileID: 6728508741177024975, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
+      propertyPath: features.DurationSec
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6862064792525639392, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2884,8 +2928,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: [{targetCorrespondingSourceObject: {fileID: 6862064792525639392, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}, insertIndex: -1, addedObject: {fileID: 110500396}}]
-    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 6913002767070979602, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}, insertIndex: -1, addedObject: {fileID: 1365777255}}]
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6862064792525639392, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 110500396}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6913002767070979602, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1365777255}
   m_SourcePrefab: {fileID: 100100000, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
 --- !u!4 &1632913713 stripped
 Transform:
@@ -3183,6 +3233,11 @@ Transform:
   - {fileID: 3109455}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!19719996 &1955851243 stripped
+TilemapCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5266377084380563283, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
+  m_PrefabInstance: {fileID: 1388020884}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2013078915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3319,11 +3374,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013078915}
   m_CullTransparentMesh: 1
---- !u!19719996 &1955851243 stripped
-TilemapCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5266377084380563283, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
-  m_PrefabInstance: {fileID: 1388020884}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4223739903690761067
 PrefabInstance:
   m_ObjectHideFlags: 0
