@@ -208,6 +208,10 @@ if (currentStageIndex >= scenes.Count)
         if (GameManager.Instance != null)
         {
             GameManager.Instance.CompleteGame();
+            SoundManager.StopLoop();
+            SoundManager.PlaySound(SoundType.Win);
+            
+
         }
         else
         {

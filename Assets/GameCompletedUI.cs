@@ -5,6 +5,7 @@ public class GameCompletedUI : MonoBehaviour
 public void OnRetryButton()
     {
         // reset state so StationManager will allow entering wagon again
+        SoundManager.StopLoop();
         if (GameManager.Instance != null)
         {
             GameManager.Instance.CurrentGameStage = GameState.NotStarted;

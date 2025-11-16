@@ -47,8 +47,9 @@ public class SoundManager : MonoBehaviour
 
         AudioClip clip = instance.soundList[(int)sound];
         if (clip == null) return;
-
         instance.audioSource.PlayOneShot(clip, volume);
+
+        
     }
 
     public static void PlayLoop(SoundType sound, float volume = 1f)
@@ -96,6 +97,7 @@ public class SoundManager : MonoBehaviour
         float x = 0;
         if(firstClip == soundList[6]) x = 0.8f;
         yield return new WaitForSeconds(firstClip.length - x);
+
 
         // Then play second
         audioSource.PlayOneShot(secondClip, secondVolume);
