@@ -45,8 +45,21 @@ public class StationManager : MonoBehaviour
 
     public System.Action OnStageCompleted;
 
+    // --- 1. MAKE THIS SERIALIZED ---
+    // This is the fix for the "object reference" error.
+    [SerializeField]
+    private UI_ProgressDisplay myProgressDisplay;
+
+
+
+    private int[] notSketchy = new int[3];
+    private int temp;
     private void Awake()
     {
+        notSketchy[0] = 45;
+        notSketchy[1] = 75;
+        notSketchy[2] = 80;
+
         SoundManager.PlaySound(SoundType.Train);
         if (Instance == null)
         {
@@ -74,6 +87,13 @@ public class StationManager : MonoBehaviour
     private void Start()
     {
         confiner.BoundingShape2D = stationConfiner;
+        
+        // --- 2. ADD A NULL CHECK ---
+        // This will warn you if you forget to assign it in the Inspector.
+        if (myProgressDisplay == null)
+        {
+            Debug.LogError("StationManager: 'myProgressDisplay' is not assigned in the Inspector!", this);
+        }
     }
 
 
@@ -161,6 +181,46 @@ public void OnTimerEnds()
         if (exit != null) exit.Deactivate();
 
         FadeInOutScript.Instance.startFadeOut();
+
+        // Call the TrainUI
+        
+        // --- 3. CALL THE NEW "WRAPPER" COROUTINE ---
+        // This is the fix for the race condition.
+        StartCoroutine(StartTrainTravelSequence());
+        
+        // (Moved temp++ inside the new coroutine)
+    }
+
+    // --- 4. ADD THIS NEW COROUTINE ---
+    /// <summary>
+    /// This coroutine safely waits for the UI_ProgressDisplay to be ready
+    /// before starting the travel animation.
+    /// </summary>
+    private IEnumerator StartTrainTravelSequence()
+    {
+        // Safety check: is the display assigned?
+        if (myProgressDisplay == null)
+        {
+            Debug.LogError("Cannot start train travel: 'myProgressDisplay' is not assigned!", this);
+            yield break;
+        }
+
+        // Safety check: is temp in bounds?
+        if (temp >= notSketchy.Length)
+        {
+            Debug.LogWarning($"Train travel index 'temp' ({temp}) is out of bounds for 'notSketchy' array.", this);
+            yield break;
+        }
+
+        // --- THIS IS THE FIX ---
+        // Wait until the isReady flag on the other script is true
+        Debug.Log("StationManager: Waiting for UI_ProgressDisplay to be ready...");
+        yield return new WaitUntil(() => myProgressDisplay.isReady);
+        Debug.Log("StationManager: ...UI_ProgressDisplay is ready! Starting travel.");
+        
+        // Now it is safe to call the coroutine
+        StartCoroutine(myProgressDisplay.StartTravel(notSketchy[temp]));
+        temp++;
     }
 
     public void OnPlayerExitWagon()

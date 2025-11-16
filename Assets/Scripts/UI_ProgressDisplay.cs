@@ -1,87 +1,91 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+//using Unity.VisualScripting; // This namespace is often not needed, can be removed if you don't use it.
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class UI_ProgressDisplay : MonoBehaviour
 {
+    // --- 1. ADD THIS "READY" FLAG ---
+    public bool isReady { get; private set; } = false;
 
-    //! set trainDeparts to true, in order to start the train again !
-    //to add: train may stop, display stops, too
-    public bool trainDeparts;
-    public bool trainTravels;
-    [SerializeField] private float threshhold;
+    // This is no longer needed, call StartTravel(duration) instead
+    // public bool trainDeparts;
+    public bool trainTravels { get; private set; } // Made public-get, private-set
+    
+    [Header("Travel Setup")]
+    [SerializeField] private float threshhold; // The target X-position for the *last* station
 
     private List<Tuple<int, bool>> trackDisplayLength;
 
-    //
-    //every second int value will be ignored! this is for train stations
-    //...they have a true bool
-    //
+    // This array is no longer used, duration is passed as a parameter
+    // private int[] notSketchyListAtAll= new int[3];
+
+    [Header("Prefabs & Hierarchy")]
     [SerializeField] private List<int> testValues;
     [SerializeField] private GameObject trainStation;
     [SerializeField] private GameObject track;
-    
-    // [SerializeField] private GameObject train; // <-- 1. OLD LINE
-    [SerializeField] private GameObject trainPrefab; // <-- 1. RENAMED FOR CLARITY
-    
+    [SerializeField] private GameObject trainPrefab; 
     [SerializeField] private GameObject parentDisplayTracks;
-    [SerializeField] private Vector3 speed;
+    
+    // This is now calculated automatically
+    // [SerializeField] private Vector3 speed;
+
     private List<RectTransform> spawnedTiles = new List<RectTransform>();
     private List<int> stationIndices = new List<int>(); 
-    private List<float> stationCenterPositions = new List<float>(); 
-    //[SerializeField] private GameObject myControlleurDisplayObject;
+    
+    // New variables for the calculated movement
+    private List<Vector2> initialTilePositions = new List<Vector2>();
+    private float totalDistanceToTravel;
+    
     private UI_ControlleurDisplay myControlleurDisplay;
     
-    private Animator anim; // <-- This will hold the train's animator
+    private Animator anim; // This will hold the train's animator
 
     void Start()
     {
-//        myControlleurDisplay = myControlleurDisplayObject.GetComponent<UI_ControlleurDisplay>();
-        // anim = GetComponent<Animator>(); // <-- 2. REMOVED THIS LINE (This was the bug)
+        //        myControlleurDisplay = myControlleurDisplayObject.GetComponent<UI_ControlleurDisplay>();
+
+        // Durations are no longer hard-coded here
+        // notSketchyListAtAll[0] = 30; ...
 
         trackDisplayLength = FillWithValues(testValues);
 
         int tileIndex = 0;
         
         for (int i = 0; i < trackDisplayLength.Count; i++)
-            {
-                int amount = trackDisplayLength[i].Item1;
-                bool isStation = trackDisplayLength[i].Item2;
+        {
+            int amount = trackDisplayLength[i].Item1;
+            bool isStation = trackDisplayLength[i].Item2;
 
-                if (isStation)
+            if (isStation)
+            {
+                var obj = Instantiate(trainStation, parentDisplayTracks.transform);
+                RectTransform rectTransform = obj.GetComponent<RectTransform>();
+                spawnedTiles.Add(rectTransform);
+                stationIndices.Add(tileIndex); // Save the index of the station tile
+                tileIndex++;
+            }
+            else
+            {
+                for (int j = 0; j < amount; j++)
                 {
-                    var obj = Instantiate(trainStation, parentDisplayTracks.transform);
+                    var obj = Instantiate(track, parentDisplayTracks.transform);
                     RectTransform rectTransform = obj.GetComponent<RectTransform>();
                     spawnedTiles.Add(rectTransform);
-                    stationIndices.Add(tileIndex);
                     tileIndex++;
                 }
-                else
-                {
-                    for (int j = 0; j < amount; j++)
-                    {
-                        var obj = Instantiate(track, parentDisplayTracks.transform);
-                        RectTransform rectTransform = obj.GetComponent<RectTransform>();
-                        spawnedTiles.Add(rectTransform);
-                        tileIndex++;
-                    }
-                }
-           
             }
-        
-        // --- 3. THIS IS THE FIX ---
-        // Instantiate(train, parentDisplayTracks.transform); // <-- OLD LINE
+        }
         
         // Create the train and save its instance
         GameObject trainInstance = Instantiate(trainPrefab, parentDisplayTracks.transform);
-        // Get the Animator from that new instance and store it in our 'anim' variable
+        // Get the Animator from that new instance
         anim = trainInstance.GetComponent<Animator>(); 
-        // -------------------------
 
-        // Waiting for Layout Group to position everything, then capture positions
+        // Waiting for Layout Group to position everything
         StartCoroutine(InitializeAfterLayout());
     }
 
@@ -91,82 +95,102 @@ public class UI_ProgressDisplay : MonoBehaviour
         yield return null;
         yield return null;
         
-        // captures the ACTUAL positions after Layout Group has positioned them
-        for (int i = 0; i < stationIndices.Count; i++)
+        if (stationIndices.Count == 0)
         {
-            RectTransform station = spawnedTiles[stationIndices[i]];
-            // Gets actual center position (anchoredPosition is the center by default)
-            stationCenterPositions.Add(station.anchoredPosition.x);
+            Debug.LogError("No stations were instantiated! Cannot calculate travel distance.", this);
+            isReady = false; // Mark as failed
+            yield break;
+        }
+
+        // --- New Logic ---
+        // 1. Save the initial position of ALL tiles
+        foreach (RectTransform tile in spawnedTiles)
+        {
+            initialTilePositions.Add(tile.anchoredPosition);
         }
         
-        trainTravels = true;
-        StartCoroutine(MoveTrainBackground());
+        // 2. Calculate the total distance the *last* station needs to move
+        // Get the index of the last station
+        int lastStationTileIndex = stationIndices[stationIndices.Count - 1];
+        RectTransform lastStation = spawnedTiles[lastStationTileIndex];
+        
+        // Calculate distance from its starting X to the target X (threshhold)
+        totalDistanceToTravel = lastStation.anchoredPosition.x - threshhold;
+        
+        Debug.Log($"Initialization complete. Total travel distance calculated: {totalDistanceToTravel} units.", this);
+        
+        // --- 2. ADD THIS LINE AT THE VERY END ---
+        // Tell the world we are now ready to be called!
+        isReady = true;
     }
 
-
-    private IEnumerator MoveTrainBackground()
+    
+    // --- THIS IS THE NEW PUBLIC COROUTINE ---
+    
+    /// <summary>
+    /// Starts the train travel, moving the entire track over a specific duration.
+    /// The speed is calculated to make the trip last exactly this long.
+    /// </summary>
+    /// <param name="duration">The total time (in seconds) the travel should take.</param>
+    public IEnumerator StartTravel(float duration)
     {
-        int currentStationIndex = 0;
-        
-        while (currentStationIndex < stationIndices.Count)
+        // --- ADD A READY CHECK ---
+        if (!isReady)
         {
-            // START MOVING - Set animation ONCE before the loop
-            trainTravels = true;
+            Debug.LogError("StartTravel was called, but UI_ProgressDisplay is not ready! (Did InitializeAfterLayout finish?)", this);
+            yield break;
+        }
+
+        if (trainTravels)
+        {
+            Debug.LogWarning("Train is already traveling!", this);
+            yield break; // Don't start a new trip if one is in progress
+        }
+
+        if (duration <= 0)
+        {
+            Debug.LogError($"Travel duration must be positive. Received {duration}s.", this);
+            yield break;
+        }
+
+        trainTravels = true;
+        if (anim != null) anim.SetBool("trainIsTravelling", true);
+        Debug.Log($"Train travel started. Duration: {duration} seconds.");
+
+        float timer = 0f;
+        
+        // --- Time-Based Travel Loop (using Lerp for precision) ---
+        while (timer < duration)
+        {
+            // Calculate progress from 0.0 to 1.0
+            float progress = timer / duration;
             
-            // This 'anim' variable now correctly refers to the train's animator
-            if (anim != null) anim.SetBool("trainIsTravelling", true);
-            
-            Debug.Log("Train started moving to station " + currentStationIndex);
-            
-            // Move until next station center reached
-            while (trainTravels)
+            // Calculate how far we should have moved at this point in time
+            float currentDistance = Mathf.Lerp(0, totalDistanceToTravel, progress);
+
+            // Move all tiles based on their initial position minus the current distance
+            for (int i = 0; i < spawnedTiles.Count; i++)
             {
-                // ONLY move tiles here - NO animator calls!
-                foreach (RectTransform tile in spawnedTiles)
-                {
-                    tile.anchoredPosition += (Vector2)speed * Time.deltaTime;
-                }
-
-                if (currentStationIndex < stationIndices.Count)
-                {
-                    RectTransform station = spawnedTiles[stationIndices[currentStationIndex]];
-                    
-                    // Get the initial center position captured
-                    float initialStationCenter = stationCenterPositions[currentStationIndex];
-                    
-                    // Calculate how far this station should be from its original position to reach threshold
-                    float targetPosition = threshhold;
-                    
-                    // Stop when the station reaches the threshold
-                    if (station.anchoredPosition.x <= targetPosition) 
-                    {
-                        trainTravels = false;
-                    }
-                }
-
-                yield return null;
+                float newX = initialTilePositions[i].x - currentDistance;
+                spawnedTiles[i].anchoredPosition = new Vector2(newX, initialTilePositions[i].y);
             }
 
-            // STOPPED AT STATION - Set animation ONCE after the loop
-            if (anim != null) anim.SetBool("trainIsTravelling", false);
-            Debug.Log("Train stopped at station " + currentStationIndex);
-
-            // Train has reached station position
-            currentStationIndex++;
-            
-            // Only wait for trainDeparts if it's NOT the first station
-            if (currentStationIndex > 1) // Skip waiting for first station
-            {
-                // Wait until trainDeparts is set to true again
-                yield return new WaitUntil(() => trainDeparts);
-                trainDeparts = false; // Reset for next station
-                Debug.Log("Train departing from station...");
-            }
+            timer += Time.deltaTime;
+            yield return null; // Wait for the next frame
         }
         
-        // All stations visited
+        // --- End of Travel ---
+        
+        // Snap all tiles to their final exact position to ensure precision
+        for (int i = 0; i < spawnedTiles.Count; i++)
+        {
+            float finalX = initialTilePositions[i].x - totalDistanceToTravel;
+            spawnedTiles[i].anchoredPosition = new Vector2(finalX, initialTilePositions[i].y);
+        }
+
+        trainTravels = false;
         if (anim != null) anim.SetBool("trainIsTravelling", false);
-        Debug.Log("Train has reached all stations!");
+        Debug.Log($"Train travel complete. (Time elapsed: {timer:F2}s).");
     }
 
 
@@ -177,7 +201,8 @@ public class UI_ProgressDisplay : MonoBehaviour
        for (int i = 0; i < IntList.Count; i++)
        {
            int value = IntList[i];
-           bool isStation = (value == 0);
+           // A value of -1 in testValues signifies a station
+           bool isStation = value == -1; 
 
             returnList.Add(Tuple.Create(value, isStation));
         }
@@ -189,7 +214,6 @@ public class UI_ProgressDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // We moved the logic to the coroutine, so this can be empty.
+        // All logic is in the coroutine, so this can be empty!
     }
-    
 }

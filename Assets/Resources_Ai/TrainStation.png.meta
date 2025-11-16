@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 93edb454a90b41049bc8462271096305
+guid: 6191a00f8ce8ece4da71d192239941eb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3412118332925087124
-    second: TrainTracks_0
+      213: -6459787356106037523
+    second: TrainStation_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TrainTracks_0
+      name: TrainStation_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
+        width: 64
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c62f6625478b5a0d0800000000000000
-      internalID: -3412118332925087124
+      spriteID: de66db200a93a56a0800000000000000
+      internalID: -6459787356106037523
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TrainTracks_0: -3412118332925087124
+      TrainStation_0: -6459787356106037523
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
