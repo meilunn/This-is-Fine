@@ -95,6 +95,7 @@ public class StationManager : MonoBehaviour
         timer.SetTimer(currentWagon.features.DurationSec);
         timer.StartTimer();
         currentWagon.gameObject.SetActive(true);
+        currentWagon.RebuildNavMesh(); 
         station.SetActive(false);
 
          // Switch camera confiner to wagon bounds

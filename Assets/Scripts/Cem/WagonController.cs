@@ -24,8 +24,14 @@ public class WagonController : MonoBehaviour
     [SerializeField] private Transform playerSpawnPoint;
     void OnEnable()
     {
-        if (surface == null) surface = GetComponentInChildren<NavMeshPlus.Components.NavMeshSurface>();
-        surface.BuildNavMesh();   // runtime generation instead of baked data
+        RebuildNavMesh();
+    }
+    public void RebuildNavMesh()
+    {
+        if (surface == null)
+            surface = GetComponentInChildren<NavMeshPlus.Components.NavMeshSurface>();
+
+        surface.BuildNavMesh();
     }
 
 
