@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class Pause_CenterOnPlayer : MonoBehaviour
 {
 
-    //SetUp: Use PauseCanvas Prefab and fill in the SerializeFields, lastly add the CameraController Prefab
+    //SetUp: Use PauseCanvas Prefab, add the CameraControlScript to the Camera, lastly fill in the SerializeFields
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI tippText;
     [SerializeField] private GameObject pauseImage; 
