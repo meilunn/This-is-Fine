@@ -1901,6 +1901,10 @@ PrefabInstance:
       propertyPath: basePatrollersPerWagon
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4212330825083031071, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
+      propertyPath: minPassengerAmount
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4309153161000452523, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
