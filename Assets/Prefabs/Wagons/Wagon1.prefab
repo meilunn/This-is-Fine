@@ -73,9 +73,10 @@ MonoBehaviour:
     useCustomRotation: 0
     rotationAngle: 0
   chaserSpawnPoints:
-  - {fileID: 5785920671138043314}
+  - {fileID: 1466746476844667226}
   patrollerSpawnPoints:
-  - {fileID: 1896360287213555721}
+  - {fileID: 5055756850608565509}
+  - {fileID: 12486653268800718}
 --- !u!114 &1930735183343198656
 MonoBehaviour:
   m_ObjectHideFlags: 0

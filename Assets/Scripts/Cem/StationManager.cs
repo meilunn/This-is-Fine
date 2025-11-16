@@ -106,6 +106,11 @@ public void OnTimerEnds()
     public void OnPlayerEntersWagon()
     {
 
+        if (GameManager.Instance.CurrentGameStage == GameState.EndGame)
+        {
+            return;
+        }
+
         // Position player inside the current wagon
         Transform spawn = currentWagon.GetPlayerSpawnPoint();
         if (spawn != null)

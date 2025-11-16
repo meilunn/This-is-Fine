@@ -14,9 +14,9 @@ public class TestWagonSetup : MonoBehaviour
 
 
     
-    private void Start()
+    private void OnEnable()
     {
-        // 1) Initialize NPCs
+    // 1) Initialize NPCs
         if (npcManager != null)
         {
             npcManager.IntializeNPCs(npcSpawnPoints);

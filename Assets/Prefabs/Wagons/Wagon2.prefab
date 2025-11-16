@@ -413,6 +413,7 @@ Transform:
   - {fileID: 3267298919376320420}
   - {fileID: 1868900330317363365}
   - {fileID: 7786359360113019583}
+  - {fileID: 2148760278201827635}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &759548878781331541
@@ -431,16 +432,25 @@ MonoBehaviour:
   npcSpawnPoints:
   - spawnPoint: {fileID: 6237221876182579068}
     spawnType: 0
+    useCustomRotation: 0
+    rotationAngle: 0
   - spawnPoint: {fileID: 1469443441778722145}
     spawnType: 0
+    useCustomRotation: 0
+    rotationAngle: 0
   - spawnPoint: {fileID: 2698752709951485960}
     spawnType: 0
+    useCustomRotation: 0
+    rotationAngle: 0
   - spawnPoint: {fileID: 8522037690831039832}
     spawnType: 0
+    useCustomRotation: 0
+    rotationAngle: 0
   chaserSpawnPoints:
-  - {fileID: 2132579212948234586}
+  - {fileID: 1195397176658061215}
   patrollerSpawnPoints:
-  - {fileID: 3324744045521987786}
+  - {fileID: 7948605932916347712}
+  - {fileID: 2468935666868976755}
 --- !u!114 &6728508741177024975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,12 +464,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   features:
-    DurationSec: 0
+    DurationSec: 5
     NpcCount: 0
     PassangerCount: 0
     spawnPoints: []
-  confinerObj: {fileID: 0}
+  confinerObj: {fileID: 8069057164421969909}
   sceneName: 4
+  surface: {fileID: 7251454907274230635}
+  playerSpawnPoint: {fileID: 2148760278201827635}
+  exitTrigger: {fileID: 0}
 --- !u!1 &369999238702897935
 GameObject:
   m_ObjectHideFlags: 0
@@ -4064,6 +4077,37 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!1 &5094634963117182398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2148760278201827635}
+  m_Layer: 0
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2148760278201827635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094634963117182398}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.3, y: 1.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6862064792525639392}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5528209173867467608
 GameObject:
   m_ObjectHideFlags: 0
