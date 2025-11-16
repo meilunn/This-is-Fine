@@ -38,7 +38,7 @@ public class TicketControllerAI  : MonoBehaviour
 
     [Header("FOV / Vision")]
     public float fovAngle = 60f;
-    public float fovRange = 4.0f;
+    public float fovRange = 2.0f;
     public Vector2 lookDirection = Vector2.right; // default facing right
 
     public bool IsChasing => currentState == ControllerState.Chasing;
