@@ -482,7 +482,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4843722995180918392, guid: 437768330027f477ea33b094cc03b762, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843722995180918392, guid: 437768330027f477ea33b094cc03b762, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843722995180918392, guid: 437768330027f477ea33b094cc03b762, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6751198517216832723, guid: 437768330027f477ea33b094cc03b762, type: 3}
@@ -566,12 +574,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7177495900953003243, guid: 437768330027f477ea33b094cc03b762, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177495900953003243, guid: 437768330027f477ea33b094cc03b762, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7682330846211134814, guid: 437768330027f477ea33b094cc03b762, type: 3}
       propertyPath: m_Name
       value: PanelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874095639286624911, guid: 437768330027f477ea33b094cc03b762, type: 3}
+      propertyPath: m_Value
+      value: 0.437
       objectReference: {fileID: 0}
     - target: {fileID: 8697382950281076128, guid: 437768330027f477ea33b094cc03b762, type: 3}
       propertyPath: m_AnchorMax.y
@@ -586,8 +602,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 554742182}
   - {fileID: 5744236428653660365}
+  - {fileID: 554742182}
   - {fileID: 1699382699}
   - {fileID: 1363504950}
   - {fileID: 1555321572}

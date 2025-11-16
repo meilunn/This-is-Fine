@@ -24,6 +24,7 @@ public class FadeInOutScript : MonoBehaviour
         fadingOut = true;
         fadingIn = false;
         currentFadingTime = fadingTime;
+        image.gameObject.SetActive(true);
     }
     
     // public void startFadeIn()
@@ -60,6 +61,10 @@ public class FadeInOutScript : MonoBehaviour
                 color.a = (1 - currentFadingTime) / fadingTime;
             }
             image.color = color;
+        }
+        else
+        {
+            image.gameObject.SetActive(false);
         }
     }
 }
