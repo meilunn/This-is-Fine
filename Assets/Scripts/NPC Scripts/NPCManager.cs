@@ -90,6 +90,7 @@ public class NPCManager : MonoBehaviour
             pI.Add(pIndex);
 
             int r = i % NPCPrefabs.Length;
+            Debug.Log("created NPC of type " + r);
             GameObject npc = Instantiate(NPCPrefabs[r]);
             SpawnPoint point = npcSpawnPoints[pIndex];
             npc.transform.position = point.spawnPoint.position;

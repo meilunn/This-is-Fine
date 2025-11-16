@@ -2262,7 +2262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 346168172469802967, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 910119779334500370, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1930735183343198656, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: exitTrigger
@@ -2324,9 +2328,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -3.62
       objectReference: {fileID: 0}
+    - target: {fileID: 5691489112763939967, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6280130459388741894, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095116302353898857, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
+      propertyPath: 'patrollerSpawnPoints.Array.data[2]'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9109119057109696324, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: m_ColliderPaths.Array.size
@@ -2420,6 +2432,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 797006831467949973, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158262898158637079, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 0
       objectReference: {fileID: 0}

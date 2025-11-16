@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &144564459587060914
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 795105653327223426}
-  m_Layer: 0
-  m_Name: NPCSpawnPoint1 (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &795105653327223426
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144564459587060914}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.81, y: 2.06, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5009121186741853125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &346168172469802967
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,27 +70,11 @@ MonoBehaviour:
     spawnType: 0
     useCustomRotation: 0
     rotationAngle: 0
-  - spawnPoint: {fileID: 3197696695554484885}
-    spawnType: 0
-    useCustomRotation: 0
-    rotationAngle: 0
-  - spawnPoint: {fileID: 3197696695554484885}
-    spawnType: 0
-    useCustomRotation: 0
-    rotationAngle: 0
-  - spawnPoint: {fileID: 2605508486979602827}
-    spawnType: 1
-    useCustomRotation: 0
-    rotationAngle: 0
   - spawnPoint: {fileID: 5532498583811393701}
     spawnType: 0
     useCustomRotation: 0
     rotationAngle: 0
   - spawnPoint: {fileID: 5532498583811393701}
-    spawnType: 0
-    useCustomRotation: 0
-    rotationAngle: 0
-  - spawnPoint: {fileID: 2574143260706238207}
     spawnType: 0
     useCustomRotation: 0
     rotationAngle: 0
@@ -150,6 +103,7 @@ MonoBehaviour:
   patrollerSpawnPoints:
   - {fileID: 5055756850608565509}
   - {fileID: 12486653268800718}
+  - {fileID: 3461307591634542978}
 --- !u!114 &1930735183343198656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4012,37 +3966,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5009121186741853125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4179493428381018507
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2574143260706238207}
-  m_Layer: 0
-  m_Name: NPCSpawnPoint1 (13)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2574143260706238207
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4179493428381018507}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.66, y: 1.59, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5009121186741853125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5328496145220072162
 GameObject:
   m_ObjectHideFlags: 0
@@ -4215,68 +4138,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.32, y: 1.34, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5009121186741853125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6742025206851378354
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3197696695554484885}
-  m_Layer: 0
-  m_Name: NPCSpawnPoint1 (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3197696695554484885
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6742025206851378354}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.52, y: 1.61, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5009121186741853125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6764595517282851325
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2605508486979602827}
-  m_Layer: 0
-  m_Name: NPCSpawnPoint1 (10)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2605508486979602827
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6764595517282851325}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.68, y: 2.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4991,15 +4852,11 @@ Transform:
   - {fileID: 1695122387671553618}
   - {fileID: 7236249745454992641}
   - {fileID: 2190759026146730226}
-  - {fileID: 795105653327223426}
   - {fileID: 4814465634802876402}
   - {fileID: 3498442824121272559}
   - {fileID: 7855971096651209195}
-  - {fileID: 3197696695554484885}
-  - {fileID: 2605508486979602827}
   - {fileID: 5532498583811393701}
   - {fileID: 3081381390844975825}
-  - {fileID: 2574143260706238207}
   - {fileID: 6194596464480405328}
   - {fileID: 8396322433021199293}
   - {fileID: 4532772740208839168}
