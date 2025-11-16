@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioClip[] soundList;
 
-    private static SoundManager instance;
+    public static SoundManager instance;
     private AudioSource audioSource;
 
     private void Awake()
