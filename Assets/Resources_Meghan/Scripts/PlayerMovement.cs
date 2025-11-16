@@ -93,10 +93,16 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("MoveY", moveY);
 
         ///flipping, cus we only have left facing sprites
-        if (Mathf.Abs(moveX) > Mathf.Abs(moveY) && Mathf.Abs(moveX) > 0.1f)
-        {
-            spriteRenderer.flipX = moveX > 0;
-        }
+        //if (Mathf.Abs(moveX) > Mathf.Abs(moveY) && Mathf.Abs(moveX) > 0.1f)
+        //{
+        //    spriteRenderer.flipX = moveX > 0;
+        //}
+        
+        //up down flip
+        if (moveY < 0)
+            spriteRenderer.flipY = true;
+        else 
+            spriteRenderer.flipY = false;
     }
 
 
