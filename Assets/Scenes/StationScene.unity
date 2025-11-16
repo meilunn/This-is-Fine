@@ -2262,7 +2262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 346168172469802967, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 910119779334500370, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: m_IsActive
@@ -2334,7 +2334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280130459388741894, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9095116302353898857, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: 'patrollerSpawnPoints.Array.data[2]'
