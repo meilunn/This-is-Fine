@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   features:
-    DurationSec: 5
+    DurationSec: 30
     NpcCount: 0
     PassangerCount: 0
     spawnPoints: []
