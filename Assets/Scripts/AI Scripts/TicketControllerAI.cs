@@ -294,6 +294,12 @@ void UpdateCheckingTicket()
     {
         if (player == null) return;
         agent.SetDestination(player.position);
+
+        float dist = Vector2.Distance(transform.position, player.position);
+    if (dist <= catchDistance)
+    {
+        OnPlayerCaught();
+    }
     }
 
 
@@ -325,8 +331,18 @@ void UpdateCheckingTicket()
     }
     public void OnPlayerCaught()
 {
-    Debug.Log($"{name}: Player caught – you get a fine! 💸");
-    // TODO: GameManager.Instance.OnPlayerCaught();
+Debug.Log($"{name}: Player caught – you get a fine! 💸");
+
+    // Optional: stop this controller
+    agent.isStopped = true;
+    agent.velocity = Vector3.zero;
+
+    // Tell GameManager to end the game
+    if (GameManager.Instance != null &&
+        GameManager.Instance.CurrentGameStage != GameState.EndGame)
+    {
+        GameManager.Instance.GameOver();
+    }else{Debug.Log("THERE IS GAME MANAGER INSTANCE"); }
 }
 
 
