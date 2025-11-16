@@ -80,15 +80,24 @@ public class StationManager : MonoBehaviour
 
 public void OnTimerEnds()
 {
-    // Don’t change stationCurrentStage here
-    // Just open the doors
+    Debug.Log("[StationManager] OnTimerEnds fired");
+
     if (currentWagon != null)
     {
         var exit = currentWagon.GetExitTrigger();
         if (exit != null)
         {
+            Debug.Log($"[StationManager] Activating exit on wagon {currentWagon.name}");
             exit.Activate();
         }
+        else
+        {
+            Debug.LogWarning("[StationManager] currentWagon has NO exitTrigger assigned!");
+        }
+    }
+    else
+    {
+        Debug.LogWarning("[StationManager] OnTimerEnds but currentWagon is null!");
     }
 }
     public void OnPlayerEntersWagon()
@@ -230,7 +239,6 @@ public void OnTimerEnds()
                 {
                     stationCurrentStage = StationStage.GameOver;
                 }
-                stationCurrentStage = StationStage.TrainStopping;
                 break;
             case StationStage.TrainStopped:
 

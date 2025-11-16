@@ -132,7 +132,7 @@ public class TicketControllerAI  : MonoBehaviour
             {
                 angle = Vector2.Angle(Vector2.down, dir2);
             }
-            Debug.Log("Angle: " + angle + " vec: " + dir2);
+
             ViewCone.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
             ViewCone.gameObject.transform.position = transform.position + dir * fovRange / 2;
             //ViewCone.gameObject.transform.scale.y = fovRange;

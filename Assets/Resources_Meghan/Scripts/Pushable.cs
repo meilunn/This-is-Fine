@@ -47,7 +47,7 @@ public class Pushable : MonoBehaviour, IInteractable
             {
                 angle = Vector2.Angle(Vector2.down, dir2) + 180f;
             }
-            Debug.Log("Angle: " + angle + " vec: " + dir2);
+            
             arrowRenderer.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
             arrowRenderer.gameObject.transform.position = transform.position + dir;
         }
