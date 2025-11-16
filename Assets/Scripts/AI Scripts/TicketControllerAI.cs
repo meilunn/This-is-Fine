@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class TicketControllerAI  : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class TicketControllerAI  : MonoBehaviour
 
     [Header("FOV / Vision")]
     public float fovAngle = 60f;
-    public float fovRange = 6.0f;
+    public float fovRange = 4.0f;
     public Vector2 lookDirection = Vector2.right; // default facing right
 
     public bool IsChasing => currentState == ControllerState.Chasing;
@@ -46,7 +47,7 @@ public class TicketControllerAI  : MonoBehaviour
     [Header("Animation")] 
     private Animator _animator;
     private SpriteRenderer spriteRenderer;
-
+    public SpriteRenderer ViewCone;
 
     void Awake()
     {
@@ -109,20 +110,34 @@ public class TicketControllerAI  : MonoBehaviour
                 break;
         }
         Vector2 vel = agent.velocity;
-if (vel.sqrMagnitude > 0.001f)
-{
-    lookDirection = vel.normalized;
-}
+        if (vel.sqrMagnitude > 0.001f)
+        {
+            lookDirection = vel.normalized;
+        }
 
-// PATROLLING sight cone → detect player and start chase
-if (currentState == ControllerState.Patrolling && player != null)
-{
-    if (IsTargetInsideFov(player))
-    {
-        Debug.Log($"{name}: Player seen in FOV, notifying AIManager.");
-        OnPlayerDetected();   // this will promote via AIManager
-    }
-}
+        // PATROLLING sight cone → detect player and start chase
+        if (currentState == ControllerState.Patrolling && player != null)
+        {
+            if (IsTargetInsideFov(player))
+            {
+                Debug.Log($"{name}: Player seen in FOV, notifying AIManager.");
+                OnPlayerDetected();   // this will promote via AIManager
+            }
+        }
+
+            Vector3 dir = lookDirection;
+            Vector2 dir2 = new Vector2(dir.x, dir.y);
+            float angle = Vector2.Angle(Vector2.up, dir2) + 180f;
+            if (dir.x > 0)
+            {
+                angle = Vector2.Angle(Vector2.down, dir2);
+            }
+            Debug.Log("Angle: " + angle + " vec: " + dir2);
+            ViewCone.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            ViewCone.gameObject.transform.position = transform.position + dir * fovRange / 2;
+            //ViewCone.gameObject.transform.scale.y = fovRange;
+            //ViewCone.gameObject.transform.scale.x = fovAngle;
+        
     }
 
 // patrolling 

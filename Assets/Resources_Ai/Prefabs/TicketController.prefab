@@ -309,6 +309,7 @@ MonoBehaviour:
   fovAngle: 60
   fovRange: 6
   lookDirection: {x: 0, y: 0}
+  ViewCone: {fileID: 9010991036122045161}
   lineWidth: 0.05
 --- !u!50 &671926940713455074
 Rigidbody2D:
