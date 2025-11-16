@@ -47,6 +47,7 @@ public class StationManager : MonoBehaviour
 
     private void Awake()
     {
+        SoundManager.PlaySound(SoundType.Train);
         if (Instance == null)
         {
             Instance = this;
@@ -85,6 +86,7 @@ public class StationManager : MonoBehaviour
 
 public void OnTimerEnds()
 {
+    SoundManager.PlaySound(SoundType.DoorClose);
     Debug.Log("[StationManager] OnTimerEnds fired");
 
     if (currentWagon != null)
@@ -112,7 +114,8 @@ public void OnTimerEnds()
         {
             return;
         }
-
+        SoundManager.StopLoop();
+        SoundManager.PlayLoop(SoundType.LoopTrack);
         // Position player inside the current wagon
         Transform spawn = currentWagon.GetPlayerSpawnPoint();
         if (spawn != null)
@@ -156,10 +159,15 @@ public void OnTimerEnds()
         // Make sure the exit is closed at the start
         var exit = currentWagon.GetExitTrigger();
         if (exit != null) exit.Deactivate();
+
+        FadeInOutScript.Instance.startFadeOut();
     }
 
     public void OnPlayerExitWagon()
 {
+        SoundManager.StopLoop();
+    SoundManager.PlaySound(SoundType.Train);
+
     // 1) move player to station spawn
     if (stationPlayerSpawnPoint != null)
     {
@@ -187,6 +195,8 @@ public void OnTimerEnds()
 
     // 6) back to “waiting for train”
     stationCurrentStage = StationStage.WaitingForTrain;
+
+        FadeInOutScript.Instance.startFadeOut();
 }
 
     private void PrepareNextWagon()
@@ -256,6 +266,8 @@ if (currentStageIndex >= scenes.Count)
                 //todo train stopping
                 if (timer.IsTimerEnd())
                 {
+                                        
+
                     //stationCurrentStage = StationStage.GameOver;
                 }
                 break;
