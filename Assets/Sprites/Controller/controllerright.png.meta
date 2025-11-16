@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 9f8f97894edf57141ab341e6821d125a
+guid: fcfd79407980cd545aa4ed6e7b8b2554
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7238607039471267272
-    second: stun_0
+      213: -12416543293033448
+    second: controllerright_0
   - first:
-      213: 5078008455104014650
-    second: stun_1
+      213: 3944522996939849878
+    second: controllerright_1
   - first:
-      213: -3160870047172565213
-    second: stun_2
+      213: 8905900254422037314
+    second: controllerright_2
   - first:
-      213: 4307719829106642566
-    second: stun_3
+      213: 4041597155864061204
+    second: controllerright_3
+  - first:
+      213: 8152865126053492643
+    second: controllerright_4
+  - first:
+      213: 4055495126815308166
+    second: controllerright_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stun_0
+      name: controllerright_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 104
-        width: 24
-        height: 21
+        x: 6
+        y: 4
+        width: 19
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8325ca7df3d4b8b90800000000000000
-      internalID: -7238607039471267272
+      spriteID: 8143eab3833e3dff0800000000000000
+      internalID: -12416543293033448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stun_1
+      name: controllerright_1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 72
-        width: 24
-        height: 21
+        x: 38
+        y: 4
+        width: 19
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a39a7e419c5b87640800000000000000
-      internalID: 5078008455104014650
+      spriteID: 69085f844c2cdb630800000000000000
+      internalID: 3944522996939849878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stun_2
+      name: controllerright_2
       rect:
         serializedVersion: 2
-        x: 4
-        y: 39
-        width: 25
-        height: 22
+        x: 70
+        y: 4
+        width: 19
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3276b1960755224d0800000000000000
-      internalID: -3160870047172565213
+      spriteID: 243f2ed881d189b70800000000000000
+      internalID: 8905900254422037314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stun_3
+      name: controllerright_3
       rect:
         serializedVersion: 2
-        x: 4
-        y: 7
-        width: 25
-        height: 22
+        x: 102
+        y: 4
+        width: 18
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +196,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 68ececd7c5818cb30800000000000000
-      internalID: 4307719829106642566
+      spriteID: 415a1803333a61830800000000000000
+      internalID: 4041597155864061204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: controllerright_4
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 4
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a7b61ce2abc42170800000000000000
+      internalID: 8152865126053492643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: controllerright_5
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 4
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6897726b453084830800000000000000
+      internalID: 4055495126815308166
       vertices: []
       indices: 
       edges: []
@@ -210,10 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      stun_0: -7238607039471267272
-      stun_1: 5078008455104014650
-      stun_2: -3160870047172565213
-      stun_3: 4307719829106642566
+      controllerright_0: -12416543293033448
+      controllerright_1: 3944522996939849878
+      controllerright_2: 8905900254422037314
+      controllerright_3: 4041597155864061204
+      controllerright_4: 8152865126053492643
+      controllerright_5: 4055495126815308166
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
