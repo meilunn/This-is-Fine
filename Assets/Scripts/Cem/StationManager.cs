@@ -180,13 +180,20 @@ public void OnTimerEnds()
     private void PrepareNextWagon()
     {
         OnStageCompleted?.Invoke();
-        if (currentStageIndex >= scenes.Count)
+if (currentStageIndex >= scenes.Count)
+    {
+        // We finished all wagons
+        if (GameManager.Instance != null)
         {
             GameManager.Instance.CompleteGame();
         }
         else
         {
-            if(currentStageIndex > 0)
+            Debug.Log("[StationManager] All wagons done, but no GameManager.Instance. Just staying at station.");
+        }
+        return;
+    }
+         if(currentStageIndex > 0)
             {
                 //SceneController.Instance.RemoveSceneOnAdditive(scenes[currentStageIndex - 1].GetSceneName());
 
@@ -196,7 +203,7 @@ public void OnTimerEnds()
 
             //currentWagon = stages[currentStageIndex];
             currentStageIndex++;
-        }
+        
     }
 
     public void ProcessFSM()
