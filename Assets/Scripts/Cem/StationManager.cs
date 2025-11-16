@@ -268,7 +268,7 @@ if (currentStageIndex >= scenes.Count)
 
     public void InitializeNextStage()
     {
-        confiner.BoundingShape2D = currentWagon.GetConfinerObj();
+        //confiner.BoundingShape2D = currentWagon.GetConfinerObj();
     }
 
     public PlayerMovement GetPlayer()
