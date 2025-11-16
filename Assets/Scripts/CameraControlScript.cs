@@ -50,56 +50,54 @@ public class CameraControlScript : MonoBehaviour
     }
     
     private float GetMaxShiftAmount(Vector3 currentPosition, float desiredShift)
+{
+    // 1. If boundaries are off, allow the full shift
+    if (!respectBoundaries || confiner == null || confiner.BoundingShape2D == null)
     {
-        if (!respectBoundaries || confiner == null || confiner.BoundingShape2D == null)
-        {
-            return desiredShift; // No boundaries to check
-        }
-
-        // Get camera dimensions
-        float cameraHeight = mainCamera.orthographicSize;
-        float cameraWidth = cameraHeight * mainCamera.aspect;
-
-        // Calculate the target position
-        Vector3 targetPosition = currentPosition + new Vector3(-desiredShift, 0, 0);
-        
-        // Get the bounding shape (Collider2D)
-        Collider2D bounds = confiner.BoundingShape2D;
-        
-        // Check BOTH the left edge of camera at target AND right edge at current position
-        float cameraLeftEdgeAfterShift = targetPosition.x - cameraWidth;
-        float cameraRightEdgeCurrent = currentPosition.x + cameraWidth;
-        
-        // Check if left edge would hit boundary
-        Vector2 leftCheckPoint = new Vector2(cameraLeftEdgeAfterShift, targetPosition.y);
-        Vector2 closestPointLeft = bounds.ClosestPoint(leftCheckPoint);
-        
-        // Check if right edge is already at or past boundary
-        Vector2 rightCheckPoint = new Vector2(cameraRightEdgeCurrent, currentPosition.y);
-        Vector2 closestPointRight = bounds.ClosestPoint(rightCheckPoint);
-        
-        // If right edge is hitting boundary (closest point is to the left of our edge), DON'T SHIFT
-        if (closestPointRight.x < cameraRightEdgeCurrent - 0.1f)
-        {
-            Debug.Log("Right boundary detected - NOT shifting camera!");
-            return 0f; // Don't shift at all
-        }
-        
-        // Check if left edge would hit boundary after shift
-        float boundaryLeft = closestPointLeft.x;
-        float maxAllowedLeft = boundaryLeft + boundaryPadding;
-        
-        // Calculate maximum shift that keeps us within bounds
-        float maxShift = currentPosition.x - cameraWidth - maxAllowedLeft;
-        
-        if (maxShift < desiredShift)
-        {
-            Debug.Log($"Left boundary would be hit! Reducing shift from {desiredShift} to {maxShift}");
-            return Mathf.Max(0, maxShift); // Don't allow negative shift
-        }
-        
-        return desiredShift;
+        Debug.Log("No boundaries, allowing full shift.");
+        return desiredShift; // No boundaries to check
     }
+
+    // 2. Get the camera's half-width
+    // (mainCamera.orthographicSize is HALF the height)
+    float cameraHalfWidth = mainCamera.orthographicSize * mainCamera.aspect;
+
+    // 3. Get the absolute world-space boundaries of the *entire* level
+    Bounds levelBounds = confiner.BoundingShape2D.bounds;
+    float boundaryLeft = levelBounds.min.x;
+    float boundaryRight = levelBounds.max.x;
+
+    // 4. Check if we're already at the RIGHT edge
+    // (This prevents shifting left if the entire screen is already at the right boundary)
+    float currentCameraRightEdge = currentPosition.x + cameraHalfWidth;
+    if (currentCameraRightEdge >= boundaryRight - boundaryPadding)
+    {
+        Debug.Log("Camera is at or past the RIGHT boundary. Not shifting.");
+        return 0f;
+    }
+
+    // 5. Check how much space we have on the LEFT
+    float currentCameraLeftEdge = currentPosition.x - cameraHalfWidth;
+
+    // Calculate the total space available between the camera's left edge and the boundary
+    // e.g., CamLeftEdge (10) - (BoundaryLeft (0) + Padding (0.5)) = 9.5 available
+    float availableSpaceOnLeft = currentCameraLeftEdge - (boundaryLeft + boundaryPadding);
+
+    // If we have no space, return 0
+    if (availableSpaceOnLeft <= 0.01f) // Use a small epsilon
+    {
+        Debug.Log("Camera is at or past the LEFT boundary. Not shifting.");
+        return 0f;
+    }
+
+    // 6. Return the shift amount, clamped by the available space
+    // e.g., We want to shift 8, but only have 3.5 space. Return 3.5.
+    // e.g., We want to shift 8, and have 9.5 space. Return 8.
+    float actualShift = Mathf.Min(desiredShift, availableSpaceOnLeft);
+    
+    Debug.Log($"Available space on left: {availableSpaceOnLeft:F2}, Desired shift: {desiredShift}, Actual shift: {actualShift:F2}");
+    return actualShift;
+}
 
     public void ShiftLeft25()
     {

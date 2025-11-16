@@ -115,7 +115,6 @@ public void OnTimerEnds()
         {
             return;
         }
-
         SoundManager.StopLoop();
         SoundManager.PlayLoop(SoundType.LoopTrack);
         // Position player inside the current wagon
@@ -170,7 +169,7 @@ public void OnTimerEnds()
 
     public void OnPlayerExitWagon()
 {
-    SoundManager.StopLoop();
+        SoundManager.StopLoop();
     SoundManager.PlaySound(SoundType.Train);
 
     // 1) move player to station spawn
@@ -204,7 +203,9 @@ public void OnTimerEnds()
     // 6) back to “waiting for train”
     stationCurrentStage = StationStage.WaitingForTrain;
 
+
     FadeInOutScript.Instance.startFadeOut();
+
 }
 
     private void PrepareNextWagon()
@@ -274,7 +275,9 @@ if (currentStageIndex >= scenes.Count)
                 //todo train stopping
                 if (timer.IsTimerEnd())
                 {
-                    stationCurrentStage = StationStage.GameOver;
+                                        
+
+                    //stationCurrentStage = StationStage.GameOver;
                 }
                 break;
             case StationStage.TrainStopped:
