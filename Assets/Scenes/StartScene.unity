@@ -127,6 +127,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1753006811642705316, guid: 1968016442c657d4f9a1793abdb3d6e3, type: 3}
+      propertyPath: soundList.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1753006811642705316, guid: 1968016442c657d4f9a1793abdb3d6e3, type: 3}
+      propertyPath: 'soundList.Array.data[9]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 5424f5f1d31d9134b8c79b335aa943ba, type: 3}
+    - target: {fileID: 1753006811642705316, guid: 1968016442c657d4f9a1793abdb3d6e3, type: 3}
+      propertyPath: 'soundList.Array.data[10]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2210d7088abf9964babb319ccc0df86a, type: 3}
+    - target: {fileID: 1753006811642705316, guid: 1968016442c657d4f9a1793abdb3d6e3, type: 3}
+      propertyPath: 'soundList.Array.data[11]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e31b39e12f505e4084e38d292185eea, type: 3}
     - target: {fileID: 5938394905267668672, guid: 1968016442c657d4f9a1793abdb3d6e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 408.51547

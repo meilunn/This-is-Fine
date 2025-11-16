@@ -12,7 +12,10 @@ public enum SoundType
     Grunt,
     PushHit,
     PushMiss,
-    Shock
+    Shock,
+    WalkOut,
+    Lose,
+    Win
 }
 
 [RequireComponent(typeof(AudioSource))]

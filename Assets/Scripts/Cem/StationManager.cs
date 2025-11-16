@@ -58,7 +58,7 @@ public class StationManager : MonoBehaviour
         }
         timer.OnTimerEnd += OnTimerEnds;
         player.EnteredTrain += OnPlayerEntersWagon;
-        player.ExitedTrain  += OnPlayerExitWagon;
+        player.ExitedTrain  += OnPlayerExitWagon;  
 
 
         cinemachine.Follow = player.transform;
@@ -74,6 +74,7 @@ public class StationManager : MonoBehaviour
     private void Start()
     {
         confiner.BoundingShape2D = stationConfiner;
+        colliderList = new List<GameObject>();
     }
 
 
@@ -113,6 +114,9 @@ public void OnTimerEnds()
         if (GameManager.Instance.CurrentGameStage == GameState.EndGame)
         {
             return;
+        }
+        foreach (GameObject gameObject in colliderList) {
+            gameObject.GetComponent<Collider>().SetActive(false);
         }
         SoundManager.StopLoop();
         SoundManager.PlayLoop(SoundType.LoopTrack);
@@ -196,9 +200,7 @@ public void OnTimerEnds()
     // 6) back to “waiting for train”
     stationCurrentStage = StationStage.WaitingForTrain;
 
-
-    FadeInOutScript.Instance.startFadeOut();
-
+        FadeInOutScript.Instance.startFadeOut();
 }
 
     private void PrepareNextWagon()
@@ -288,6 +290,7 @@ if (currentStageIndex >= scenes.Count)
                 //stationCurrentStage = StationStage.WaitingForTrain;
                 break;
             case StationStage.GameOver:
+                SoundManager.PlaySound(SoundType.Lose);
                 break;
         }
     }
