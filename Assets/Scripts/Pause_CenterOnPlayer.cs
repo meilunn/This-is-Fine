@@ -4,42 +4,59 @@ using UnityEngine.InputSystem;
 
 public class Pause_CenterOnPlayer : MonoBehaviour
 {
+
+    //SetUp: Use PauseCanvas Prefab and fill in the SerializeFields, lastly add the CameraController Prefab
+    [Header("UI References")]
     [SerializeField] private TextMeshProUGUI tippText;
+    [SerializeField] private GameObject pauseImage; 
+
+    [Header("Camera Control")]
+    [SerializeField] private GameObject cameraObject;
+    private CameraControlScript myCameraControlScript;
+
     public static bool isPaused;
-    
+
     void Start()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        if (cameraObject != null)
+        {
+            myCameraControlScript = cameraObject.GetComponent<CameraControlScript>();
+        }
+        else
+        {
+            Debug.LogError("CameraObject not assigned in Inspector!");
+        }
     }
 
     public void Pause(InputAction.CallbackContext context)
     {
-        //you can still interact during timePaused
-        if (context.performed)
+        if (!context.performed) return;
+
+        if (!isPaused)
         {
-            if (!isPaused)
-            {
-                Time.timeScale = 0;
-                transform.Find("PauseImage").gameObject.SetActive(true);
-                RandomText();
+            Time.timeScale = 0;
+            if (pauseImage != null) pauseImage.SetActive(true);
 
-                isPaused = true;
-            }
-            else
-            {
-                transform.Find("PauseImage").gameObject.SetActive(false);
-                Time.timeScale = 1;
-                isPaused = false;
-            }
+            if (myCameraControlScript != null)
+                myCameraControlScript.ShiftLeft25(); 
+
+
+            RandomText(); 
+
+            isPaused = true;
         }
-               
+        else
+        {
+            if (myCameraControlScript != null)
+                myCameraControlScript.Restore();
 
+            if (pauseImage != null) pauseImage.SetActive(false);
+
+            Time.timeScale = 1;
+            isPaused = false;
+        }
     }
+
 
     private void RandomText()
     {

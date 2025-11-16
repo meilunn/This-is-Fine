@@ -594,7 +594,7 @@ MonoBehaviour:
   m_BuildHeightMesh: 0
   m_MinRegionArea: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 820f5025b97c4e848b457f79f25b9268, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 33844322c92ea4548900e12c414ed8eb, type: 2}
 --- !u!4 &446728232
 Transform:
   m_ObjectHideFlags: 0
@@ -4086,9 +4086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f09ecb2ad6d43098e774aa2681076a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stages: []
-  timer: {fileID: 0}
-  player: {fileID: 964568637}
 --- !u!1 &788125305
 GameObject:
   m_ObjectHideFlags: 0
@@ -4174,6 +4171,11 @@ Transform:
   - {fileID: 875000563}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &827042744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1637108931715152564, guid: 6b3e5afa08491914d8e6cdf0078435e7, type: 3}
+  m_PrefabInstance: {fileID: 6804324320448797809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &875000562
 GameObject:
   m_ObjectHideFlags: 0
@@ -4241,17 +4243,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2765933935930954829, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
   m_PrefabInstance: {fileID: 333283362}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &964568637 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3822871205684340261, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
-  m_PrefabInstance: {fileID: 333283362}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf127e4850d0f2d4d8a47eed9a4df8be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1136891232
 GameObject:
   m_ObjectHideFlags: 0
@@ -7671,7 +7662,6 @@ MonoBehaviour:
   - {fileID: 1558457123}
   patrollerSpawnPoints:
   - {fileID: 2037543534}
-  playerTransform: {fileID: 964568635}
 --- !u!4 &1909335479
 Transform:
   m_ObjectHideFlags: 0
@@ -7700,6 +7690,7 @@ GameObject:
   - component: {fileID: 1942136524}
   - component: {fileID: 1942136527}
   - component: {fileID: 1942136528}
+  - component: {fileID: 1942136529}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7857,6 +7848,44 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &1942136529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942136523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a72205b030a20d4a82a560048afd2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineCameraObject: {fileID: 1150561671}
+  shiftDuration: 0.35
+  shiftCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1984769716
 GameObject:
   m_ObjectHideFlags: 0
@@ -8008,6 +8037,26 @@ PrefabInstance:
     - target: {fileID: 4515039835952771647, guid: 6b3e5afa08491914d8e6cdf0078435e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710169373894636604, guid: 6b3e5afa08491914d8e6cdf0078435e7, type: 3}
+      propertyPath: pauseImage
+      value: 
+      objectReference: {fileID: 827042744}
+    - target: {fileID: 4710169373894636604, guid: 6b3e5afa08491914d8e6cdf0078435e7, type: 3}
+      propertyPath: cameraObject
+      value: 
+      objectReference: {fileID: 1942136523}
+    - target: {fileID: 5137571106627459931, guid: 6b3e5afa08491914d8e6cdf0078435e7, type: 3}
+      propertyPath: m_Color.b
+      value: 0.335849
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137571106627459931, guid: 6b3e5afa08491914d8e6cdf0078435e7, type: 3}
+      propertyPath: m_Color.g
+      value: 0.335849
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137571106627459931, guid: 6b3e5afa08491914d8e6cdf0078435e7, type: 3}
+      propertyPath: m_Color.r
+      value: 0.335849
       objectReference: {fileID: 0}
     - target: {fileID: 6155484836819818354, guid: 6b3e5afa08491914d8e6cdf0078435e7, type: 3}
       propertyPath: m_Name
