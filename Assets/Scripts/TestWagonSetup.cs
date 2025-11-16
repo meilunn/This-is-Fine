@@ -5,13 +5,14 @@ public class TestWagonSetup : MonoBehaviour
 {
     [Header("Managers")]
     public NPCManager npcManager;
+    public AIManager aiManager;
 
     [Header("Spawn Points")]
     public NPCManager.SpawnPoint[] npcSpawnPoints;
     public Transform[] chaserSpawnPoints;
     public Transform[] patrollerSpawnPoints;
 
-
+    
 
     
     private void OnEnable()
@@ -27,9 +28,9 @@ public class TestWagonSetup : MonoBehaviour
         }
 
         // 2) Spawn controllers via AIManager
-        if (AIManager.Instance != null)
+        if (aiManager != null)
         {
-            AIManager.Instance.OnEnterWagon(
+            aiManager.OnEnterWagon(
                 chaserSpawnPoints,
                 patrollerSpawnPoints,
                 npcManager
@@ -37,7 +38,7 @@ public class TestWagonSetup : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("TestWagonSetup: AIManager.Instance is null.");
+            Debug.LogWarning("TestWagonSetup: aiManager is null.");
         }
 
         // 3) Assign player to all controllers
@@ -51,9 +52,9 @@ public class TestWagonSetup : MonoBehaviour
             npcManager.CleanUpNpcPassengers();
             Debug.Log("CleanUpNpcPassengers");
         }
-        if (AIManager.Instance != null)
+        if (aiManager != null)
         {
-            AIManager.Instance.ClearCurrentControllers();
+            aiManager.ClearCurrentControllers();
         }
     }
 

@@ -36,14 +36,8 @@ public class NPCManager : MonoBehaviour
     private int currentPassengerAmountDecrease;
     
     [SerializeField] 
-    private List<GameObject> npcPassengers;
-    private List<GameObject> checkedNpcPassengers;
-
-    private void Awake()
-    {
-        npcPassengers = new List<GameObject>();
-        checkedNpcPassengers = new List<GameObject>();
-    }
+    private List<GameObject> npcPassengers = new List<GameObject>();
+    private List<GameObject> checkedNpcPassengers = new List<GameObject>();
 
     public void IntializeNPCs(SpawnPoint[] npcSpawnPoints)
     {
