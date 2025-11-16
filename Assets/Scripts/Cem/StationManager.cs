@@ -70,6 +70,22 @@ public class StationManager : MonoBehaviour
 
     public void OnPlayerEntersWagon()
     {
+
+    // Position player inside the current wagon
+    Transform spawn = currentWagon.GetPlayerSpawnPoint();
+    if (spawn != null)
+    {
+        player.transform.position = spawn.position;
+
+        var rb = player.GetComponent<Rigidbody2D>();
+        if (rb != null) rb.linearVelocity = Vector2.zero;
+    }
+    else
+    {
+        Debug.LogWarning($"StationManager: Wagon {currentWagon.name} has no player spawn point assigned!");
+    }
+
+
         timer.SetTimer(currentWagon.features.DurationSec);
         timer.StartTimer();
         currentWagon.gameObject.SetActive(true);

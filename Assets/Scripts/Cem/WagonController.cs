@@ -18,6 +18,10 @@ public class WagonController : MonoBehaviour
     [SerializeField]private SceneName sceneName;
     [SerializeField]private NavMeshPlus.Components.NavMeshSurface surface;
 
+
+
+    [Header("Player")]
+    [SerializeField] private Transform playerSpawnPoint;
     void OnEnable()
     {
         if (surface == null) surface = GetComponentInChildren<NavMeshPlus.Components.NavMeshSurface>();
@@ -33,6 +37,11 @@ public class WagonController : MonoBehaviour
     public SceneName GetSceneName()
     {
         return sceneName;
+    }
+
+        public Transform GetPlayerSpawnPoint()
+    {
+        return playerSpawnPoint;
     }
 
 }
