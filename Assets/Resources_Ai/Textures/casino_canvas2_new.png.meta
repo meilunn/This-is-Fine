@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 21d3aafe9b24a474b94e0781146a8e18
+guid: e4121c7ccd14d81448bf267758deea7a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 306888636163164312
-    second: oldschool_canvas_3_0
+      213: 2773179375567974346
+    second: casino_canvas2_new_0
+  - first:
+      213: -5796345441042607904
+    second: casino_canvas2_new_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oldschool_canvas_3_0
+      name: casino_canvas2_new_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8980c10b699424400800000000000000
-      internalID: 306888636163164312
+      spriteID: acf2b2bf2ff4c7620800000000000000
+      internalID: 2773179375567974346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oldschool_canvas_3_1
+      name: casino_canvas2_new_1
       rect:
         serializedVersion: 2
         x: 32
@@ -135,19 +138,19 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a03a2181218d7f246bf82f68cc4dee09
-      internalID: -19373470
+      spriteID: 0e0533f188e3f8fa0800000000000000
+      internalID: -5796345441042607904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oldschool_canvas_3_2
+      name: casino_canvas2_new_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 96
         y: 64
         width: 32
         height: 32
@@ -159,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b962bbbad8111aa4a9e12aee03ac1ccf
-      internalID: -672308672
+      spriteID: d39fdff05fbc725469243f74b75a65c0
+      internalID: 1280194201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oldschool_canvas_3_3
+      name: casino_canvas2_new_3
       rect:
         serializedVersion: 2
         x: 0
@@ -181,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f6fe5e80aa07b94f9d7a1221d58e5ea
-      internalID: 450471063
+      spriteID: 5a1cd9afc8eab884cbd9be68c4d0611d
+      internalID: 1543222269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oldschool_canvas_3_4
+      name: casino_canvas2_new_4
       rect:
         serializedVersion: 2
         x: 32
@@ -203,30 +206,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d483428a5b1d8414c9895c090b1f514c
-      internalID: -1382906304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oldschool_canvas_3_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e71f1f5241123246950ed6c074f2cb1
-      internalID: -1982619060
+      spriteID: c24c391b72ed99d4fbbd9172753cf08a
+      internalID: -242879561
       vertices: []
       indices: 
       edges: []
@@ -235,7 +216,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 86ea611b4ea3a6e42856d6afe8832a6d
+    spriteID: 326f1a1d28541a14caf8b2e1bec24df3
     internalID: 0
     vertices: []
     indices: 
@@ -245,12 +226,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      oldschool_canvas_3_0: 306888636163164312
-      oldschool_canvas_3_1: -19373470
-      oldschool_canvas_3_2: -672308672
-      oldschool_canvas_3_3: 450471063
-      oldschool_canvas_3_4: -1382906304
-      oldschool_canvas_3_5: -1982619060
+      casino_canvas2_new_0: 2773179375567974346
+      casino_canvas2_new_1: -5796345441042607904
+      casino_canvas2_new_2: 1280194201
+      casino_canvas2_new_3: 1543222269
+      casino_canvas2_new_4: -242879561
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

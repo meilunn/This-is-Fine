@@ -14,6 +14,21 @@ TextureImporter:
   - first:
       213: 8482223412755108403
     second: character_canvas_1_3
+  - first:
+      213: 7162848348474327908
+    second: character_canvas_1_4
+  - first:
+      213: -7182942920331749675
+    second: character_canvas_1_5
+  - first:
+      213: -9014617258498634681
+    second: character_canvas_1_6
+  - first:
+      213: 5690681073477775324
+    second: character_canvas_1_7
+  - first:
+      213: 6804751831860774836
+    second: character_canvas_1_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,10 +127,10 @@ TextureImporter:
       name: character_canvas_1_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 72
-        width: 25
-        height: 19
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +149,10 @@ TextureImporter:
       name: character_canvas_1_1
       rect:
         serializedVersion: 2
-        x: 37
+        x: 32
         y: 64
-        width: 24
-        height: 28
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +171,10 @@ TextureImporter:
       name: character_canvas_1_2
       rect:
         serializedVersion: 2
-        x: 4
-        y: 40
-        width: 25
-        height: 19
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +193,10 @@ TextureImporter:
       name: character_canvas_1_3
       rect:
         serializedVersion: 2
-        x: 38
-        y: 33
-        width: 21
-        height: 28
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,11 +211,143 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: character_canvas_1_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4634ece5f9c876360800000000000000
+      internalID: 7162848348474327908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_canvas_1_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d618b7887f015c90800000000000000
+      internalID: -7182942920331749675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_canvas_1_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74c45196d55a5e280800000000000000
+      internalID: -9014617258498634681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_canvas_1_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdf6eaa294c59fe40800000000000000
+      internalID: 5690681073477775324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_canvas_1_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b700caecb55f6e50800000000000000
+      internalID: 6804751831860774836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_canvas_1_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a32a08e6d9cbd3342a224601ea960532
+      internalID: -1275823965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 904b216d7a63c524c94611fab13a64a6
     internalID: 0
     vertices: []
     indices: 
@@ -214,6 +361,12 @@ TextureImporter:
       character_canvas_1_1: -5043163460872942158
       character_canvas_1_2: 4563753645032046129
       character_canvas_1_3: 8482223412755108403
+      character_canvas_1_4: 7162848348474327908
+      character_canvas_1_5: -7182942920331749675
+      character_canvas_1_6: -9014617258498634681
+      character_canvas_1_7: 5690681073477775324
+      character_canvas_1_8: 6804751831860774836
+      character_canvas_1_9: -1275823965
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

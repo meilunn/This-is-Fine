@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: oldschool_canvas_3_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -2101122584921471543, guid: 21d3aafe9b24a474b94e0781146a8e18, type: 3}
+  m_Sprite: {fileID: -19373470, guid: 21d3aafe9b24a474b94e0781146a8e18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
