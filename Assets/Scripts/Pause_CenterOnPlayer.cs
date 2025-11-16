@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class Pause_CenterOnPlayer : MonoBehaviour
 {
     //SetUp: Use PauseCanvas Prefab, add the CameraControlScript to the Camera, lastly fill in the SerializeFields
-
     
     [SerializeField] private TextMeshProUGUI tippText;
     [SerializeField] private GameObject pauseImage; 
@@ -64,7 +63,7 @@ public class Pause_CenterOnPlayer : MonoBehaviour
 
         switch (randomInt)
         {
-            case 0: tippText.text = "Push objects or people to block the controller's path.";
+            case 0: tippText.text = "Push people to block the controller's path and stun them.";
             break; 
             case 1: tippText.text = "Change trains to evade the controllers.";
             break; 
