@@ -78,11 +78,10 @@ public class StationManager : MonoBehaviour
 
 
 
-    public void OnTimerEnds()
-    {
-        stationCurrentStage = StationStage.TrainStopped;
-
-        // Open the wagon "door" (allow exit trigger to work)
+public void OnTimerEnds()
+{
+    // Don’t change stationCurrentStage here
+    // Just open the doors
     if (currentWagon != null)
     {
         var exit = currentWagon.GetExitTrigger();
@@ -91,8 +90,7 @@ public class StationManager : MonoBehaviour
             exit.Activate();
         }
     }
-    }
-
+}
     public void OnPlayerEntersWagon()
     {
 
@@ -141,28 +139,34 @@ public class StationManager : MonoBehaviour
     }
 
     public void OnPlayerExitWagon()
+{
+    // 1) move player to station spawn
+    if (stationPlayerSpawnPoint != null)
     {
-        // Move player to platform spawn
-        if (stationPlayerSpawnPoint != null)
-        {
-            player.transform.position = stationPlayerSpawnPoint.position;
+        player.transform.position = stationPlayerSpawnPoint.position;
 
-            var rb = player.GetComponent<Rigidbody2D>();
-            if (rb != null) rb.linearVelocity = Vector2.zero;
-        }
-
-        currentWagon.gameObject.SetActive(false);
-        station.SetActive(true);
-
-        // Switch confiner back to station bounds
-        confiner.BoundingShape2D = stationConfiner;
-
-        // Close wagon exit again (in case wagon gets reused later)
-        var exit = currentWagon.GetExitTrigger();
-        if (exit != null) exit.Deactivate();
-
-        stationCurrentStage = StationStage.TrainStopped;
+        var rb = player.GetComponent<Rigidbody2D>();
+        if (rb != null) rb.linearVelocity = Vector2.zero;
     }
+
+    // 2) hide current wagon, show station
+    currentWagon.gameObject.SetActive(false);
+    station.SetActive(true);
+
+    // 3) confine camera to station again
+    confiner.BoundingShape2D = stationConfiner;
+
+    // 4) close wagon exit (we still have reference to old currentWagon)
+    var exit = currentWagon.GetExitTrigger();
+    if (exit != null) exit.Deactivate();
+
+    // 5) prepare next wagon for the *next* time the player boards
+    PrepareNextWagon();
+    InitializeNextStage();
+
+    // 6) back to “waiting for train”
+    stationCurrentStage = StationStage.WaitingForTrain;
+}
 
     private void PrepareNextWagon()
     {
@@ -233,14 +237,14 @@ public class StationManager : MonoBehaviour
                 //Todo player is out ---> success nextWagon
                 //todo player is in ----> failed gameover
 
-                stationCurrentStage = StationStage.PrepareNextWagon;
+                //stationCurrentStage = StationStage.PrepareNextWagon;
 
                 break;
             case StationStage.PrepareNextWagon:
-                PrepareNextWagon();
-                InitializeNextStage();
+                //PrepareNextWagon();
+                //InitializeNextStage();
 
-                stationCurrentStage = StationStage.WaitingForTrain;
+                //stationCurrentStage = StationStage.WaitingForTrain;
                 break;
             case StationStage.GameOver:
                 break;
