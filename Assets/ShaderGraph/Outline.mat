@@ -18,7 +18,8 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -28,6 +29,26 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpriteSheet:
+        m_Texture: {fileID: 2800000, guid: 91d60f910e4be244c8e4a02e207cb32f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_0435f46b10134c9a96fdc073a029139b_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 91d60f910e4be244c8e4a02e207cb32f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_63b8de763d8842f897ea43ef502128ea_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 91d60f910e4be244c8e4a02e207cb32f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_7d4090cfdd364358aff8c176d8442735_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 91d60f910e4be244c8e4a02e207cb32f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_dd5c6eecbe4f4a699e6cb5cb141eec69_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 91d60f910e4be244c8e4a02e207cb32f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_de6cc97affd84c7ab7685a4458d5ebda_Out_0_Texture2D:
         m_Texture: {fileID: 2800000, guid: 91d60f910e4be244c8e4a02e207cb32f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -45,6 +66,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _QueueControl: 0
+    - _QueueOffset: 0
     - _Thickness: 0.005
     m_Colors:
     - _Color: {r: 0.9632426, g: 1, b: 0.6622641, a: 1}

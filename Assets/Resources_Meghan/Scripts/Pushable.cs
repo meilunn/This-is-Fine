@@ -55,11 +55,17 @@ public class Pushable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        animator.SetBool("isPushing", true);
-        if(isNPC) npcAnimator.SetBool("isPushed", true);
         Vector3 dir = (transform.position - StationManager.Instance.GetPlayer().transform.position).normalized;
         Vector2 dir2 = new Vector2(dir.x, dir.y);
         dir.z = 0;
+        animator.SetBool("isPushing", true);
+        
+        if (isNPC)
+        {
+            npcAnimator.SetBool("isPushed", true);
+            npcAnimator.SetFloat("MoveX", dir2.x);
+            npcAnimator.SetFloat("MoveY", dir2.y);
+        }
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir2, moveDistance, obstacleLayer);
         var moveTarget = new Vector2(0, 0);
         if (hit.collider != null)
@@ -75,9 +81,6 @@ public class Pushable : MonoBehaviour, IInteractable
             StartCoroutine(
                 MoveToPosition(moveTarget)
                 );
-
-        animator.SetBool("isPushing", false);
-        if(isNPC) npcAnimator.SetBool("isPushed", false);
     }
 
     public void SetInteractionMessage(bool b)
@@ -114,6 +117,15 @@ public class Pushable : MonoBehaviour, IInteractable
         }
 
         isMoving = false;
+        
+        animator.SetBool("isPushing", false);
+        
+        if (isNPC)
+        {
+            npcAnimator.SetBool("isPushed", false);
+            npcAnimator.SetFloat("MoveX", 0f);
+            npcAnimator.SetFloat("MoveY", 0f);
+        }
         Debug.Log($"Object {ObjID} moved from {startPosition} to {transform.position}");
     }
 }
