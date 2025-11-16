@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Pushable
+  - Wagon
+  - WagonExit
+  - WagonEntrance
+  - Platform
   layers:
   - Default
   - TransparentFX

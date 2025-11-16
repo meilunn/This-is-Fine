@@ -67,6 +67,10 @@ public class PlayerMovement : MonoBehaviour
         {
             EnteredTrain?.Invoke();
         }
+        else if (collision.CompareTag("Platform"))
+        {
+            // ?
+        }
     }
 
 
