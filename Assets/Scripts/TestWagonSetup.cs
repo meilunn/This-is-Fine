@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TestWagonSetup : MonoBehaviour
@@ -41,6 +42,19 @@ public class TestWagonSetup : MonoBehaviour
 
         // 3) Assign player to all controllers
         AssignPlayerToControllers();
+    }
+
+    private void OnDisable()
+    {
+        if (npcManager != null)
+        {
+            npcManager.CleanUpNpcPassengers();
+            Debug.Log("CleanUpNpcPassengers");
+        }
+        if (AIManager.Instance != null)
+        {
+            AIManager.Instance.ClearCurrentControllers();
+        }
     }
 
     private void AssignPlayerToControllers()
