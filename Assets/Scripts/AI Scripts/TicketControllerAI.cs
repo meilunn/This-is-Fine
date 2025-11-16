@@ -122,6 +122,7 @@ public class TicketControllerAI  : MonoBehaviour
             {
                 Debug.Log($"{name}: Player seen in FOV, notifying AIManager.");
                 OnPlayerDetected();   // this will promote via AIManager
+                SoundManager.PlaySound(SoundType.Shock);
             }
         }
 

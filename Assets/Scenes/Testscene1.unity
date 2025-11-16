@@ -435,6 +435,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4555060874633130417, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555060874633130417, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7446810593327988619, guid: 2f1eb4223a4b9a340a9b4c7f61eb5917, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4183,12 +4191,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenes: []
   timer: {fileID: 903775656}
-  player: {fileID: 964568637}
+  player: {fileID: 0}
   cinemachine: {fileID: 1150561674}
   confiner: {fileID: 0}
   trainAnimController: {fileID: 0}
   station: {fileID: 0}
+  stationConfiner: {fileID: 0}
   tenSecondWarning: {fileID: 0}
+  stationPlayerSpawnPoint: {fileID: 0}
 --- !u!114 &903775656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7696,12 +7706,20 @@ MonoBehaviour:
   npcSpawnPoints:
   - spawnPoint: {fileID: 1984769717}
     spawnType: 0
+    useCustomRotation: 0
+    rotationAngle: 0
   - spawnPoint: {fileID: 674690867}
     spawnType: 0
+    useCustomRotation: 0
+    rotationAngle: 0
   - spawnPoint: {fileID: 1497339748}
     spawnType: 0
+    useCustomRotation: 0
+    rotationAngle: 0
   - spawnPoint: {fileID: 875000563}
     spawnType: 0
+    useCustomRotation: 0
+    rotationAngle: 0
   chaserSpawnPoints:
   - {fileID: 913300426}
   patrollerSpawnPoints:
@@ -7971,3 +7989,4 @@ SceneRoots:
   - {fileID: 1558457123}
   - {fileID: 2037543534}
   - {fileID: 799945082}
+  - {fileID: 903775658}

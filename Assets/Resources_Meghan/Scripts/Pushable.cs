@@ -90,6 +90,7 @@ public class Pushable : MonoBehaviour, IInteractable
 
     private IEnumerator MoveToPosition(Vector2 target)
     {
+        SoundManager.PlaySoundAfter(SoundType.PushHit, SoundType.Grunt);
         isMoving = true;
         Vector2 startPosition = new Vector2(transform.position.x, transform.position.y);
         float elapsedTime = 0f;

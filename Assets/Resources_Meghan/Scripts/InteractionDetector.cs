@@ -11,6 +11,10 @@ public class InteractionDetector : MonoBehaviour
         {
             closestInteractable?.Interact();
         }
+        else if(!Pause_CenterOnPlayer.isPaused && closestInteractable == null) 
+        {
+            SoundManager.PlaySound(SoundType.PushMiss);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
