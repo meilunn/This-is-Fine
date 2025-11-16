@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -39,8 +40,8 @@ public class GameManager : MonoBehaviour
     
     public void CompleteGame()
     {
-        PanelManager.Instance.Show("gamecompleted");
-        CurrentGameStage = GameState.EndGame;
+    CurrentGameStage = GameState.EndGame;
+    SceneManager.LoadScene("GameCompletedScene");
     }
 
     public void GameOver()

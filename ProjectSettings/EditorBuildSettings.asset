@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Wagon3.unity
     guid: 9b566d95e3a7e4596a32399fb6d29553
+  - enabled: 1
+    path: Assets/Scenes/GameCompletedScene.unity
+    guid: 0ac21a7fbdff1fb4a9a17b58afa1c400
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
