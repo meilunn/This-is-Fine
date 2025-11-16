@@ -28,6 +28,7 @@ public class StationManager : MonoBehaviour
     [SerializeField] private CinemachineConfiner2D confiner;
     [SerializeField] private TrainAnimController trainAnimController;
     [SerializeField] private GameObject station;
+    [SerializeField] private Collider2D stationConfiner;
 
     private StationStage stationCurrentStage;
     private WagonController currentWagon;
@@ -52,6 +53,11 @@ public class StationManager : MonoBehaviour
         }
         timer.OnTimerEnd += OnTimerEnds;
         player.EnteredTrain += OnPlayerEntersWagon;
+
+        cinemachine.Follow = player.transform;
+
+        confiner.BoundingShape2D = stationConfiner;
+        
         PrepareNextWagon();
     }
 
@@ -90,6 +96,18 @@ public class StationManager : MonoBehaviour
         timer.StartTimer();
         currentWagon.gameObject.SetActive(true);
         station.SetActive(false);
+
+         // Switch camera confiner to wagon bounds
+        Collider2D wagonConfiner = currentWagon.GetConfinerObj();
+        if (wagonConfiner != null)
+        {
+            confiner.BoundingShape2D = wagonConfiner;
+            
+        }
+        else
+        {
+            Debug.LogWarning($"Wagon {currentWagon.name} has no confiner collider assigned.");
+        }
         trainAnimController.SetInitialEverything();
         confiner.enabled = true;
         stationCurrentStage = StationStage.InsideTrain;
