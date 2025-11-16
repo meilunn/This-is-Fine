@@ -31,6 +31,7 @@ public class StationManager : MonoBehaviour
     [SerializeField] private TrainAnimController trainAnimController;
     [SerializeField] private GameObject station;
     [SerializeField] private Collider2D stationConfiner;
+    [SerializeField] private GameObject platformBottomCollider;
 
     [SerializeField] private GameObject tenSecondWarning;
 
@@ -105,21 +106,22 @@ public void OnTimerEnds()
     public void OnPlayerEntersWagon()
     {
 
-    // Position player inside the current wagon
-    Transform spawn = currentWagon.GetPlayerSpawnPoint();
-    if (spawn != null)
-    {
-        player.transform.position = spawn.position;
+        // Position player inside the current wagon
+        Transform spawn = currentWagon.GetPlayerSpawnPoint();
+        if (spawn != null)
+        {
+            player.transform.position = spawn.position;
 
-        var rb = player.GetComponent<Rigidbody2D>();
-        if (rb != null) rb.linearVelocity = Vector2.zero;
-    }
-    else
-    {
-        Debug.LogWarning($"StationManager: Wagon {currentWagon.name} has no player spawn point assigned!");
-    }
+            var rb = player.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity = Vector2.zero;
+        }
+        else
+        {
+            Debug.LogWarning($"StationManager: Wagon {currentWagon.name} has no player spawn point assigned!");
+        }
 
 
+        platformBottomCollider.SetActive(false);
         timer.SetTimer(currentWagon.features.DurationSec);
         timer.StartTimer();
 
@@ -163,6 +165,7 @@ public void OnTimerEnds()
     // 2) hide current wagon, show station
     currentWagon.gameObject.SetActive(false);
     station.SetActive(true);
+    platformBottomCollider.SetActive(true);
 
     // 3) confine camera to station again
     confiner.BoundingShape2D = stationConfiner;
