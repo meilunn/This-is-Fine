@@ -649,7 +649,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   respectBoundaries: 1
-  boundaryPadding: 4
+  boundaryPadding: 0.5
 --- !u!4 &98765137
 Transform:
   m_ObjectHideFlags: 0
