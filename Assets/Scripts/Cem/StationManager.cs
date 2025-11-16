@@ -74,7 +74,6 @@ public class StationManager : MonoBehaviour
     private void Start()
     {
         confiner.BoundingShape2D = stationConfiner;
-        colliderList = new List<GameObject>();
     }
 
 
@@ -114,9 +113,6 @@ public void OnTimerEnds()
         if (GameManager.Instance.CurrentGameStage == GameState.EndGame)
         {
             return;
-        }
-        foreach (GameObject gameObject in colliderList) {
-            gameObject.GetComponent<Collider>().SetActive(false);
         }
         SoundManager.StopLoop();
         SoundManager.PlayLoop(SoundType.LoopTrack);
