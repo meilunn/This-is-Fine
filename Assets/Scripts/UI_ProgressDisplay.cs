@@ -32,14 +32,14 @@ public class UI_ProgressDisplay : MonoBehaviour
     private List<RectTransform> spawnedTiles = new List<RectTransform>();
     private List<int> stationIndices = new List<int>(); 
     private List<float> stationCenterPositions = new List<float>(); 
-    [SerializeField] private GameObject myControlleurDisplayObject;
+    //[SerializeField] private GameObject myControlleurDisplayObject;
     private UI_ControlleurDisplay myControlleurDisplay;
     
     private Animator anim; // <-- This will hold the train's animator
 
     void Start()
     {
-        myControlleurDisplay = myControlleurDisplayObject.GetComponent<UI_ControlleurDisplay>();
+//        myControlleurDisplay = myControlleurDisplayObject.GetComponent<UI_ControlleurDisplay>();
         // anim = GetComponent<Animator>(); // <-- 2. REMOVED THIS LINE (This was the bug)
 
         trackDisplayLength = FillWithValues(testValues);

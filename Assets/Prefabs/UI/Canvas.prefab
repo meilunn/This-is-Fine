@@ -157,7 +157,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 6
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trainDeparts: 0
-  trainTravels: 0
+  trainTravels: 1
   threshhold: 50
   testValues: 0000000002000000000000000300000000000000020000000000000004000000000000000200000000000000
   trainStation: {fileID: 9112291196976919195, guid: 8ea115c216d267a4b9e2c77beb347498, type: 3}
@@ -187,7 +187,6 @@ MonoBehaviour:
   trainPrefab: {fileID: 7509265051350122130, guid: 9a5b47fedb397074aa7506f8eddc488a, type: 3}
   parentDisplayTracks: {fileID: 5105421389298314502}
   speed: {x: -30, y: 0, z: 0}
-  myControlleurDisplayObject: {fileID: 0}
 --- !u!114 &1711226884335780870
 MonoBehaviour:
   m_ObjectHideFlags: 0
