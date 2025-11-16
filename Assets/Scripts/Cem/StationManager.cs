@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using Unity.Cinemachine;
 using System.Collections.Generic;
@@ -41,10 +42,6 @@ public class StationManager : MonoBehaviour
     private Vector3 cameraInitialPos;
     private int currentStageIndex = 0;
 
-
-
-
-
     public System.Action OnStageCompleted;
 
     private void Awake()
@@ -68,6 +65,11 @@ public class StationManager : MonoBehaviour
         tenSecondWarning.SetActive(false);
 
         PrepareNextWagon();
+    }
+
+    private void Start()
+    {
+        confiner.BoundingShape2D = stationConfiner;
     }
 
 
@@ -203,7 +205,7 @@ if (currentStageIndex >= scenes.Count)
 
             //currentWagon = stages[currentStageIndex];
             currentStageIndex++;
-        
+
     }
 
     public void ProcessFSM()
