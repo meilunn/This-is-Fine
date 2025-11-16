@@ -44,7 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45b569b2e5f65f247a311d857d4f6811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCPrefab: {fileID: 3168882978922814640, guid: 9590ad985b9c284419dd9a08f327378d, type: 3}
+  NPCPrefabs:
+  - {fileID: 3168882978922814640, guid: 4ceca64d6e2e96a449f904a60cb3d93c, type: 3}
+  - {fileID: 3168882978922814640, guid: a92d885378d008744b7e33db14777e21, type: 3}
+  - {fileID: 3168882978922814640, guid: cf7e5fd0f31d4ca49aa6921309b7375b, type: 3}
+  - {fileID: 3168882978922814640, guid: 47970adadc8ab934d9c062b9c083e55e, type: 3}
+  - {fileID: 3168882978922814640, guid: 6cd5745b791ff41438b76da9ade5cf36, type: 3}
   standingNPCSprites: []
   sittingNPCSprites: []
   npcSpawnPoints: []

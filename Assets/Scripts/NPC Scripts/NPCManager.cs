@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class NPCManager : MonoBehaviour
 {
 
-    public GameObject NPCPrefab;
+    public GameObject[] NPCPrefabs;
     
     public Sprite[] standingNPCSprites;
     public Sprite[] sittingNPCSprites;
@@ -89,7 +89,8 @@ public class NPCManager : MonoBehaviour
 
             pI.Add(pIndex);
 
-            GameObject npc = Instantiate(NPCPrefab);
+            int r = i % NPCPrefabs.Length;
+            GameObject npc = Instantiate(NPCPrefabs[r]);
             SpawnPoint point = npcSpawnPoints[pIndex];
             npc.transform.position = point.spawnPoint.position;
 

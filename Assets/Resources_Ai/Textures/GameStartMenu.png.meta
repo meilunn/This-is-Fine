@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 922a2f78c27c5c641b0f56ca1a498656
+guid: ba5564771c40e1c4ea27c766dbddf6cf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3710540327429775383
-    second: NPC_2_Vorwarts_0
-  - first:
-      213: -6776767321488526565
-    second: NPC_2_Vorwarts_1
-  - first:
-      213: 1656039173157154760
-    second: NPC_2_Vorwarts_2
-  - first:
-      213: 3965563869778654611
-    second: NPC_2_Vorwarts_3
+      213: -3202480014073568842
+    second: GameStartMenu_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -55,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,79 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NPC_2_Vorwarts_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 710a63db4cc7e7330800000000000000
-      internalID: 3710540327429775383
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_2_Vorwarts_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b137335a60614f1a0800000000000000
-      internalID: -6776767321488526565
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_2_Vorwarts_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8cfe92a9ade6bf610800000000000000
-      internalID: 1656039173157154760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_2_Vorwarts_3
+      name: GameStartMenu_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 395b7404453880730800000000000000
-      internalID: 3965563869778654611
+      spriteID: 6b16bd805618e83d0800000000000000
+      internalID: -3202480014073568842
       vertices: []
       indices: 
       edges: []
@@ -200,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4c6fdad82ce5090489c4ec5105bc9943
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      NPC_2_Vorwarts_0: 3710540327429775383
-      NPC_2_Vorwarts_1: -6776767321488526565
-      NPC_2_Vorwarts_2: 1656039173157154760
-      NPC_2_Vorwarts_3: 3965563869778654611
+      GameStartMenu_0: -3202480014073568842
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

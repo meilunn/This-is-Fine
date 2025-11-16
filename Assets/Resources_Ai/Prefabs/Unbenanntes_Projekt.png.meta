@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 2ab80eb2d492856449c49545b08c1c87
+guid: 92b1fa24159ff7e43b5b86074969ab85
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: -5898024392449075139
     second: Unbenanntes_Projekt_0
-  - first:
-      213: 426840819286282651
-    second: Unbenanntes_Projekt_1
-  - first:
-      213: 8374821186413489393
-    second: Unbenanntes_Projekt_2
-  - first:
-      213: 6365074055933737989
-    second: Unbenanntes_Projekt_3
-  - first:
-      213: -1135926432740013412
-    second: Unbenanntes_Projekt_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,9 +104,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 32
-        height: 32
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,99 +121,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Unbenanntes_Projekt_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b911231b6717ce500800000000000000
-      internalID: 426840819286282651
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Unbenanntes_Projekt_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1fc67915f77593470800000000000000
-      internalID: 8374821186413489393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Unbenanntes_Projekt_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 50c3cf85129455850800000000000000
-      internalID: 6365074055933737989
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Unbenanntes_Projekt_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c9a0e858de06c30f0800000000000000
-      internalID: -1135926432740013412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 33d9651d46b9f014fa88008bf44a0082
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -236,10 +136,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Unbenanntes_Projekt_0: -5898024392449075139
-      Unbenanntes_Projekt_1: 426840819286282651
-      Unbenanntes_Projekt_2: 8374821186413489393
-      Unbenanntes_Projekt_3: 6365074055933737989
-      Unbenanntes_Projekt_4: -1135926432740013412
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -29,6 +29,11 @@ public class PanelManager : MonoBehaviour
         
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void Show(string panelName)
     {
         foreach (var entry in panels)
