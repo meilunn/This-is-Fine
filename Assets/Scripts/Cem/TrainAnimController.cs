@@ -6,7 +6,7 @@ public class TrainAnimController : MonoBehaviour
 
 
     private bool isMoving = false;
-    private float moveDuration = 1.5f;
+    private float moveDuration = 7f;
     private float timer = 0f;
     private Vector3 initialPos;
 
