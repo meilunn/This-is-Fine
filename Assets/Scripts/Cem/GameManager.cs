@@ -46,9 +46,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        PanelManager.Instance.Show("gameover");
+Debug.Log("[GameManager] GameOver called – loading GameOverScene");
         CurrentGameStage = GameState.EndGame;
-
+        SceneManager.LoadScene("GameOverScene");   // make sure the name matches your scene asset
     }
 
     
