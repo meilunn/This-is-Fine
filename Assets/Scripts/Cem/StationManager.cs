@@ -57,6 +57,8 @@ public class StationManager : MonoBehaviour
         }
         timer.OnTimerEnd += OnTimerEnds;
         player.EnteredTrain += OnPlayerEntersWagon;
+        player.ExitedTrain  += OnPlayerExitWagon;  
+
 
         cinemachine.Follow = player.transform;
 

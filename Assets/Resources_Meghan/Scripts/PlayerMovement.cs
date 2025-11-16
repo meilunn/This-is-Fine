@@ -28,7 +28,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     [SerializeField] private WagonEntranceTrigger wagonEntranceTrigger;
-    [SerializeField] private GameObject pressEHint;
+    [SerializeField] private WagonExitTrigger wagonExitTrigger;
+    [SerializeField] private GameObject pressEHintEntrance;
+    [SerializeField] private GameObject pressEHintExit;
 
 
     // NEW: can we currently enter a wagon?
@@ -39,8 +41,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (pressEHint != null)
-            pressEHint.SetActive(false);
+        if (pressEHintEntrance != null) pressEHintEntrance.SetActive(false);
+        if (pressEHintExit != null)      pressEHintExit.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,10 +52,13 @@ public class PlayerMovement : MonoBehaviour
 
         // Are we standing in the entrance trigger?
         bool nearEntrance = wagonEntranceTrigger != null && wagonEntranceTrigger.PlayerIsHere;
+        bool nearExit     = wagonExitTrigger     != null && wagonExitTrigger.PlayerIsHere;
 
-        // Show / hide the "Press E" hint
-        if (pressEHint != null)
-            pressEHint.SetActive(nearEntrance);
+        if (pressEHintEntrance != null)
+            pressEHintEntrance.SetActive(nearEntrance);
+
+        if (pressEHintExit != null)
+            pressEHintExit.SetActive(nearExit);
 
         // Press E to enter if near entrance
         if (nearEntrance &&
@@ -61,6 +66,14 @@ public class PlayerMovement : MonoBehaviour
             Keyboard.current.eKey.wasPressedThisFrame)
         {
             EnteredTrain?.Invoke();
+        }
+
+        // E drücken zum AUSSTEIGEN
+        if (nearExit &&
+            Keyboard.current != null &&
+            Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            ExitedTrain?.Invoke();
         }
     }
 
@@ -86,21 +99,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Only used for EXIT now
-        if (collision.CompareTag("WagonExit"))
-        {
-            ExitedTrain?.Invoke();
-        }
-    }
 
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("WagonExit"))
-        {
-            ExitedTrain?.Invoke();
-        }
-    }
 }
