@@ -31,7 +31,7 @@ public class StationManager : MonoBehaviour
     [SerializeField] private TrainAnimController trainAnimController;
     [SerializeField] private GameObject station;
     [SerializeField] private Collider2D stationConfiner;
-    [SerializeField] private GameObject platformBottomCollider;
+    [SerializeField] private List<GameObject> colliderList;
 
     [SerializeField] private GameObject tenSecondWarning;
 
@@ -58,7 +58,7 @@ public class StationManager : MonoBehaviour
         }
         timer.OnTimerEnd += OnTimerEnds;
         player.EnteredTrain += OnPlayerEntersWagon;
-        player.ExitedTrain  += OnPlayerExitWagon;  
+        player.ExitedTrain  += OnPlayerExitWagon;
 
 
         cinemachine.Follow = player.transform;
@@ -73,6 +73,7 @@ public class StationManager : MonoBehaviour
 
     private void Start()
     {
+        colliderList = new List<GameObject>();
         confiner.BoundingShape2D = stationConfiner;
     }
 
@@ -85,7 +86,7 @@ public class StationManager : MonoBehaviour
 
 
 public void OnTimerEnds()
-{   
+{
     SoundManager.PlaySound(SoundType.DoorClose);
     Debug.Log("[StationManager] OnTimerEnds fired");
 
@@ -132,7 +133,10 @@ public void OnTimerEnds()
         }
 
 
-        platformBottomCollider.SetActive(false);
+        foreach (GameObject g in colliderList)
+        {
+            g.SetActive(false);
+        }
         timer.SetTimer(currentWagon.features.DurationSec);
         timer.StartTimer();
 
@@ -160,7 +164,7 @@ public void OnTimerEnds()
         // Make sure the exit is closed at the start
         var exit = currentWagon.GetExitTrigger();
         if (exit != null) exit.Deactivate();
-        
+
         FadeInOutScript.Instance.startFadeOut();
     }
 
@@ -181,7 +185,10 @@ public void OnTimerEnds()
     // 2) hide current wagon, show station
     currentWagon.gameObject.SetActive(false);
     station.SetActive(true);
-    platformBottomCollider.SetActive(true);
+    foreach (GameObject g in colliderList)
+    {
+        g.SetActive(true);
+    }
 
     // 3) confine camera to station again
     confiner.BoundingShape2D = stationConfiner;
@@ -196,7 +203,7 @@ public void OnTimerEnds()
 
     // 6) back to “waiting for train”
     stationCurrentStage = StationStage.WaitingForTrain;
-    
+
     FadeInOutScript.Instance.startFadeOut();
 }
 
