@@ -334,15 +334,18 @@ void UpdateCheckingTicket()
 Debug.Log($"{name}: Player caught – you get a fine! 💸");
 
     // Optional: stop this controller
-    agent.isStopped = true;
-    agent.velocity = Vector3.zero;
 
+if (dist <= catchDistance)
+{
+        agent.isStopped = true;
+    agent.velocity = Vector3.zero;
     // Tell GameManager to end the game
     if (GameManager.Instance != null &&
         GameManager.Instance.CurrentGameStage != GameState.EndGame)
     {
         GameManager.Instance.GameOver();
-    }else{Debug.Log("THERE IS GAME MANAGER INSTANCE"); }
+    }
+    }
 }
 
 

@@ -301,7 +301,7 @@ MonoBehaviour:
   patrolToNPC: []
   npcStoppingDistance: 0.15
   checkTicketDuration: 1.5
-  catchDistance: 0.2
+  catchDistance: 0.5
   chaseSpeed: 2.5
   patrolSpeed: 3
   shockedTime: 5
