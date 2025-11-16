@@ -31,7 +31,11 @@ public class StationManager : MonoBehaviour
     [SerializeField] private GameObject station;
     [SerializeField] private Collider2D stationConfiner;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     [SerializeField] private GameObject tenSecondWarning;
+=======
+    [SerializeField] private Transform stationPlayerSpawnPoint;
+>>>>>>> Stashed changes
 =======
     [SerializeField] private Transform stationPlayerSpawnPoint;
 >>>>>>> Stashed changes
