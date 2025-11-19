@@ -2037,7 +2037,7 @@ PrefabInstance:
       objectReference: {fileID: 46442118}
     - target: {fileID: 1930735183343198656, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: features.DurationSec
-      value: 10
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 3022087101217160386, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: basePatrollersPerWagon
@@ -2393,7 +2393,7 @@ PrefabInstance:
       objectReference: {fileID: 46442118}
     - target: {fileID: 1930735183343198656, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: features.DurationSec
-      value: 10
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3022087101217160386, guid: a1acac69e35f44de9bc83ceca896ea8b, type: 3}
       propertyPath: basePatrollersPerWagon
@@ -2638,7 +2638,7 @@ PrefabInstance:
       objectReference: {fileID: 46442118}
     - target: {fileID: 6728508741177024975, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
       propertyPath: features.DurationSec
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6862064792525639392, guid: 49fd69d5bdfda4834bee40e457e24d2e, type: 3}
       propertyPath: m_LocalPosition.x
