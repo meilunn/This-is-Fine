@@ -57,14 +57,14 @@ private void Awake()
 {
     //Singleton pattern 
 
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+        // if (Instance != null && Instance != this)
+        // {
+        //     Destroy(gameObject);
+        //     return;
+        // }
+        //
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
 
         totalChaserCount = startingChasers;
 }
@@ -159,6 +159,7 @@ private void Awake()
 
     public void ClearCurrentControllers()
     {
+        Debug.Log($"Clearing {activePatrollers.Count} patrollers");
         for (int i = activePatrollers.Count - 1; i >= 0; i--)
         {
             if (activePatrollers[i] != null)
@@ -166,6 +167,7 @@ private void Awake()
         }
         activePatrollers.Clear();
 
+        Debug.Log($"Clearing {activeChasers.Count} chasers");
         for (int i = activeChasers.Count - 1; i >= 0; i--)
         {
             if (activeChasers[i] != null)

@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public void CompleteGame()
     {
     CurrentGameStage = GameState.EndGame;
+    FadeInOutScript.Instance.startFadeOut();
     SceneManager.LoadScene("GameCompletedScene");
     }
 
@@ -48,6 +49,9 @@ public class GameManager : MonoBehaviour
     {
 Debug.Log("[GameManager] GameOver called – loading GameOverScene");
         CurrentGameStage = GameState.EndGame;
+        SoundManager.StopLoop();
+        SoundManager.PlaySound(SoundType.Lose);
+        FadeInOutScript.Instance.startFadeOut();
         SceneManager.LoadScene("GameOverScene");   // make sure the name matches your scene asset
     }
 

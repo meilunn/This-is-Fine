@@ -12,6 +12,9 @@ public void OnRetryButton()
         }
 
         // reload the main station scene – name must match your scene
-        SceneManager.LoadScene("StationScene");
+        FadeInOutScript.Instance.startFadeOut();
+        // SceneManager.LoadScene("StationScene");
+        SceneManager.LoadScene("StartScene");
+        PanelManager.Instance.Show("mainmenu");
     }
 }

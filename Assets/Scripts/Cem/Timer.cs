@@ -20,6 +20,11 @@ public class Timer : MonoBehaviour
         }
     }
 
+    public float GetTotalTime()
+    {
+        return totalTime;
+    }
+    
     public void SetTimer(float time)
     {
         totalTime = time;

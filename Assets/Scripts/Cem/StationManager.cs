@@ -25,6 +25,7 @@ public class StationManager : MonoBehaviour
     public static StationManager Instance;
     [SerializeField] private List<WagonController> scenes;
     [SerializeField] private Timer timer;
+    [SerializeField] private ShowTimeScript showTimeScript;
     [SerializeField] private PlayerMovement player;
     [SerializeField] private CinemachineCamera cinemachine;
     [SerializeField] private CinemachineConfiner2D confiner;
@@ -114,6 +115,9 @@ public void OnTimerEnds()
         {
             return;
         }
+        
+        showTimeScript.gameObject.SetActive(true);
+        
         SoundManager.StopLoop();
         SoundManager.PlayLoop(SoundType.LoopTrack);
         // Position player inside the current wagon
@@ -165,7 +169,9 @@ public void OnTimerEnds()
 
     public void OnPlayerExitWagon()
 {
-        SoundManager.StopLoop();
+    showTimeScript.gameObject.SetActive(false);
+
+    SoundManager.StopLoop();
     SoundManager.PlaySound(SoundType.Train);
 
     // 1) move player to station spawn
@@ -290,7 +296,6 @@ if (currentStageIndex >= scenes.Count)
                 //stationCurrentStage = StationStage.WaitingForTrain;
                 break;
             case StationStage.GameOver:
-                SoundManager.PlaySound(SoundType.Lose);
                 break;
         }
     }

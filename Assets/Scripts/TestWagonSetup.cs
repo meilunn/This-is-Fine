@@ -55,6 +55,7 @@ public class TestWagonSetup : MonoBehaviour
         if (aiManager != null)
         {
             aiManager.ClearCurrentControllers();
+            Debug.LogWarning("CleanUpControllers");
         }
     }
 
