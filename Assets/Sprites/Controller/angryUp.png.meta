@@ -1,28 +1,25 @@
 fileFormatVersion: 2
-guid: a758beffe2268ed4899fce168c6fdc84
+guid: d3050ea380b895b4c92f0a79eb8bb198
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2140195979458053779
-    second: IdleLeft_0
+      213: -3808205094034589316
+    second: angryUp_0
   - first:
-      213: -2796951903022326533
-    second: IdleLeft_1
+      213: 3722923900059956839
+    second: angryUp_1
   - first:
-      213: 3219885235290014546
-    second: IdleLeft_2
+      213: -4598586012543121511
+    second: angryUp_2
   - first:
-      213: -4480828005849900375
-    second: IdleLeft_3
+      213: -1461531564996658410
+    second: angryUp_3
   - first:
-      213: -2759137661950804259
-    second: IdleLeft_4
+      213: -4369626061290072390
+    second: angryUp_4
   - first:
-      213: 4345612072454689926
-    second: IdleLeft_5
-  - first:
-      213: 6584505689531564362
-    second: IdleLeft_6
+      213: 5023655708838392659
+    second: angryUp_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,79 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IdleLeft_0
+      name: angryUp_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 3
-        width: 23
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d69feae881f7c42e0800000000000000
-      internalID: -2140195979458053779
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_1
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 3
-        width: 23
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bfc5086201b3f29d0800000000000000
-      internalID: -2796951903022326533
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_2
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 4
-        width: 19
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2538cf2df845fac20800000000000000
-      internalID: 3219885235290014546
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_3
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 2
+        x: 4
+        y: 166
         width: 24
-        height: 28
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9aad1bb4ba6e0d1c0800000000000000
-      internalID: -4480828005849900375
+      spriteID: c793c3ac4a9862bc0800000000000000
+      internalID: -3808205094034589316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleLeft_4
+      name: angryUp_1
       rect:
         serializedVersion: 2
-        x: 132
-        y: 2
+        x: 4
+        y: 134
         width: 24
-        height: 28
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dde350d3ae295b9d0800000000000000
-      internalID: -2759137661950804259
+      spriteID: 766b2ecef8b7aa330800000000000000
+      internalID: 3722923900059956839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleLeft_5
+      name: angryUp_2
       rect:
         serializedVersion: 2
-        x: 165
-        y: 3
-        width: 20
-        height: 26
+        x: 4
+        y: 102
+        width: 24
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6849f46e727be4c30800000000000000
-      internalID: 4345612072454689926
+      spriteID: 997894dc26a8e20c0800000000000000
+      internalID: -4598586012543121511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleLeft_6
+      name: angryUp_3
       rect:
         serializedVersion: 2
-        x: 197
-        y: 4
-        width: 19
-        height: 25
+        x: 4
+        y: 70
+        width: 24
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,8 +196,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a414116d90dd06b50800000000000000
-      internalID: 6584505689531564362
+      spriteID: 61b7a5009c897bbe0800000000000000
+      internalID: -1461531564996658410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angryUp_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 38
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab6148f9f38fb53c0800000000000000
+      internalID: -4369626061290072390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angryUp_5
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 6
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 353fc2f204c97b540800000000000000
+      internalID: 5023655708838392659
       vertices: []
       indices: 
       edges: []
@@ -285,13 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IdleLeft_0: -2140195979458053779
-      IdleLeft_1: -2796951903022326533
-      IdleLeft_2: 3219885235290014546
-      IdleLeft_3: -4480828005849900375
-      IdleLeft_4: -2759137661950804259
-      IdleLeft_5: 4345612072454689926
-      IdleLeft_6: 6584505689531564362
+      angryUp_0: -3808205094034589316
+      angryUp_1: 3722923900059956839
+      angryUp_2: -4598586012543121511
+      angryUp_3: -1461531564996658410
+      angryUp_4: -4369626061290072390
+      angryUp_5: 5023655708838392659
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

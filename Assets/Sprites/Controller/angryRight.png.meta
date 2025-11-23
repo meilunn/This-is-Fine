@@ -1,28 +1,25 @@
 fileFormatVersion: 2
-guid: a758beffe2268ed4899fce168c6fdc84
+guid: 29fc355f54ab3de42a382402a2b481e0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2140195979458053779
-    second: IdleLeft_0
+      213: 7470800620850137398
+    second: angryRight_0
   - first:
-      213: -2796951903022326533
-    second: IdleLeft_1
+      213: -6221519011851698891
+    second: angryRight_1
   - first:
-      213: 3219885235290014546
-    second: IdleLeft_2
+      213: -38139838015891962
+    second: angryRight_2
   - first:
-      213: -4480828005849900375
-    second: IdleLeft_3
+      213: 936655327041208725
+    second: angryRight_3
   - first:
-      213: -2759137661950804259
-    second: IdleLeft_4
+      213: -5832554364247079742
+    second: angryRight_4
   - first:
-      213: 4345612072454689926
-    second: IdleLeft_5
-  - first:
-      213: 6584505689531564362
-    second: IdleLeft_6
+      213: -807598940660659792
+    second: angryRight_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,57 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IdleLeft_0
+      name: angryRight_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 3
-        width: 23
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d69feae881f7c42e0800000000000000
-      internalID: -2140195979458053779
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_1
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 3
-        width: 23
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bfc5086201b3f29d0800000000000000
-      internalID: -2796951903022326533
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_2
-      rect:
-        serializedVersion: 2
-        x: 69
+        x: 6
         y: 4
-        width: 19
-        height: 25
+        width: 18
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,86 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2538cf2df845fac20800000000000000
-      internalID: 3219885235290014546
+      spriteID: 6394a89259d9da760800000000000000
+      internalID: 7470800620850137398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleLeft_3
+      name: angryRight_1
       rect:
         serializedVersion: 2
-        x: 100
-        y: 2
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9aad1bb4ba6e0d1c0800000000000000
-      internalID: -4480828005849900375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_4
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 2
-        width: 24
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dde350d3ae295b9d0800000000000000
-      internalID: -2759137661950804259
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_5
-      rect:
-        serializedVersion: 2
-        x: 165
-        y: 3
-        width: 20
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6849f46e727be4c30800000000000000
-      internalID: 4345612072454689926
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_6
-      rect:
-        serializedVersion: 2
-        x: 197
+        x: 38
         y: 4
-        width: 19
-        height: 25
+        width: 18
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,8 +152,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a414116d90dd06b50800000000000000
-      internalID: 6584505689531564362
+      spriteID: 53d7d37fb69b8a9a0800000000000000
+      internalID: -6221519011851698891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angryRight_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 4
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6069547f400887ff0800000000000000
+      internalID: -38139838015891962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angryRight_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 4
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 591c44dae0baffc00800000000000000
+      internalID: 936655327041208725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angryRight_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 4
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c406e935ba9e0fa0800000000000000
+      internalID: -5832554364247079742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angryRight_5
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 4
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b980f4da05dac4f0800000000000000
+      internalID: -807598940660659792
       vertices: []
       indices: 
       edges: []
@@ -285,13 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IdleLeft_0: -2140195979458053779
-      IdleLeft_1: -2796951903022326533
-      IdleLeft_2: 3219885235290014546
-      IdleLeft_3: -4480828005849900375
-      IdleLeft_4: -2759137661950804259
-      IdleLeft_5: 4345612072454689926
-      IdleLeft_6: 6584505689531564362
+      angryRight_0: 7470800620850137398
+      angryRight_1: -6221519011851698891
+      angryRight_2: -38139838015891962
+      angryRight_3: 936655327041208725
+      angryRight_4: -5832554364247079742
+      angryRight_5: -807598940660659792
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -19,7 +19,7 @@ public class Pushable : MonoBehaviour, IInteractable
 
     private Animator animator;
     private Animator npcAnimator;
-    private bool isNPC;
+    //private bool isNPC;
     public int ObjID { get; set; }
 
     private Vector2 moveDirection;
@@ -33,7 +33,7 @@ public class Pushable : MonoBehaviour, IInteractable
         GameObject player = GameObject.FindWithTag("Player");
         animator = player.GetComponent<Animator>();
         npcAnimator = GetComponent<Animator>();
-        if (npcAnimator) isNPC = true;
+        //if (npcAnimator) isNPC = true;
     }
 
     private void Update()
@@ -102,11 +102,22 @@ public class Pushable : MonoBehaviour, IInteractable
         Vector2 startPosition = new Vector2(transform.position.x, transform.position.y);
         float elapsedTime = 0f;
         float duration = Vector2.Distance(startPosition, target) / moveSpeed;
-
+        
         while (elapsedTime < duration)
         {
             Vector2 lerp = Vector2.Lerp(startPosition, target, elapsedTime / duration);
             transform.position = new Vector3(lerp.x, lerp.y);
+            
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+            foreach (var hit in hits)
+            {
+                TicketControllerAI controller = hit.GetComponent<TicketControllerAI>();
+                if (controller != null && controller.GetCurrentState() != TicketControllerAI.ControllerState.Shocked)
+                {
+                    controller.Stun(4f);
+                }
+            }
+            
             elapsedTime += Time.deltaTime;
             yield return null;
         }

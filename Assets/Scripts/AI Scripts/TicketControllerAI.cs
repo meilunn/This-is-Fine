@@ -48,6 +48,8 @@ public class TicketControllerAI  : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer spriteRenderer;
     public SpriteRenderer ViewCone;
+    private Vector2 lastLookDirection;
+
 
     void Awake()
     {
@@ -81,10 +83,18 @@ public class TicketControllerAI  : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float MoveX = agent.velocity.x;
-        float MoveY = agent.velocity.y;
-        _animator.SetFloat("MoveX", MoveX);
-        _animator.SetFloat("MoveY", MoveY);
+        Vector2 velo = agent.velocity;
+        bool isMoving = velo.sqrMagnitude > 0.01f;
+
+        if (isMoving)
+        {
+            lookDirection = velo.normalized;
+        }
+
+        lastLookDirection = lookDirection;
+        _animator.SetFloat("MoveX", lookDirection.x);
+        _animator.SetFloat("MoveY", lookDirection.y);
+
         
         //if (Mathf.Abs(MoveX) > Mathf.Abs(MoveY) && Mathf.Abs(MoveX) > 0.1f)
         //{
@@ -177,7 +187,7 @@ public class TicketControllerAI  : MonoBehaviour
     void StartShocked()
     {
         Debug.Log($"{name}: >>> StartShocked");
-        _animator.SetBool("isStunned", true);
+        //_animator.SetBool("isStunned", true);
         currentState = ControllerState.Shocked;
         shockedTimer = shockedTime;
 
@@ -234,7 +244,9 @@ public class TicketControllerAI  : MonoBehaviour
 
     void StartCheckingTicket()
     {
-        _animator.SetBool("isSus", true);
+        _animator.SetFloat("MoveX", lookDirection.x);
+        _animator.SetFloat("MoveY", lookDirection.y);
+        _animator.SetBool("isChecking", true);
         currentState = ControllerState.CheckingTicket;
         checkTimer = checkTicketDuration;
 
@@ -248,7 +260,7 @@ void UpdateCheckingTicket()
         checkTimer -= Time.deltaTime;
         if (checkTimer <= 0f)
         {
-            _animator.SetBool("isSus", false);
+            _animator.SetBool("isChecking", false);
             currentNPCTarget = null;
             
             StartPatrolling();
@@ -322,6 +334,12 @@ void UpdateCheckingTicket()
     {
         if (currentState == ControllerState.Chasing)
             return;
+        
+        Vector2 dirToPlayer = (player.position - transform.position).normalized;
+        lookDirection = dirToPlayer;
+        _animator.SetFloat("MoveX", lookDirection.x);
+        _animator.SetFloat("MoveY", lookDirection.y);
+        _animator.SetBool("isAngry", true);
 
         if(AIManager.Instance != null)
         {
@@ -380,4 +398,37 @@ if (dist <= catchDistance)
     StartShocked();
 
 }
+    
+    
+    public void Stun(float duration)
+    {
+        _animator.SetFloat("MoveX", lastLookDirection.x);
+        _animator.SetFloat("MoveY", lastLookDirection.y);
+        _animator.SetBool("isStunned", true);
+        
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
+        
+        StartCoroutine(EndStunAfter(duration));
+    }
+
+    private IEnumerator EndStunAfter(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        
+        _animator.SetBool("isStunned", false);
+        agent.isStopped = false;
+        
+        if (currentState != ControllerState.Chasing)
+        {
+            StartChasing();
+        }
+    }
+
+    public ControllerState GetCurrentState()
+    {
+        return currentState;
+    }
+    
+
 }

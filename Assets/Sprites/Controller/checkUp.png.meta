@@ -1,28 +1,31 @@
 fileFormatVersion: 2
-guid: a758beffe2268ed4899fce168c6fdc84
+guid: c0d3ede521690584bae87e70a5f615c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2140195979458053779
-    second: IdleLeft_0
+      213: 282605686089695444
+    second: checkUp_0
   - first:
-      213: -2796951903022326533
-    second: IdleLeft_1
+      213: -4062948222128770384
+    second: checkUp_1
   - first:
-      213: 3219885235290014546
-    second: IdleLeft_2
+      213: 291174294013596250
+    second: checkUp_2
   - first:
-      213: -4480828005849900375
-    second: IdleLeft_3
+      213: 300911927040792451
+    second: checkUp_3
   - first:
-      213: -2759137661950804259
-    second: IdleLeft_4
+      213: 1939963858313644079
+    second: checkUp_4
   - first:
-      213: 4345612072454689926
-    second: IdleLeft_5
+      213: 7258036861728059829
+    second: checkUp_5
   - first:
-      213: 6584505689531564362
-    second: IdleLeft_6
+      213: -1989761967954416843
+    second: checkUp_6
+  - first:
+      213: -5925063957126351330
+    second: checkUp_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,79 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IdleLeft_0
+      name: checkUp_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 3
-        width: 23
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d69feae881f7c42e0800000000000000
-      internalID: -2140195979458053779
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_1
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 3
-        width: 23
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bfc5086201b3f29d0800000000000000
-      internalID: -2796951903022326533
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_2
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 4
-        width: 19
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2538cf2df845fac20800000000000000
-      internalID: 3219885235290014546
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleLeft_3
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 2
+        x: 4
+        y: 224
         width: 24
-        height: 28
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9aad1bb4ba6e0d1c0800000000000000
-      internalID: -4480828005849900375
+      spriteID: 4d0c1eacf540ce300800000000000000
+      internalID: 282605686089695444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleLeft_4
+      name: checkUp_1
       rect:
         serializedVersion: 2
-        x: 132
-        y: 2
+        x: 4
+        y: 192
         width: 24
-        height: 28
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dde350d3ae295b9d0800000000000000
-      internalID: -2759137661950804259
+      spriteID: 0b2b53f4e128d97c0800000000000000
+      internalID: -4062948222128770384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleLeft_5
+      name: checkUp_2
       rect:
         serializedVersion: 2
-        x: 165
-        y: 3
-        width: 20
-        height: 26
+        x: 4
+        y: 160
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6849f46e727be4c30800000000000000
-      internalID: 4345612072454689926
+      spriteID: a52d76a4a757a0400800000000000000
+      internalID: 291174294013596250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleLeft_6
+      name: checkUp_3
       rect:
         serializedVersion: 2
-        x: 197
-        y: 4
-        width: 19
-        height: 25
+        x: 4
+        y: 133
+        width: 24
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,8 +202,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a414116d90dd06b50800000000000000
-      internalID: 6584505689531564362
+      spriteID: 387d1f7adcd0d2400800000000000000
+      internalID: 300911927040792451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkUp_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 101
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2881ebc9d22cea10800000000000000
+      internalID: 1939963858313644079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkUp_5
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 70
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b1fdfd221ab9b460800000000000000
+      internalID: 7258036861728059829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkUp_6
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 38
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53bae784802f264e0800000000000000
+      internalID: -1989761967954416843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkUp_7
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 6
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e16730c29b1f5cda0800000000000000
+      internalID: -5925063957126351330
       vertices: []
       indices: 
       edges: []
@@ -285,13 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IdleLeft_0: -2140195979458053779
-      IdleLeft_1: -2796951903022326533
-      IdleLeft_2: 3219885235290014546
-      IdleLeft_3: -4480828005849900375
-      IdleLeft_4: -2759137661950804259
-      IdleLeft_5: 4345612072454689926
-      IdleLeft_6: 6584505689531564362
+      checkUp_0: 282605686089695444
+      checkUp_1: -4062948222128770384
+      checkUp_2: 291174294013596250
+      checkUp_3: 300911927040792451
+      checkUp_4: 1939963858313644079
+      checkUp_5: 7258036861728059829
+      checkUp_6: -1989761967954416843
+      checkUp_7: -5925063957126351330
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
