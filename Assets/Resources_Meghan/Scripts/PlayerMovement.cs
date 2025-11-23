@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Animator Variables")]
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    private Vector2 lastMoveDir = Vector2.down;
 
     [SerializeField] private WagonEntranceTrigger wagonEntranceTrigger;
     [SerializeField] private WagonExitTrigger wagonExitTrigger;
@@ -49,6 +50,26 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         rb.linearVelocity = moveInput * moveSpeed;
+
+        bool isMoving = moveInput.sqrMagnitude > 0.01f;
+        
+        if (isMoving)
+            lastMoveDir = moveInput.normalized;
+        //move oder idle
+        Vector2 animDir = isMoving ? moveInput : lastMoveDir;
+
+        animator.SetFloat("MoveX", animDir.x);
+        Debug.Log(("MoveX: ", animDir.x));
+        animator.SetFloat("MoveY", animDir.y);
+        Debug.Log(("MoveY: ", animDir.y));
+        animator.SetBool("isMoving", isMoving);
+        Debug.Log(("isMoving: ", isMoving));
+        spriteRenderer.flipY = (animDir.y < 0);
+        if (isMoving)
+        {
+            float angle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
+            interactionDetector.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        }
 
         // Are we standing in the entrance trigger?
         bool nearEntrance = wagonEntranceTrigger != null && wagonEntranceTrigger.PlayerIsHere;
@@ -80,17 +101,22 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        
+        //spieler bewegt sich -> richtugn setzen
+        //if (moveInput.sqrMagnitude > 0.01f)
+        //{
+        //    lastMoveDir = moveInput.normalized;
+        //}
+        //Vector2 animDir = moveInput.sqrMagnitude > 0.01f ? moveInput : lastMoveDir;
+        //animator.SetFloat("MoveX", animDir.x);
+        //animator.SetFloat("MoveY", animDir.y);
+        //animator.SetBool("IsMoving", moveInput.sqrMagnitude > 0.01f);
 
-        if (moveInput != Vector2.zero)
-        {
-            float angle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
-            interactionDetector.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-        }
-
-        float moveX = moveInput.x;
-        float moveY = moveInput.y;
-        animator.SetFloat("MoveX", moveX);
-        animator.SetFloat("MoveY", moveY);
+        //if (moveInput != Vector2.zero)
+        //{
+         //   float angle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
+        //    interactionDetector.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        //}
 
         ///flipping, cus we only have left facing sprites
         //if (Mathf.Abs(moveX) > Mathf.Abs(moveY) && Mathf.Abs(moveX) > 0.1f)
@@ -99,11 +125,9 @@ public class PlayerMovement : MonoBehaviour
         //}
         
         //up down flip
-        if (moveY < 0)
-            spriteRenderer.flipY = true;
-        else 
-            spriteRenderer.flipY = false;
+        //if (animDir.y < 0)
+        //    spriteRenderer.flipY = true;
+        //else 
+        //    spriteRenderer.flipY = false;
     }
-
-
 }
