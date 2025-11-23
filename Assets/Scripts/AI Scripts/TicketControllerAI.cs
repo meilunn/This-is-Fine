@@ -49,6 +49,8 @@ public class TicketControllerAI  : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public SpriteRenderer ViewCone;
     private Vector2 lastLookDirection;
+    private bool isStunned = false;
+    public bool IsStunned => isStunned;
 
 
     void Awake()
@@ -89,9 +91,9 @@ public class TicketControllerAI  : MonoBehaviour
         if (isMoving)
         {
             lookDirection = velo.normalized;
+            lastLookDirection = lookDirection;
         }
-
-        lastLookDirection = lookDirection;
+        
         _animator.SetFloat("MoveX", lookDirection.x);
         _animator.SetFloat("MoveY", lookDirection.y);
 
@@ -126,7 +128,7 @@ public class TicketControllerAI  : MonoBehaviour
         }
 
         // PATROLLING sight cone → detect player and start chase
-        if (currentState == ControllerState.Patrolling && player != null)
+        if (currentState == ControllerState.Patrolling && !isStunned && player != null)
         {
             if (IsTargetInsideFov(player))
             {
@@ -176,12 +178,14 @@ public class TicketControllerAI  : MonoBehaviour
         }
 
         //Update destination constantly so it adapts to pushed npcs
-
-        agent.SetDestination(currentNPCTarget.position);  
-
-        if (!agent.pathPending && agent.remainingDistance <= npcStoppingDistance)
+        if (currentNPCTarget != null && !isStunned && currentState != ControllerState.Shocked)
         {
-            StartCheckingTicket();
+            agent.SetDestination(currentNPCTarget.position);
+
+            if (!agent.pathPending && agent.remainingDistance <= npcStoppingDistance)
+            {
+                StartCheckingTicket();
+            }
         }
     }
     void StartShocked()
@@ -402,6 +406,8 @@ if (dist <= catchDistance)
     
     public void Stun(float duration)
     {
+        isStunned = true;
+        currentState = ControllerState.Shocked; 
         _animator.SetFloat("MoveX", lastLookDirection.x);
         _animator.SetFloat("MoveY", lastLookDirection.y);
         _animator.SetBool("isStunned", true);
@@ -418,6 +424,7 @@ if (dist <= catchDistance)
         
         _animator.SetBool("isStunned", false);
         agent.isStopped = false;
+        isStunned = false;
         
         if (currentState != ControllerState.Chasing)
         {

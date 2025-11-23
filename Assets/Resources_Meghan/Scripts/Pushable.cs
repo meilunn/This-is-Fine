@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Pushable : MonoBehaviour, IInteractable
@@ -103,6 +104,8 @@ public class Pushable : MonoBehaviour, IInteractable
         float elapsedTime = 0f;
         float duration = Vector2.Distance(startPosition, target) / moveSpeed;
         
+        HashSet<TicketControllerAI> stunnedControllers = new HashSet<TicketControllerAI>();
+        
         while (elapsedTime < duration)
         {
             Vector2 lerp = Vector2.Lerp(startPosition, target, elapsedTime / duration);
@@ -112,9 +115,11 @@ public class Pushable : MonoBehaviour, IInteractable
             foreach (var hit in hits)
             {
                 TicketControllerAI controller = hit.GetComponent<TicketControllerAI>();
-                if (controller != null && controller.GetCurrentState() != TicketControllerAI.ControllerState.Shocked)
+                if (controller != null && controller.GetCurrentState() != TicketControllerAI.ControllerState.Shocked 
+                                       && !stunnedControllers.Contains(controller))
                 {
                     controller.Stun(4f);
+                    stunnedControllers.Add(controller);
                 }
             }
             
