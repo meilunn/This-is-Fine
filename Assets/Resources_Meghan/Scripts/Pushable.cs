@@ -58,7 +58,11 @@ public class Pushable : MonoBehaviour, IInteractable
         Vector3 dir = (transform.position - StationManager.Instance.GetPlayer().transform.position).normalized;
         Vector2 dir2 = new Vector2(dir.x, dir.y);
         dir.z = 0;
+        
+        animator.SetFloat("MoveX", dir2.x);
+        animator.SetFloat("MoveY", dir2.y);
         animator.SetBool("isPushing", true);
+
         
         //if (isNPC)
         //{

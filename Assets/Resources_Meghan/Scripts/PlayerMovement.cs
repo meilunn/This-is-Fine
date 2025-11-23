@@ -49,6 +49,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (animator.GetBool("isPushing"))
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+        
         rb.linearVelocity = moveInput * moveSpeed;
 
         bool isMoving = moveInput.sqrMagnitude > 0.01f;
@@ -64,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(("MoveY: ", animDir.y));
         animator.SetBool("isMoving", isMoving);
         Debug.Log(("isMoving: ", isMoving));
-        spriteRenderer.flipY = (animDir.y < 0);
+        //spriteRenderer.flipY = (animDir.y < 0);
         if (isMoving)
         {
             float angle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
