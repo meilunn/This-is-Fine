@@ -622,6 +622,18 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5490181939185601219, guid: 437768330027f477ea33b094cc03b762, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490181939185601219, guid: 437768330027f477ea33b094cc03b762, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490181939185601219, guid: 437768330027f477ea33b094cc03b762, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 5621551854901943030, guid: 437768330027f477ea33b094cc03b762, type: 3}
       propertyPath: m_text
       value: 
